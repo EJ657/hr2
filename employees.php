@@ -74,17 +74,20 @@
                 </li>
             </ul>
         </div>
-
         <!-- Main Content -->
-        <div class="flex-1 p-6 bg-[#fbfbfe] h-screen overflow-y-auto">
-            <h2 class="text-2xl font-bold mb-4">Feedback</h2>
-
-            <!-- Search Section -->
-            <div class="flex items-center mb-4">
-                <input type="text" id="searchBar" oninput="filterItems()" placeholder="Search..." class="p-2 border border-gray-300 rounded mr-2 flex-1">
-            </div>
+        <div class="flex-grow p-6 bg-gray-100 min-h-screen">
+            <h3 class="text-xl font-bold mb-4 text-gray-700 ">Employee List</h3>
+            <table class="w-[500px] bg-white border-2 border-gray-200 mx-auto">
+                <thead>
+                    <tr class="">
+                        <th class="py-3 px-4 border-b">Employee Name</th>
+                        <th class="py-3 px-4 border-b">Email</th>
+                        <th class="py-3 px-4 border-b">Course</th>
+                        <th class="py-3 px-4 border-b">Department</th>
+                    </tr>
+                </thead>
+                <tbody id="itemTableBody">
+                    <!-- Items will be dynamically inserted here -->
+                </tbody>
+            </table>
         </div>
-    </div>
-</body>
-
-</html>

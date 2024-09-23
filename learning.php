@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Human Resources 2</title>
@@ -24,37 +25,85 @@
     </style>
 </head>
 
-<body class="bg-gray-100">
+<style>
+    .custom-bg {
+        background-color: #fbfbfe;
+    }
+</style>
+
+<body class="custom-bg">
+
 
     <div class="flex">
         <!-- Sidebar -->
-        <div class="w-64 bg-gray-800 text-white h-screen p-4">
-            <h1 class="text-lg font-bold">Employee Management</h1>
-            <ul class="mt-4">
-                <li class="my-2">
-                    <a href="index.php" class="block p-2 hover:bg-gray-700 rounded">Competency Management</a>
+        <div class="w-64 border-r bg-blue-600 text-white h-screen flex flex-col">
+            <!-- Logo Section -->
+            <img class="w-32 mx-auto mt-4 object-contain" src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg" alt="Transistor" width="150" height="40">
+
+            <!-- Header with Icon -->
+            <div class="flex items-center justify-between px-5 mt-2">
+                <h1 class="text-xl font-bold tracking-wide">Employee Management</h1>
+                <img class="w-6 h-6" src="icons/employeemanagement.png" alt="Employee Management Icon">
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="flex-grow mt-6 space-y-3 px-4">
+                <li>
+                    <a href="dashboard.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                        <span>Dashboard</span>
+                        <img class="w-5 h-5 ml-3" src="icons/dashboard.png" alt="Dashboard Icon">
+                    </a>
                 </li>
-                <li class="my-2">
-                    <a href="learning.php" class="block p-2 hover:bg-gray-700 rounded">Learning Management</a>
+                <li>
+                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                        <span>Competency Management</span>
+                        <img class="w-5 h-5 ml-3" src="icons/competency.png" alt="Competency Icon">
+                    </a>
                 </li>
-                <li class="my-2">
-                    <a href="training.php" class="block p-2 hover:bg-gray-700 rounded">Training Management</a>
+                <li>
+                    <a href="learning.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                        <span>Learning & Training Management</span>
+                        <img class="w-5 h-5 ml-3" src="icons/learningtraining.png" alt="Learning and Training Icon">
+                    </a>
                 </li>
-                <li class="my-2">
-                    <a href="feedbacks.php" class="block p-2 hover:bg-gray-700 rounded">Feedbacks</a>
+                <li>
+                    <a href="feedbacks.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                        <span>Feedback</span>
+                        <img class="w-5 h-5 ml-3" src="icons/feedback.png" alt="Feedback Icon">
+                    </a>
                 </li>
             </ul>
         </div>
 
         <!-- Main Content -->
-        <div class="flex-1 p-6 bg-gray-100 h-screen overflow-y-auto">
-            <h2 class="text-2xl font-semibold mb-4">Learning Management</h2>
+        <div class="flex-1 p-6 bg-[#fbfbfe] h-screen overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-4">Learning and Training Management</h2>
 
-            <!-- Search Section -->
-            <div class="flex items-center mb-4">
-                <input type="text" id="searchBar" oninput="filterItems()" placeholder="Search..." class="p-2 border border-gray-300 rounded mr-2 flex-1">
+            <!-- Category Cards Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Enrollment Card -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Enrollment</h3>
+                    <p class="text-gray-700 mb-6">Track course enrollments.</p>
+                    <a href="enrollment.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Enrollment</a>
+                </div>
+
+                <!-- Employees Card -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Employees</h3>
+                    <p class="text-gray-700 mb-6">Manage employee information.</p>
+                    <a href="employees.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Employees</a>
+                </div>
+
+                <!-- Courses Card -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Courses</h3>
+                    <p class="text-gray-700 mb-6">Manage all courses available in the system.</p>
+                    <a href="courses.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Courses</a>
+                </div>
             </div>
         </div>
     </div>
-    </body>
+</body>
+
 </html>

@@ -77,12 +77,9 @@
 
         <!-- Main Content -->
         <div class="flex-1 p-6 bg-[#fbfbfe] h-screen overflow-y-auto">
-            <h2 class="text-2xl font-bold mb-4">Feedback</h2>
+            <h2 class="text-2xl font-bold mb-4">Dashboard</h2>
 
-            <!-- Search Section -->
-            <div class="flex items-center mb-4">
-                <input type="text" id="searchBar" oninput="filterItems()" placeholder="Search..." class="p-2 border border-gray-300 rounded mr-2 flex-1">
-            </div>
+            
         </div>
     </div>
 </body>
