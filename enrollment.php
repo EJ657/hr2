@@ -42,13 +42,13 @@
             <!-- Navigation Links -->
             <ul class="flex-grow mt-6 space-y-3 px-4">
                 <li>
-                    <a href="dashboard.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
                         <span>Dashboard</span>
                         <img class="w-5 h-5 ml-3" src="icons/dashboard.png" alt="Dashboard Icon">
                     </a>
                 </li>
                 <li>
-                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="competency.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
                         <span>Competency Management</span>
                         <img class="w-5 h-5 ml-3" src="icons/competency.png" alt="Competency Icon">
                     </a>

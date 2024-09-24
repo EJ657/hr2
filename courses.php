@@ -49,13 +49,13 @@
             <!-- Navigation Links -->
             <ul class="flex-grow mt-6 space-y-3 px-4">
                 <li>
-                    <a href="dashboard.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
                         <span>Dashboard</span>
                         <img class="w-5 h-5 ml-3" src="icons/dashboard.png" alt="Dashboard Icon">
                     </a>
                 </li>
                 <li>
-                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="competency.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
                         <span>Competency Management</span>
                         <img class="w-5 h-5 ml-3" src="icons/competency.png" alt="Competency Icon">
                     </a>
@@ -79,49 +79,16 @@
         <div class="flex-1 p-6 bg-[#fbfbfe] h-screen overflow-y-auto">
             <h2 class="text-3xl font-bold mb-6 text-gray-800">Courses Dashboard</h2>
 
-            <!-- Course Overview Section -->
-            <div class="flex flex-wrap gap-6 mb-6">
-                <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-5 rounded-lg shadow-lg text-white relative hover:shadow-xl transition duration-200 flex-1 min-w-[220px] flex flex-col justify-between">
-                    <h3 class="text-sm font-medium">Active Courses</h3>
-                    <p class="text-4xl font-bold" id="activeCount">12</p>
-                </div>
-                <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 p-5 rounded-lg shadow-lg text-white relative hover:shadow-xl transition duration-200 flex-1 min-w-[220px] flex flex-col justify-between">
-                    <h3 class="text-sm font-medium">Pending Courses</h3>
-                    <p class="text-4xl font-bold" id="pendingCount">5</p>
-                </div>
-                <div class="bg-gradient-to-r from-green-500 to-green-600 p-5 rounded-lg shadow-lg text-white relative hover:shadow-xl transition duration-200 flex-1 min-w-[220px] flex flex-col justify-between">
-                    <h3 class="text-sm font-medium">Total Employees</h3>
-                    <p class="text-4xl font-bold" id="totalEmployees">50</p>
-                </div>
-            </div>
+api
 
             <!-- Course List Section -->
             <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-2xl font-bold text-gray-700">Course List</h3>
-                    <div class="flex space-x-4">
-                        <div>
-                            <label class="text-gray-700 font-medium mr-2">Status:</label>
-                            <select id="courseStatus" class="border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300 transition duration-150">
-                                <option value="">All</option>
-                                <option value="active">Active</option>
-                                <option value="pending">Pending</option>
-                                <option value="completed">Completed</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="text-gray-700 font-medium mr-2">Category:</label>
-                            <select id="courseCategory" class="border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300 transition duration-150">
-                                <option value="">All Categories</option>
-                                <option value="IT">IT</option>
-                                <option value="Finance">Finance</option>
-                                <option value="HR">HR</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input type="text" id="searchCourses" placeholder="Search Courses..." class="p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300 transition duration-150">
-                        </div>
-                    </div>
+                    <!-- Add New Course Button -->
+                    <button id="addNewCourseBtn" class="bg-blue-600 text-white rounded-lg px-4 py-2 hover:bg-blue-700 transition duration-200">
+                        Add New Course
+                    </button>
                 </div>
 
                 <!-- Course List Table -->
@@ -131,6 +98,8 @@
                             <th class="py-3 px-4 border-b text-left">Course Name</th>
                             <th class="py-3 px-4 border-b text-left">Category</th>
                             <th class="py-3 px-4 border-b text-left">Status</th>
+                            <th class="py-3 px-4 border-b text-left">Due Date</th>
+                            <th class="py-3 px-4 border-b text-left">Progress</th>
                             <th class="py-3 px-4 border-b text-left">Actions</th>
                         </tr>
                     </thead>
@@ -138,143 +107,200 @@
                         <!-- Dynamic content will be injected here -->
                     </tbody>
                 </table>
+            </div>
 
-                <div class="flex flex-col sm:flex-row gap-6">
-                    <!-- Add New Course Form -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-                        <h3 class="text-lg font-bold mb-4">Add New Course</h3>
-                        <form id="addCourseForm" class="flex flex-col space-y-3">
-                            <input type="text" id="newCourseName" placeholder="Course Name" class="border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300" required>
-                            <input type="text" id="newCourseCategory" placeholder="Category" class="border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300" required>
-                            <select id="newCourseStatus" class="border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300">
+            <!-- Add/Edit Course Modal -->
+            <div id="courseModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                <div class="bg-white p-8 rounded-lg shadow-lg max-w-3xl w-full">
+                    <h2 id="modalTitle" class="text-2xl font-bold mb-6 text-center text-gray-800">Add/Edit Course</h2>
+                    <form id="courseForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="courseName" class="block text-sm font-medium text-gray-700 mb-2">Course Name</label>
+                            <input type="text" id="courseName" placeholder="Enter Course Name" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-300 focus:border-blue-500" required>
+                        </div>
+                        <div>
+                            <label for="courseCategory" class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                            <input type="text" id="courseCategory" placeholder="Enter Category" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-300 focus:border-blue-500" required>
+                        </div>
+                        <div>
+                            <label for="courseStatus" class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                            <select id="courseStatus" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-300 focus:border-blue-500">
                                 <option value="active">Active</option>
                                 <option value="pending">Pending</option>
                                 <option value="completed">Completed</option>
                             </select>
-                            <button type="submit" class="bg-blue-600 text-white rounded-lg px-4 py-2 hover:bg-blue-700 transition duration-200">Add Course</button>
-                        </form>
-                    </div>
-
-                    <!-- Current Course Progress Section -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg w-full">
-                        <h3 class="text-xl font-bold text-gray-700 mb-4">Current Course Progress</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                            <!-- Course Topic Items -->
-                            <div class="bg-gray-50 p-4 rounded-lg shadow">
-                                <h4 class="text-lg font-bold text-gray-700 mb-1">Advanced JavaScript</h4>
-                                <p class="text-sm text-gray-500 mb-2">Due: <span class="font-medium">Sep 30, 2024</span></p>
-                                <div class="relative pt-1">
-                                    <div class="flex mb-1 items-center justify-between">
-                                        <div class="text-sm font-medium text-blue-600">Progress</div>
-                                        <div class="text-sm text-gray-600">65%</div>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-3">
-                                        <div class="bg-blue-600 h-3 rounded-full" style="width: 65%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="bg-gray-50 p-4 rounded-lg shadow">
-                                <h4 class="text-lg font-bold text-gray-700 mb-1">Leadership Skills</h4>
-                                <p class="text-sm text-gray-500 mb-2">Due: <span class="font-medium">Oct 10, 2024</span></p>
-                                <div class="relative pt-1">
-                                    <div class="flex mb-1 items-center justify-between">
-                                        <div class="text-sm font-medium text-blue-600">Progress</div>
-                                        <div class="text-sm text-gray-600">80%</div>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-3">
-                                        <div class="bg-blue-600 h-3 rounded-full" style="width: 80%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="bg-gray-50 p-4 rounded-lg shadow">
-                                <h4 class="text-lg font-bold text-gray-700 mb-1">Excel for Data Analysis</h4>
-                                <p class="text-sm text-gray-500 mb-2">Due: <span class="font-medium">Nov 5, 2024</span></p>
-                                <div class="relative pt-1">
-                                    <div class="flex mb-1 items-center justify-between">
-                                        <div class="text-sm font-medium text-blue-600">Progress</div>
-                                        <div class="text-sm text-gray-600">45%</div>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-3">
-                                        <div class="bg-blue-600 h-3 rounded-full" style="width: 45%;"></div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                    </div>
+                        <div>
+                            <label for="courseDueDate" class="block text-sm font-medium text-gray-700 mb-2">Due Date</label>
+                            <input type="date" id="courseDueDate" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-300 focus:border-blue-500" required>
+                        </div>
+                        <div>
+                            <label for="courseProgress" class="block text-sm font-medium text-gray-700 mb-2">Progress (%)</label>
+                            <input type="number" id="courseProgress" placeholder="Enter Progress (%)" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-300 focus:border-blue-500" required min="0" max="100">
+                        </div>
+                        <div class="md:col-span-2 flex justify-end space-x-4 mt-6">
+                            <button type="submit" class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring focus:ring-blue-300">Save Course</button>
+                            <button type="button" onclick="hideModal()" class="bg-gray-600 text-white p-3 rounded-lg hover:bg-gray-700 transition duration-200 focus:outline-none focus:ring focus:ring-gray-300">Cancel</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 
             <script>
-                const courses = [{
+                let courses = [{
                         name: 'JavaScript Basics',
                         category: 'IT',
-                        status: 'active'
+                        status: 'active',
+                        dueDate: '2024-09-30',
+                        progress: 65
                     },
                     {
                         name: 'Finance for Managers',
                         category: 'Finance',
-                        status: 'pending'
+                        status: 'pending',
+                        dueDate: '2024-10-10',
+                        progress: 30
                     },
+                    {
+                        name: 'Leadership Skills',
+                        category: 'HR',
+                        status: 'completed',
+                        dueDate: '2024-08-15',
+                        progress: 100
+                    }
                 ];
+
+                let isEditing = false;
+                let editingIndex = null;
 
                 const courseTableBody = document.getElementById('courseTableBody');
                 const activeCount = document.getElementById('activeCount');
                 const pendingCount = document.getElementById('pendingCount');
+                const completedCount = document.getElementById('completedCount');
+                const addNewCourseBtn = document.getElementById('addNewCourseBtn');
+                const courseModal = document.getElementById('courseModal');
+                const courseForm = document.getElementById('courseForm');
+                const modalTitle = document.getElementById('modalTitle');
+                const courseNameInput = document.getElementById('courseName');
+                const courseCategoryInput = document.getElementById('courseCategory');
+                const courseStatusInput = document.getElementById('courseStatus');
+                const courseDueDateInput = document.getElementById('courseDueDate');
+                const courseProgressInput = document.getElementById('courseProgress');
 
+                // Show course modal for adding/editing
+                function showModal(edit = false) {
+                    if (edit) {
+                        modalTitle.textContent = "Edit Course";
+                    } else {
+                        modalTitle.textContent = "Add New Course";
+                        courseForm.reset();
+                    }
+                    courseModal.classList.remove('hidden');
+                }
+
+                // Hide course modal
+                function hideModal() {
+                    courseModal.classList.add('hidden');
+                }
+
+                // Render course list
                 function renderCourses() {
                     courseTableBody.innerHTML = '';
                     let activeCourses = 0;
                     let pendingCourses = 0;
+                    let completedCourses = 0;
 
-                    courses.forEach(course => {
+                    courses.forEach((course, index) => {
                         const row = document.createElement('tr');
                         row.innerHTML = `
-                <td class="py-3 px-4 border-b">${course.name}</td>
-                <td class="py-3 px-4 border-b">${course.category}</td>
-                <td class="py-3 px-4 border-b text-${course.status === 'active' ? 'green-600' : 'yellow-600'}">${course.status.charAt(0).toUpperCase() + course.status.slice(1)}</td>
-                <td class="py-3 px-4 border-b">
-                    <button class="text-blue-600 hover:underline" onclick="viewCourse('${course.name}')">View</button> |
-                    <button class="text-red-600 hover:underline" onclick="deleteCourse('${course.name}')">Delete</button>
-                </td>
-            `;
+                    <td class="py-3 px-4 border-b">${course.name}</td>
+                    <td class="py-3 px-4 border-b">${course.category}</td>
+                    <td class="py-3 px-4 border-b text-${course.status === 'active' ? 'green-600' : course.status === 'pending' ? 'yellow-600' : 'gray-600'}">
+                        ${course.status.charAt(0).toUpperCase() + course.status.slice(1)}
+                    </td>
+                    <td class="py-3 px-4 border-b">${course.dueDate}</td>
+                    <td class="py-3 px-4 border-b">
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="bg-blue-600 h-3 rounded-full" style="width: ${course.progress}%;"></div>
+                        </div>
+                        <span class="text-sm">${course.progress}%</span>
+                    </td>
+                    <td class="py-3 px-4 border-b">
+                        <button class="text-blue-600 hover:underline" onclick="editCourse(${index})">Edit</button> |
+                        <button class="text-red-600 hover:underline" onclick="deleteCourse(${index})">Delete</button>
+                    </td>
+                `;
                         courseTableBody.appendChild(row);
+
+                        // Update course counts
                         if (course.status === 'active') activeCourses++;
                         if (course.status === 'pending') pendingCourses++;
+                        if (course.status === 'completed') completedCourses++;
                     });
 
                     activeCount.textContent = activeCourses;
                     pendingCount.textContent = pendingCourses;
+                    completedCount.textContent = completedCourses;
                 }
 
-                function viewCourse(name) {
-                    alert(`Viewing course: ${name}`);
-                }
-
-                function deleteCourse(name) {
-                    const index = courses.findIndex(course => course.name === name);
-                    if (index !== -1) {
-                        courses.splice(index, 1);
-                        renderCourses();
-                    }
-                }
-
-                document.getElementById('addCourseForm').addEventListener('submit', function(e) {
+                // Add or Edit course form submission
+                courseForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     const newCourse = {
-                        name: document.getElementById('newCourseName').value,
-                        category: document.getElementById('newCourseCategory').value,
-                        status: document.getElementById('newCourseStatus').value
+                        name: courseNameInput.value,
+                        category: courseCategoryInput.value,
+                        status: courseStatusInput.value,
+                        dueDate: courseDueDateInput.value,
+                        progress: courseProgressInput.value
                     };
-                    courses.push(newCourse);
+
+                    if (isEditing) {
+                        // Update existing course
+                        courses[editingIndex] = newCourse;
+                        isEditing = false;
+                        editingIndex = null;
+                    } else {
+                        // Add new course
+                        courses.push(newCourse);
+                    }
+
                     renderCourses();
-                    this.reset();
+                    hideModal();
                 });
 
+                // Edit course
+                function editCourse(index) {
+                    isEditing = true;
+                    editingIndex = index;
+                    const course = courses[index];
+                    courseNameInput.value = course.name;
+                    courseCategoryInput.value = course.category;
+                    courseStatusInput.value = course.status;
+                    courseDueDateInput.value = course.dueDate;
+                    courseProgressInput.value = course.progress;
+                    showModal(true);
+                }
+
+                // Delete course
+                function deleteCourse(index) {
+                    courses.splice(index, 1);
+                    renderCourses();
+                }
+
+                // Show modal when "Add New Course" button is clicked
+                addNewCourseBtn.addEventListener('click', () => showModal(false));
+
+                // Hide modal on clicking outside or pressing escape
+                window.addEventListener('click', (e) => {
+                    if (e.target === courseModal) hideModal();
+                });
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') hideModal();
+                });
+
+                // Initial render
                 renderCourses();
             </script>
-
         </div>
 </body>
 

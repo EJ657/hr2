@@ -6,11 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.19.0/dist/full.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style.css">
     <title>Human Resources 2</title>
     <style>
         .hidden {
             display: none;
+        }
+
+        .custom-dropdown-content {
+            left: auto;
+            right: 0;
+        }
+
+        .card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
 
         .button-active {
@@ -32,6 +48,8 @@
 </style>
 
 <body class="custom-bg">
+
+
     <div class="flex">
         <!-- Sidebar -->
         <div class="w-64 border-r bg-blue-600 text-white h-screen flex flex-col">
@@ -47,13 +65,13 @@
             <!-- Navigation Links -->
             <ul class="flex-grow mt-6 space-y-3 px-4">
                 <li>
-                    <a href="dashboard.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
                         <span>Dashboard</span>
                         <img class="w-5 h-5 ml-3" src="icons/dashboard.png" alt="Dashboard Icon">
                     </a>
                 </li>
                 <li>
-                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="competency.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
                         <span>Competency Management</span>
                         <img class="w-5 h-5 ml-3" src="icons/competency.png" alt="Competency Icon">
                     </a>
@@ -75,340 +93,71 @@
 
         <!-- Main Content -->
         <div class="flex-1 p-6 bg-[#fbfbfe] h-screen overflow-y-auto">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Competency Management</h2>
+            <!-- Flex container for H2 and Date Picker -->
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Dashboard</h2>
 
-            <!-- Search and Filter Section -->
-            <div class="flex items-center mb-6">
-                <input type="text" id="searchBar" oninput="filterItems()" placeholder="Search..." class="p-3 border border-gray-300 rounded-lg shadow-sm flex-1 mr-4" />
-                <button id="activeButton" onclick="toggleStatus('active')" class="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition-all duration-300">Active</button>
-                <button id="inactiveButton" onclick="toggleStatus('inactive')" class="bg-gray-500 text-white p-3 rounded-lg hover:bg-gray-600 transition-all duration-300 ml-4">Inactive</button>
-            </div>
-
-            <!-- Form to Add Item -->
-            <form id="crudForm" onsubmit="addItem(event)" class="mb-8 p-6 bg-white rounded-lg shadow-lg">
-                <div class="grid grid-cols-2 gap-6">
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                        <input type="text" id="name" placeholder="Name" class="p-3 border border-gray-300 rounded-lg w-full" required />
+                <!-- Date Picker Dropdown next to H2 -->
+                <div class="dropdown dropdown-end">
+                    <label tabindex="0" class="btn btn-primary flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10m-9 4h10m-4 8h4m2-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h10z" />
+                        </svg>
+                        <span id="selectedDateText">Pick a Date</span>
+                    </label>
+                    <div tabindex="0" class="dropdown-content bg-white shadow-lg rounded-lg p-4 custom-dropdown-content">
+                        <input type="date" class="input input-bordered w-full" id="datePicker" onchange="dateChanged()">
                     </div>
-
-                    <div>
-                        <label for="hireDate" class="block text-sm font-medium text-gray-700 mb-1">Hire Date</label>
-                        <input type="date" id="hireDate" class="p-3 border border-gray-300 rounded-lg w-full" required />
-                    </div>
-
-                    <div>
-                        <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                        <select id="status" class="p-3 border border-gray-300 rounded-lg w-full">
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="jobPosition" class="block text-sm font-medium text-gray-700 mb-1">Job Position</label>
-                        <select id="jobPosition" class="p-3 border border-gray-300 rounded-lg w-full">
-                            <option value="">Select Job Position</option>
-                            <option value="Bus Driver">Bus Driver</option>
-                            <option value="Bus Conductor">Bus Conductor</option>
-                            <option value="Bus Maintenance Mechanic">Bus Maintenance Mechanic</option>
-                            <option value="Customer Service">Customer Service</option>
-                            <option value="Security Guard">Security Guard</option>
-                            <option value="Human Resource Manager">Human Resource Manager</option>
-                            <option value="Marketing Coordinator">Marketing Coordinator</option>
-                            <option value="Finance Manager">Finance Manager</option>
-                            <option value="IT Specialist">IT Specialist</option>
-                            <option value="Logistics Coordinator">Logistics Coordinator</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="department" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
-                        <select id="department" class="p-3 border border-gray-300 rounded-lg w-full">
-                            <option value="">Select Department</option>
-                            <option value="Transportation Department">Transportation Department</option>
-                            <option value="Customer Service Department">Customer Service Department</option>
-                            <option value="Security Department">Security Department</option>
-                            <option value="Human Resources Department">Human Resources Department</option>
-                            <option value="Marketing Department">Marketing Department</option>
-                            <option value="Finance Department">Finance Department</option>
-                            <option value="Information Technology Department">Information Technology Department</option>
-                            <option value="Logistics Department">Logistics Department</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="workExpertise" class="block text-sm font-medium text-gray-700 mb-1">Work Expertise</label>
-                        <input type="text" id="workExpertise" placeholder="Work Expertise" class="p-3 border border-gray-300 rounded-lg w-full" required />
-                    </div>
-
-                    <div>
-                        <label for="technicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills</label>
-                        <input type="text" id="technicalSkills" placeholder="Technical Skills" class="p-3 border border-gray-300 rounded-lg w-full" required />
-                    </div>
-
-                    <button type="submit" class="col-span-2 bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition-all duration-300">
-                        Add Employee
-                    </button>
                 </div>
-            </form>
-
-            <!-- Table to Display Items -->
-            <div class="overflow-x-auto bg-white p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-bold mb-4 text-gray-700">Employee List</h3>
-                <table class="min-w-full bg-white border border-gray-200">
-                    <thead>
-                        <tr>
-                            <th class="py-3 px-4 border-b">Name</th>
-                            <th class="py-3 px-4 border-b">Department</th>
-                            <th class="py-3 px-4 border-b">Request</th>
-                            <th class="py-3 px-4 border-b">Hire Date</th>
-                            <th class="py-3 px-4 border-b">Status</th>
-                            <th class="py-3 px-4 border-b">Job Position</th>
-                            <th class="py-3 px-4 border-b">Work Expertise</th>
-                            <th class="py-3 px-4 border-b">Technical Skills</th>
-                            <th class="py-3 px-4 border-b">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="itemTableBody">
-                        <!-- Items will be dynamically inserted here -->
-                    </tbody>
-                </table>
             </div>
-        </div>
 
-        <!-- Edit Item Modal -->
-        <div id="editModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 items-center justify-center">
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-xl font-bold mb-4">Edit Employee</h2>
-                <form id="editForm" onsubmit="updateItem(event)">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                            <input type="text" id="editName" placeholder="Name" class="p-3 border border-gray-300 rounded-lg w-full" required />
-                        </div>
-                        <div>
-                            <label for="hireDate" class="block text-sm font-medium text-gray-700 mb-1">Hire Date</label>
-                            <input type="date" id="editHireDate" class="p-3 border border-gray-300 rounded-lg w-full" required />
-                        </div>
-                        <div>
-                            <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                            <select id="editStatus" class="p-3 border border-gray-300 rounded-lg w-full">
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="jobPosition" class="block text-sm font-medium text-gray-700 mb-1">Job Position</label>
-                            <select id="editJobPosition" class="p-3 border border-gray-300 rounded-lg w-full">
-                                <option value="">Select Job Position</option>
-                                <option value="Bus Driver">Bus Driver</option>
-                                <option value="Bus Conductor">Bus Conductor</option>
-                                <option value="Bus Maintenance Mechanic">Bus Maintenance Mechanic</option>
-                                <option value="Customer Service">Customer Service</option>
-                                <option value="Security Guard">Security Guard</option>
-                                <option value="Human Resource Manager">Human Resource Manager</option>
-                                <option value="Marketing Coordinator">Marketing Coordinator</option>
-                                <option value="Finance Manager">Finance Manager</option>
-                                <option value="IT Specialist">IT Specialist</option>
-                                <option value="Logistics Coordinator">Logistics Coordinator</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="department" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
-                            <select id="editDepartment" class="p-3 border border-gray-300 rounded-lg w-full">
-                                <option value="">Select Department</option>
-                                <option value="Transportation Department">Transportation Department</option>
-                                <option value="Customer Service Department">Customer Service Department</option>
-                                <option value="Security Department">Security Department</option>
-                                <option value="Human Resources Department">Human Resources Department</option>
-                                <option value="Marketing Department">Marketing Department</option>
-                                <option value="Finance Department">Finance Department</option>
-                                <option value="IT Department">IT Department</option>
-                                <option value="Logistics Department">Logistics Department</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="workExpertise" class="block text-sm font-medium text-gray-700 mb-1">Work Expertise</label>
-                            <input type="text" id="editWorkExpertise" placeholder="Work Expertise" class="p-3 border border-gray-300 rounded-lg w-full" required />
-                        </div>
-                        <div>
-                            <label for="technicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills</label>
-                            <input type="text" id="editTechnicalSkills" placeholder="Technical Skills" class="p-3 border border-gray-300 rounded-lg w-full" required />
-                            <input type="hidden" id="editIndex">
-                        </div>
-                        <button type="submit" class="bg-blue-500 text-white p-3 rounded-lg col-span-2">Update</button>
-                        <button onclick="closeEditModal()" class="bg-gray-500 text-white p-3 rounded-lg col-span-2 mt-2">Cancel</button>
+            <!-- Container -->
+            <div class="container mx-auto p-6">
+                <!-- Course Overview Section -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <!-- Active Courses Card -->
+                    <div class="card bg-gradient-to-r from-blue-500 to-blue-600 p-5 rounded-lg shadow-lg text-white relative flex flex-col justify-between">
+                        <h3 class="text-sm font-medium">Total Active Courses</h3>
+                        <p class="text-4xl font-bold" id="activeCourses">0</p>
                     </div>
-                </form>
+                    <!-- Total Participants Card -->
+                    <div class="card bg-gradient-to-r from-yellow-400 to-yellow-500 p-5 rounded-lg shadow-lg text-white relative flex flex-col justify-between">
+                        <h3 class="text-sm font-medium">Total Participants</h3>
+                        <p class="text-4xl font-bold" id="totalParticipants">0</p>
+                    </div>
+                    <!-- Participants in Training Session -->
+                    <div class="card bg-gradient-to-r from-green-500 to-green-600 p-5 rounded-lg shadow-lg text-white relative flex flex-col justify-between">
+                        <h3 class="text-sm font-medium">Participants in Training Session</h3>
+                        <p class="text-4xl font-bold" id="trainingParticipants">0</p>
+                    </div>
+                    <!-- Absentee Rate -->
+                    <div class="card bg-gradient-to-r from-red-500 to-red-600 p-5 rounded-lg shadow-lg text-white relative flex flex-col justify-between">
+                        <h3 class="text-sm font-medium">Absentee Rate</h3>
+                        <p class="text-4xl font-bold" id="absenteeRate">0%</p>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <script>
-            let items = JSON.parse(localStorage.getItem('items')) || [];
-            let employeeNames = JSON.parse(localStorage.getItem('employeeNames')) || []; // Initialize employeeNames
+            <script>
+                // Handle date change and update values dynamically
+                function dateChanged() {
+                    const selectedDate = document.getElementById('datePicker').value;
+                    const dateDisplay = document.getElementById('selectedDateText');
+                    if (selectedDate) {
+                        const formattedDate = new Date(selectedDate).toLocaleDateString();
+                        dateDisplay.innerText = formattedDate;
+                        console.log('Selected Date: ', selectedDate);
 
-            function addItem(event) {
-                event.preventDefault();
-                const name = document.getElementById('name').value;
-                const department = document.getElementById('department').value;
-                const hireDate = document.getElementById('hireDate').value;
-                const status = document.getElementById('status').value;
-                const jobPosition = document.getElementById('jobPosition').value;
-                const workExpertise = document.getElementById('workExpertise').value;
-                const technicalSkills = document.getElementById('technicalSkills').value;
-
-                // Push employee name to employeeNames array
-                employeeNames.push(name);
-                localStorage.setItem('employeeNames', JSON.stringify(employeeNames)); // Store employee names
-
-                // Store employee data
-                items.push({
-                    name,
-                    department,
-                    hireDate,
-                    status,
-                    jobPosition,
-                    workExpertise,
-                    technicalSkills,
-                });
-
-                localStorage.setItem('items', JSON.stringify(items));
-                document.getElementById('crudForm').reset();
-                renderItems();
-                updateEmployeeSelect(); // Call function to update select options
-            }
-
-            function updateEmployeeSelect() {
-                const employeeSelect = document.getElementById('employeeName'); // Adjusted to 'employeeName'
-                employeeSelect.innerHTML = '<option value="">-- Select Employee --</option>'; // Reset options
-
-                const employeeNames = JSON.parse(localStorage.getItem('employeeNames')) || [];
-                employeeNames.forEach((name, index) => {
-                    const option = document.createElement('option');
-                    option.value = name; // Use name as value
-                    option.textContent = name;
-                    employeeSelect.appendChild(option);
-                });
-            }
-
-            // Call the function on page load to initialize
-            window.onload = function() {
-                renderItems(); // Ensure items render on load
-                updateEmployeeSelect(); // Update the employee select options
-            };
-
-            function renderItems() {
-                const itemTableBody = document.getElementById('itemTableBody');
-                itemTableBody.innerHTML = '';
-
-                items.forEach((item, index) => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                <td class="py-2 px-4 border-b">${item.name}</td>
-                <td class="py-2 px-4 border-b">${item.department}</td>
-                <td class="py-2 px-4 border-b"><button class="bg-blue-500 text-white p-1 rounded">Request</button></td>
-                <td class="py-2 px-4 border-b">${item.hireDate}</td>
-                <td class="py-2 px-4 border-b">${item.status}</td>
-                <td class="py-2 px-4 border-b">${item.jobPosition}</td>
-                <td class="py-2 px-4 border-b">${item.workExpertise}</td>
-                <td class="py-2 px-4 border-b">${item.technicalSkills}</td>
-                <td class="py-2 px-4 border-b">
-                    <button onclick="editItem(${index})" class="bg-yellow-500 text-white p-1 rounded mr-2">Edit</button>
-                    <button onclick="deleteItem(${index})" class="bg-red-500 text-white p-1 rounded">Delete</button>
-                </td>
-            `;
-                    itemTableBody.appendChild(row);
-                });
-            }
-
-            function filterItems() {
-                const searchValue = document.getElementById('searchBar').value.toLowerCase();
-                const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchValue));
-
-                document.getElementById('itemTableBody').innerHTML = '';
-                filteredItems.forEach((item, index) => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                <td class="py-2 px-4 border-b">${item.name}</td>
-                <td class="py-2 px-4 border-b">${item.department}</td>
-                <td class="py-2 px-4 border-b"><button class="bg-blue-500 text-white p-1 rounded">Request</button></td>
-                <td class="py-2 px-4 border-b">${item.hireDate}</td>
-                <td class="py-2 px-4 border-b">${item.status}</td>
-                <td class="py-2 px-4 border-b">${item.jobPosition}</td>
-                <td class="py-2 px-4 border-b">${item.workExpertise}</td>
-                <td class="py-2 px-4 border-b">${item.technicalSkills}</td>
-                <td class="py-2 px-4 border-b">
-                    <button onclick="editItem(${index})" class="bg-yellow-500 text-white p-1 rounded mr-2">Edit</button>
-                    <button onclick="deleteItem(${index})" class="bg-red-500 text-white p-1 rounded">Delete</button>
-                </td>
-            `;
-                    document.getElementById('itemTableBody').appendChild(row);
-                });
-            }
-
-            function toggleStatus(status) {
-                const activeButton = document.getElementById('activeButton');
-                const inactiveButton = document.getElementById('inactiveButton');
-
-                if (status === 'active') {
-                    activeButton.classList.add('button-active');
-                    activeButton.classList.remove('button-inactive');
-                    inactiveButton.classList.add('button-inactive');
-                    inactiveButton.classList.remove('button-active');
-                } else {
-                    inactiveButton.classList.add('button-active');
-                    inactiveButton.classList.remove('button-inactive');
-                    activeButton.classList.add('button-inactive');
-                    activeButton.classList.remove('button-active');
+                        // Example of updating values dynamically - these values should come from backend
+                        document.getElementById('activeCourses').innerText = 5;
+                        document.getElementById('totalParticipants').innerText = 150;
+                        document.getElementById('trainingParticipants').innerText = 75;
+                        document.getElementById('absenteeRate').innerText = "10%";
+                    }
                 }
-            }
-
-            function editItem(index) {
-                const item = items[index];
-                document.getElementById('editName').value = item.name;
-                document.getElementById('editDepartment').value = item.department;
-                document.getElementById('editHireDate').value = item.hireDate;
-                document.getElementById('editStatus').value = item.status;
-                document.getElementById('editJobPosition').value = item.jobPosition;
-                document.getElementById('editWorkExpertise').value = item.workExpertise;
-                document.getElementById('editTechnicalSkills').value = item.technicalSkills;
-                document.getElementById('editIndex').value = index;
-
-                document.getElementById('editModal').classList.remove('hidden');
-            }
-
-            function updateItem(event) {
-                event.preventDefault();
-                const index = document.getElementById('editIndex').value;
-                items[index].name = document.getElementById('editName').value;
-                items[index].department = document.getElementById('editDepartment').value;
-                items[index].hireDate = document.getElementById('editHireDate').value;
-                items[index].status = document.getElementById('editStatus').value;
-                items[index].jobPosition = document.getElementById('editJobPosition').value;
-                items[index].workExpertise = document.getElementById('editWorkExpertise').value;
-                items[index].technicalSkills = document.getElementById('editTechnicalSkills').value;
-
-                localStorage.setItem('items', JSON.stringify(items));
-                closeEditModal();
-                renderItems();
-            }
-
-            function closeEditModal() {
-                document.getElementById('editModal').classList.add('hidden');
-            }
-
-            function deleteItem(index) {
-                items.splice(index, 1);
-                localStorage.setItem('items', JSON.stringify(items));
-                renderItems();
-            }
-
-            renderItems();
-            updateEmployeeSelect(); // Update the employee select options
-        </script>
-
-
+            </script>
+        </div>
+    </div>
 </body>
 
 </html>
