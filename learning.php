@@ -49,7 +49,7 @@
             <!-- Navigation Links -->
             <ul class="flex-grow mt-6 space-y-3 px-4">
                 <li>
-                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="dashboard.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
                         <span>Dashboard</span>
                         <img class="w-5 h-5 ml-3" src="icons/dashboard.png" alt="Dashboard Icon">
                     </a>
@@ -70,6 +70,12 @@
                     <a href="feedbacks.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
                         <span>Feedback</span>
                         <img class="w-5 h-5 ml-3" src="icons/feedback.png" alt="Feedback Icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                        <span>Logout</span>
+                        <img class="w-5 h-5 ml-3" src="icons/logout.png" alt="Logout Icon">
                     </a>
                 </li>
             </ul>
@@ -100,6 +106,8 @@
                     <h3 class="text-xl font-bold mb-4">Courses</h3>
                     <p class="text-gray-700 mb-6">Manage all courses available in the system.</p>
                     <a href="courses.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Courses</a>
+                
+                
                 </div>
             </div>
         </div>

@@ -42,7 +42,7 @@
             <!-- Navigation Links -->
             <ul class="flex-grow mt-6 space-y-3 px-4">
                 <li>
-                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="dashboard.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
                         <span>Dashboard</span>
                         <img class="w-5 h-5 ml-3" src="icons/dashboard.png" alt="Dashboard Icon">
                     </a>
@@ -63,6 +63,12 @@
                     <a href="feedbacks.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
                         <span>Feedback</span>
                         <img class="w-5 h-5 ml-3" src="icons/feedback.png" alt="Feedback Icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                        <span>Logout</span>
+                        <img class="w-5 h-5 ml-3" src="icons/logout.png" alt="Logout Icon">
                     </a>
                 </li>
             </ul>
@@ -95,8 +101,16 @@
                     <label for="course" class="block text-gray-700 font-medium mb-2">Select a Course:</label>
                     <select id="course" class="block w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-blue-300">
                         <option value="">-- Select Course --</option>
-                        <option value="Course 1">Course 1</option>
-                        <option value="Course 2">Course 2</option>
+                        <option value="Course 1">Defensive Driving Techniques</option>
+                        <option value="Course 2">Customer Service Fundamentals</option>
+                        <option value="Course 3">Bus Repair and Maintenance Basics</option>
+                        <option value="Course 4">Effective Communication Skills</option>
+                        <option value="Course 5">Emergency Response Procedures</option>
+                        <option value="Course 6">Conflict Resolution in the Workplace</option>
+                        <option value="Course 7">Digital Marketing Essentials</option>
+                        <option value="Course 8">Financial Reporting and Analysis</option>
+                        <option value="Course 9">Introduction to Cybersecurity</option>
+                        <option value="Course 10">Supply Chain Management Basics</option>
                     </select>
                 </div>
 
@@ -105,8 +119,14 @@
                     <label for="department" class="block text-gray-700 font-medium mb-2">Department:</label>
                     <select id="department" class="block w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-blue-300">
                         <option value="">-- Select Department --</option>
-                        <option value="Department 1">Department 1</option>
-                        <option value="Department 2">Department 2</option>
+                        <option value="Transportation Department">Transportation Department</option>
+                        <option value="Customer Service Department">Customer Service Department</option>
+                        <option value="Security Department">Security Department</option>
+                        <option value="Human Resources Department">Human Resources Department</option>
+                        <option value="Marketing Department">Marketing Department</option>
+                        <option value="Finance Department">Finance Department</option>
+                        <option value="IT Department">IT Department</option>
+                        <option value="Logistics Department">Logistics Department</option>
                     </select>
                 </div>
 
@@ -153,6 +173,7 @@
                 }
             });
         </script>
+    </div>
 
 </body>
 

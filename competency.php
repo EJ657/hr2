@@ -47,7 +47,7 @@
             <!-- Navigation Links -->
             <ul class="flex-grow mt-6 space-y-3 px-4">
                 <li>
-                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="dashboard.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
                         <span>Dashboard</span>
                         <img class="w-5 h-5 ml-3" src="icons/dashboard.png" alt="Dashboard Icon">
                     </a>
@@ -68,6 +68,12 @@
                     <a href="feedbacks.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
                         <span>Feedback</span>
                         <img class="w-5 h-5 ml-3" src="icons/feedback.png" alt="Feedback Icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                        <span>Logout</span>
+                        <img class="w-5 h-5 ml-3" src="icons/logout.png" alt="Logout Icon">
                     </a>
                 </li>
             </ul>
@@ -177,9 +183,20 @@
 
             <!-- Table to Display Items -->
             <div class="overflow-x-auto bg-white p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-bold mb-4 text-gray-700">Employee List</h3>
-                <table class="min-w-full bg-white border border-gray-200">
-                    <thead>
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">Employee List</h3>
+                <table class="min-w-full bg-white border border-gray-300">
+                    <colgroup>
+                        <col span="1" style="width: 10%;"> <!-- Name -->
+                        <col span="1" style="width: 12%;"> <!-- Department -->
+                        <col span="1" style="width: 12%;"> <!-- Request -->
+                        <col span="1" style="width: 18%;"> <!-- Hire Date  -->
+                        <col span="1" style="width: 10%;"> <!-- Status -->
+                        <col span="1" style="width: 12%;"> <!-- Job Position -->
+                        <col span="1" style="width: 12%;"> <!-- Work Expertise -->
+                        <col span="1" style="width: 12%;"> <!-- Technical Skills -->
+                        <col span="1" style="width: 10%;"> <!-- Actions -->
+                    </colgroup>
+                    <thead class="bg-gray-200 font-medium text-gray-700">
                         <tr>
                             <th class="py-3 px-4 border-b text-left">Name</th>
                             <th class="py-3 px-4 border-b text-left">Department</th>
@@ -193,137 +210,167 @@
                         </tr>
                     </thead>
                     <tbody id="itemTableBody">
-                        <!-- Items will be dynamically inserted here -->
                     </tbody>
                 </table>
             </div>
-        </div>
 
-        <!-- Edit Item Modal -->
-        <div id="editModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-            <div class="bg-white p-8 rounded-lg shadow-lg max-w-3xl w-full">
-                <h2 class="text-xl font-bold mb-4">Edit Employee</h2>
-                <form id="editForm" onsubmit="updateItem(event)">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="editName" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                            <input type="text" id="editName" placeholder="Name" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
+            <style>
+                .action-button {
+                    padding: 6px 12px;
+                    border-radius: 4px;
+                    font-size: 0.875rem;
+                    transition: background-color 0.3s, transform 0.2s;
+                }
+
+                .action-button:hover {
+                    transform: translateY(-2px);
+                }
+
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                th,
+                td {
+                    text-align: left;
+                }
+
+                colgroup col:nth-child(4) {
+                    width: 18%;
+                }
+
+                td {
+                    vertical-align: middle;
+                }
+            </style>
+
+
+            <!-- Edit Item Modal -->
+            <div id="editModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+                <div class="bg-white p-8 rounded-lg shadow-lg max-w-3xl w-full">
+                    <h2 class="text-xl font-bold mb-4">Edit Employee</h2>
+                    <form id="editForm" onsubmit="updateItem(event)">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="editName" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                                <input type="text" id="editName" placeholder="Name" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
+                            </div>
+                            <div>
+                                <label for="editHireDate" class="block text-sm font-medium text-gray-700 mb-1">Hire Date</label>
+                                <input type="date" id="editHireDate" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
+                            </div>
+                            <div>
+                                <label for="editStatus" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                                <select id="editStatus" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="editJobPosition" class="block text-sm font-medium text-gray-700 mb-1">Job Position</label>
+                                <select id="editJobPosition" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
+                                    <option value="">Select Job Position</option>
+                                    <option value="Bus Driver">Bus Driver</option>
+                                    <option value="Bus Conductor">Bus Conductor</option>
+                                    <option value="Bus Maintenance Mechanic">Bus Maintenance Mechanic</option>
+                                    <option value="Customer Service">Customer Service</option>
+                                    <option value="Security Guard">Security Guard</option>
+                                    <option value="Human Resource Manager">Human Resource Manager</option>
+                                    <option value="Marketing Coordinator">Marketing Coordinator</option>
+                                    <option value="Finance Manager">Finance Manager</option>
+                                    <option value="IT Specialist">IT Specialist</option>
+                                    <option value="Logistics Coordinator">Logistics Coordinator</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="editDepartment" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
+                                <select id="editDepartment" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
+                                    <option value="">Select Department</option>
+                                    <option value="Transportation Department">Transportation Department</option>
+                                    <option value="Customer Service Department">Customer Service Department</option>
+                                    <option value="Security Department">Security Department</option>
+                                    <option value="Human Resources Department">Human Resources Department</option>
+                                    <option value="Marketing Department">Marketing Department</option>
+                                    <option value="Finance Department">Finance Department</option>
+                                    <option value="IT Department">IT Department</option>
+                                    <option value="Logistics Department">Logistics Department</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="editWorkExpertise" class="block text-sm font-medium text-gray-700 mb-1">Work Expertise</label>
+                                <input type="text" id="editWorkExpertise" placeholder="Work Expertise" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
+                            </div>
+                            <div>
+                                <label for="editTechnicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills</label>
+                                <input type="text" id="editTechnicalSkills" placeholder="Technical Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
+                                <input type="hidden" id="editIndex">
+                            </div>
+                            <button type="submit" class="col-span-2 bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-300 focus:ring focus:ring-blue-200">Update</button>
+                            <button type="button" onclick="closeEditModal()" class="col-span-2 bg-gray-500 text-white p-3 rounded-lg hover:bg-gray-600 transition duration-300 mt-2 focus:ring focus:ring-gray-200">Cancel</button>
                         </div>
-                        <div>
-                            <label for="editHireDate" class="block text-sm font-medium text-gray-700 mb-1">Hire Date</label>
-                            <input type="date" id="editHireDate" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
-                        </div>
-                        <div>
-                            <label for="editStatus" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                            <select id="editStatus" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="editJobPosition" class="block text-sm font-medium text-gray-700 mb-1">Job Position</label>
-                            <select id="editJobPosition" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
-                                <option value="">Select Job Position</option>
-                                <option value="Bus Driver">Bus Driver</option>
-                                <option value="Bus Conductor">Bus Conductor</option>
-                                <option value="Bus Maintenance Mechanic">Bus Maintenance Mechanic</option>
-                                <option value="Customer Service">Customer Service</option>
-                                <option value="Security Guard">Security Guard</option>
-                                <option value="Human Resource Manager">Human Resource Manager</option>
-                                <option value="Marketing Coordinator">Marketing Coordinator</option>
-                                <option value="Finance Manager">Finance Manager</option>
-                                <option value="IT Specialist">IT Specialist</option>
-                                <option value="Logistics Coordinator">Logistics Coordinator</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="editDepartment" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
-                            <select id="editDepartment" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
-                                <option value="">Select Department</option>
-                                <option value="Transportation Department">Transportation Department</option>
-                                <option value="Customer Service Department">Customer Service Department</option>
-                                <option value="Security Department">Security Department</option>
-                                <option value="Human Resources Department">Human Resources Department</option>
-                                <option value="Marketing Department">Marketing Department</option>
-                                <option value="Finance Department">Finance Department</option>
-                                <option value="IT Department">IT Department</option>
-                                <option value="Logistics Department">Logistics Department</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="editWorkExpertise" class="block text-sm font-medium text-gray-700 mb-1">Work Expertise</label>
-                            <input type="text" id="editWorkExpertise" placeholder="Work Expertise" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
-                        </div>
-                        <div>
-                            <label for="editTechnicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills</label>
-                            <input type="text" id="editTechnicalSkills" placeholder="Technical Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
-                            <input type="hidden" id="editIndex">
-                        </div>
-                        <button type="submit" class="col-span-2 bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-300 focus:ring focus:ring-blue-200">Update</button>
-                        <button type="button" onclick="closeEditModal()" class="col-span-2 bg-gray-500 text-white p-3 rounded-lg hover:bg-gray-600 transition duration-300 mt-2 focus:ring focus:ring-gray-200">Cancel</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-        </div>
 
-        <script>
-            let items = JSON.parse(localStorage.getItem('items')) || [];
-            let employeeNames = JSON.parse(localStorage.getItem('employeeNames')) || [];
+            <script>
+                let items = JSON.parse(localStorage.getItem('items')) || [];
+                let employeeNames = JSON.parse(localStorage.getItem('employeeNames')) || [];
 
-            function addItem(event) {
-                event.preventDefault();
-                const name = document.getElementById('name').value;
-                const department = document.getElementById('department').value;
-                const hireDate = document.getElementById('hireDate').value;
-                const status = document.getElementById('status').value;
-                const jobPosition = document.getElementById('jobPosition').value;
-                const workExpertise = document.getElementById('workExpertise').value;
-                const technicalSkills = document.getElementById('technicalSkills').value;
+                function addItem(event) {
+                    event.preventDefault();
+                    const name = document.getElementById('name').value;
+                    const department = document.getElementById('department').value;
+                    const hireDate = document.getElementById('hireDate').value;
+                    const status = document.getElementById('status').value;
+                    const jobPosition = document.getElementById('jobPosition').value;
+                    const workExpertise = document.getElementById('workExpertise').value;
+                    const technicalSkills = document.getElementById('technicalSkills').value;
 
-                employeeNames.push(name);
-                localStorage.setItem('employeeNames', JSON.stringify(employeeNames));
+                    employeeNames.push(name);
+                    localStorage.setItem('employeeNames', JSON.stringify(employeeNames));
 
-                items.push({
-                    name,
-                    department,
-                    hireDate,
-                    status,
-                    jobPosition,
-                    workExpertise,
-                    technicalSkills,
-                });
+                    items.push({
+                        name,
+                        department,
+                        hireDate,
+                        status,
+                        jobPosition,
+                        workExpertise,
+                        technicalSkills,
+                    });
 
-                localStorage.setItem('items', JSON.stringify(items));
-                document.getElementById('crudForm').reset();
-                renderItems();
-                updateEmployeeSelect();
-            }
+                    localStorage.setItem('items', JSON.stringify(items));
+                    document.getElementById('crudForm').reset();
+                    renderItems();
+                    updateEmployeeSelect();
+                }
 
-            function updateEmployeeSelect() {
-                const employeeSelect = document.getElementById('employeeName');
-                employeeSelect.innerHTML = '<option value="">-- Select Employee --</option>';
+                function updateEmployeeSelect() {
+                    const employeeSelect = document.getElementById('employeeName');
+                    employeeSelect.innerHTML = '<option value="">-- Select Employee --</option>';
 
-                const employeeNames = JSON.parse(localStorage.getItem('employeeNames')) || [];
-                employeeNames.forEach((name, index) => {
-                    const option = document.createElement('option');
-                    option.value = name;
-                    option.textContent = name;
-                    employeeSelect.appendChild(option);
-                });
-            }
+                    const employeeNames = JSON.parse(localStorage.getItem('employeeNames')) || [];
+                    employeeNames.forEach((name, index) => {
+                        const option = document.createElement('option');
+                        option.value = name;
+                        option.textContent = name;
+                        employeeSelect.appendChild(option);
+                    });
+                }
 
-            window.onload = function() {
-                renderItems();
-                updateEmployeeSelect();
-            };
+                window.onload = function() {
+                    renderItems();
+                    updateEmployeeSelect();
+                };
 
-            function renderItems(filteredItems = items) {
-                const itemTableBody = document.getElementById('itemTableBody');
-                itemTableBody.innerHTML = '';
+                function renderItems(filteredItems = items) {
+                    const itemTableBody = document.getElementById('itemTableBody');
+                    itemTableBody.innerHTML = '';
 
-                filteredItems.forEach((item, index) => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
+                    filteredItems.forEach((item, index) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
                 <td class="py-2 px-4 border-b">${item.name}</td>
                 <td class="py-2 px-4 border-b">${item.department}</td>
                 <td class="py-2 px-4 border-b"><button class="bg-blue-500 text-white p-1 rounded">Request</button></td>
@@ -337,84 +384,84 @@
                     <button onclick="deleteItem(${index})" class="bg-red-500 text-white p-1 rounded">Delete</button>
                 </td>
             `;
-                    itemTableBody.appendChild(row);
-                });
-            }
-
-            function filterItems() {
-                const searchValue = document.getElementById('searchBar').value.toLowerCase();
-                const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchValue));
-                renderItems(filteredItems);
-            }
-
-            function toggleStatus(status) {
-                const activeButton = document.getElementById('activeButton');
-                const inactiveButton = document.getElementById('inactiveButton');
-                const showAllButton = document.getElementById('showAllButton');
-
-                // Remove active class from all buttons first
-                activeButton.classList.remove('button-active');
-                inactiveButton.classList.remove('button-active');
-                showAllButton.classList.remove('button-active');
-
-                // Add active class based on the clicked button
-                if (status === 'active') {
-                    activeButton.classList.add('button-active');
-                    const activeItems = items.filter(item => item.status.toLowerCase() === 'active');
-                    renderItems(activeItems);
-                } else if (status === 'inactive') {
-                    inactiveButton.classList.add('button-active');
-                    const inactiveItems = items.filter(item => item.status.toLowerCase() === 'inactive');
-                    renderItems(inactiveItems);
-                } else {
-                    showAllButton.classList.add('button-active');
-                    renderItems(items); // Show all items
+                        itemTableBody.appendChild(row);
+                    });
                 }
-            }
 
-            function editItem(index) {
-                const item = items[index];
-                document.getElementById('editName').value = item.name;
-                document.getElementById('editDepartment').value = item.department;
-                document.getElementById('editHireDate').value = item.hireDate;
-                document.getElementById('editStatus').value = item.status;
-                document.getElementById('editJobPosition').value = item.jobPosition;
-                document.getElementById('editWorkExpertise').value = item.workExpertise;
-                document.getElementById('editTechnicalSkills').value = item.technicalSkills;
-                document.getElementById('editIndex').value = index;
+                function filterItems() {
+                    const searchValue = document.getElementById('searchBar').value.toLowerCase();
+                    const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchValue));
+                    renderItems(filteredItems);
+                }
 
-                document.getElementById('editModal').classList.remove('hidden');
-            }
+                function toggleStatus(status) {
+                    const activeButton = document.getElementById('activeButton');
+                    const inactiveButton = document.getElementById('inactiveButton');
+                    const showAllButton = document.getElementById('showAllButton');
 
-            function updateItem(event) {
-                event.preventDefault();
-                const index = document.getElementById('editIndex').value;
-                items[index].name = document.getElementById('editName').value;
-                items[index].department = document.getElementById('editDepartment').value;
-                items[index].hireDate = document.getElementById('editHireDate').value;
-                items[index].status = document.getElementById('editStatus').value;
-                items[index].jobPosition = document.getElementById('editJobPosition').value;
-                items[index].workExpertise = document.getElementById('editWorkExpertise').value;
-                items[index].technicalSkills = document.getElementById('editTechnicalSkills').value;
+                    // Remove active class from all buttons first
+                    activeButton.classList.remove('button-active');
+                    inactiveButton.classList.remove('button-active');
+                    showAllButton.classList.remove('button-active');
 
-                localStorage.setItem('items', JSON.stringify(items));
-                closeEditModal();
+                    // Add active class based on the clicked button
+                    if (status === 'active') {
+                        activeButton.classList.add('button-active');
+                        const activeItems = items.filter(item => item.status.toLowerCase() === 'active');
+                        renderItems(activeItems);
+                    } else if (status === 'inactive') {
+                        inactiveButton.classList.add('button-active');
+                        const inactiveItems = items.filter(item => item.status.toLowerCase() === 'inactive');
+                        renderItems(inactiveItems);
+                    } else {
+                        showAllButton.classList.add('button-active');
+                        renderItems(items); // Show all items
+                    }
+                }
+
+                function editItem(index) {
+                    const item = items[index];
+                    document.getElementById('editName').value = item.name;
+                    document.getElementById('editDepartment').value = item.department;
+                    document.getElementById('editHireDate').value = item.hireDate;
+                    document.getElementById('editStatus').value = item.status;
+                    document.getElementById('editJobPosition').value = item.jobPosition;
+                    document.getElementById('editWorkExpertise').value = item.workExpertise;
+                    document.getElementById('editTechnicalSkills').value = item.technicalSkills;
+                    document.getElementById('editIndex').value = index;
+
+                    document.getElementById('editModal').classList.remove('hidden');
+                }
+
+                function updateItem(event) {
+                    event.preventDefault();
+                    const index = document.getElementById('editIndex').value;
+                    items[index].name = document.getElementById('editName').value;
+                    items[index].department = document.getElementById('editDepartment').value;
+                    items[index].hireDate = document.getElementById('editHireDate').value;
+                    items[index].status = document.getElementById('editStatus').value;
+                    items[index].jobPosition = document.getElementById('editJobPosition').value;
+                    items[index].workExpertise = document.getElementById('editWorkExpertise').value;
+                    items[index].technicalSkills = document.getElementById('editTechnicalSkills').value;
+
+                    localStorage.setItem('items', JSON.stringify(items));
+                    closeEditModal();
+                    renderItems();
+                }
+
+                function closeEditModal() {
+                    document.getElementById('editModal').classList.add('hidden');
+                }
+
+                function deleteItem(index) {
+                    items.splice(index, 1);
+                    localStorage.setItem('items', JSON.stringify(items));
+                    renderItems();
+                }
+
                 renderItems();
-            }
-
-            function closeEditModal() {
-                document.getElementById('editModal').classList.add('hidden');
-            }
-
-            function deleteItem(index) {
-                items.splice(index, 1);
-                localStorage.setItem('items', JSON.stringify(items));
-                renderItems();
-            }
-
-            renderItems();
-            updateEmployeeSelect();
-        </script>
+                updateEmployeeSelect();
+            </script>
 
 </body>
 
