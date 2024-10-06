@@ -1,10 +1,25 @@
+<?php
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "employee_management"; // Your database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Human Resources 2</title>
@@ -108,7 +123,29 @@
             </div>
 
             <!-- Form to Add Item -->
-            <form id="crudForm" onsubmit="addItem(event)" class="mb-8 p-6 bg-white rounded-lg shadow-lg">
+            <form action="add_item.php" method="POST" id="crudForm" class="mb-8 p-6 bg-white rounded-lg shadow-lg">
+                <?php
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    // Capture form data
+                    $name = $_POST['name'];
+                    $hireDate = $_POST['hireDate'];
+                    $status = $_POST['status'];
+                    $jobPosition = $_POST['jobPosition'];
+                    $department = $_POST['department'];
+                    $workExpertise = $_POST['workExpertise'];
+                    $technicalSkills = $_POST['technicalSkills'];
+
+                    // SQL query to insert data into the employees table
+                    $sql = "INSERT INTO employees (name, hire_date, status, job_position, department, work_expertise, technical_skills) 
+                            VALUES ('$name', '$hireDate', '$status', '$jobPosition', '$department', '$workExpertise', '$technicalSkills')";
+
+                    if ($conn->query($sql) === TRUE) {
+                        echo "New record created successfully";
+                    } else {
+                        echo "Error: " . $sql . "<br>" . $conn->error;
+                    }
+                }
+                ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
@@ -124,7 +161,7 @@
 
                     <div>
                         <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                        <select id="status" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
+                        <select id="status" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required>
                             <option value="active">Active</option>
                             <option value="inactive">Inactive</option>
                         </select>
@@ -132,7 +169,7 @@
 
                     <div>
                         <label for="jobPosition" class="block text-sm font-medium text-gray-700 mb-1">Job Position</label>
-                        <select id="jobPosition" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
+                        <select id="jobPosition" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required>
                             <option value="">Select Job Position</option>
                             <option value="Bus Driver">Bus Driver</option>
                             <option value="Bus Conductor">Bus Conductor</option>
@@ -149,7 +186,7 @@
 
                     <div>
                         <label for="department" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
-                        <select id="department" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
+                        <select id="department" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required >
                             <option value="">Select Department</option>
                             <option value="Transportation Department">Transportation Department</option>
                             <option value="Customer Service Department">Customer Service Department</option>
@@ -210,6 +247,31 @@
                         </tr>
                     </thead>
                     <tbody id="itemTableBody">
+                        <!-- Dynamic content will be injected here -->
+                    </tbody>
+                    <tbody>
+                        <?php
+                        $sql = "SELECT * FROM employees";
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . $row["name"] . "</td>";
+                                echo "<td>" . $row["department"] . "</td>";
+                                echo "<td>" . $row["request"] . "</td>";
+                                echo "<td>" . $row["hire_date"] . "</td>";
+                                echo "<td>" . $row["status"] . "</td>";
+                                echo "<td>" . $row["job_position"] . "</td>";
+                                echo "<td>" . $row["work_expertise"] . "</td>";
+                                echo "<td>" . $row["technical_skills"] . "</td>";
+                                echo "<td><a href='edit.php?id=" . $row["id"] . "'>Edit</a> | <a href='delete.php?id=" . $row["id"] . "'>Delete</a></td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='9'>No records found</td></tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -314,155 +376,143 @@
             </div>
 
             <script>
-                let items = JSON.parse(localStorage.getItem('items')) || [];
-                let employeeNames = JSON.parse(localStorage.getItem('employeeNames')) || [];
+                // Items will now come from the database via an AJAX call to PHP
+                let items = [];
 
-                function addItem(event) {
-                    event.preventDefault();
-                    const name = document.getElementById('name').value;
-                    const department = document.getElementById('department').value;
-                    const hireDate = document.getElementById('hireDate').value;
-                    const status = document.getElementById('status').value;
-                    const jobPosition = document.getElementById('jobPosition').value;
-                    const workExpertise = document.getElementById('workExpertise').value;
-                    const technicalSkills = document.getElementById('technicalSkills').value;
-
-                    employeeNames.push(name);
-                    localStorage.setItem('employeeNames', JSON.stringify(employeeNames));
-
-                    items.push({
-                        name,
-                        department,
-                        hireDate,
-                        status,
-                        jobPosition,
-                        workExpertise,
-                        technicalSkills,
-                    });
-
-                    localStorage.setItem('items', JSON.stringify(items));
-                    document.getElementById('crudForm').reset();
-                    renderItems();
-                    updateEmployeeSelect();
-                }
-
-                function updateEmployeeSelect() {
-                    const employeeSelect = document.getElementById('employeeName');
-                    employeeSelect.innerHTML = '<option value="">-- Select Employee --</option>';
-
-                    const employeeNames = JSON.parse(localStorage.getItem('employeeNames')) || [];
-                    employeeNames.forEach((name, index) => {
-                        const option = document.createElement('option');
-                        option.value = name;
-                        option.textContent = name;
-                        employeeSelect.appendChild(option);
-                    });
-                }
-
+                // Load items from the database when the page loads
                 window.onload = function() {
-                    renderItems();
-                    updateEmployeeSelect();
+                    fetchItemsFromDatabase();
                 };
 
-                function renderItems(filteredItems = items) {
+                // Fetch items from the database using AJAX
+                function fetchItemsFromDatabase() {
+                    fetch('fetch_items.php')
+                        .then(response => response.json())
+                        .then(data => {
+                            items = data; // Items fetched from the database
+                            renderItems();
+                        })
+                        .catch(error => console.error('Error fetching items:', error));
+                }
+
+                // Add item to the database via PHP using POST request
+                function addItem(event) {
+                    event.preventDefault();
+                    const formData = new FormData(document.getElementById('crudForm'));
+
+                    fetch('add_item.php', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.message) {
+                                console.log(data.message);
+                                fetchItems(); // Refresh list after adding
+                            } else {
+                                console.error(data.error);
+                            }
+                        });
+                }
+
+                // Render items fetched from the database
+                function renderItems() {
                     const itemTableBody = document.getElementById('itemTableBody');
                     itemTableBody.innerHTML = '';
 
-                    filteredItems.forEach((item, index) => {
+                    items.forEach((item, index) => {
                         const row = document.createElement('tr');
                         row.innerHTML = `
                 <td class="py-2 px-4 border-b">${item.name}</td>
                 <td class="py-2 px-4 border-b">${item.department}</td>
                 <td class="py-2 px-4 border-b"><button class="bg-blue-500 text-white p-1 rounded">Request</button></td>
-                <td class="py-2 px-4 border-b">${item.hireDate}</td>
+                <td class="py-2 px-4 border-b">${item.hire_date}</td>
                 <td class="py-2 px-4 border-b">${item.status}</td>
-                <td class="py-2 px-4 border-b">${item.jobPosition}</td>
-                <td class="py-2 px-4 border-b">${item.workExpertise}</td>
-                <td class="py-2 px-4 border-b">${item.technicalSkills}</td>
+                <td class="py-2 px-4 border-b">${item.job_position}</td>
+                <td class="py-2 px-4 border-b">${item.work_expertise}</td>
+                <td class="py-2 px-4 border-b">${item.technical_skills}</td>
                 <td class="py-2 px-4 border-b">
-                    <button onclick="editItem(${index})" class="bg-yellow-500 text-white p-1 rounded mr-2">Edit</button>
-                    <button onclick="deleteItem(${index})" class="bg-red-500 text-white p-1 rounded">Delete</button>
+                    <button onclick="editItem(${item.id})" class="bg-yellow-500 text-white p-1 rounded mr-2">Edit</button>
+                    <button onclick="deleteItem(${item.id})" class="bg-red-500 text-white p-1 rounded">Delete</button>
                 </td>
             `;
                         itemTableBody.appendChild(row);
                     });
                 }
 
-                function filterItems() {
-                    const searchValue = document.getElementById('searchBar').value.toLowerCase();
-                    const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchValue));
-                    renderItems(filteredItems);
-                }
+                // Edit item in the database
+                function editItem(itemId) {
+                    // Get the current item data from `items` array
+                    const item = items.find(item => item.id === itemId);
 
-                function toggleStatus(status) {
-                    const activeButton = document.getElementById('activeButton');
-                    const inactiveButton = document.getElementById('inactiveButton');
-                    const showAllButton = document.getElementById('showAllButton');
-
-                    // Remove active class from all buttons first
-                    activeButton.classList.remove('button-active');
-                    inactiveButton.classList.remove('button-active');
-                    showAllButton.classList.remove('button-active');
-
-                    // Add active class based on the clicked button
-                    if (status === 'active') {
-                        activeButton.classList.add('button-active');
-                        const activeItems = items.filter(item => item.status.toLowerCase() === 'active');
-                        renderItems(activeItems);
-                    } else if (status === 'inactive') {
-                        inactiveButton.classList.add('button-active');
-                        const inactiveItems = items.filter(item => item.status.toLowerCase() === 'inactive');
-                        renderItems(inactiveItems);
-                    } else {
-                        showAllButton.classList.add('button-active');
-                        renderItems(items); // Show all items
-                    }
-                }
-
-                function editItem(index) {
-                    const item = items[index];
                     document.getElementById('editName').value = item.name;
                     document.getElementById('editDepartment').value = item.department;
-                    document.getElementById('editHireDate').value = item.hireDate;
+                    document.getElementById('editHireDate').value = item.hire_date;
                     document.getElementById('editStatus').value = item.status;
-                    document.getElementById('editJobPosition').value = item.jobPosition;
-                    document.getElementById('editWorkExpertise').value = item.workExpertise;
-                    document.getElementById('editTechnicalSkills').value = item.technicalSkills;
-                    document.getElementById('editIndex').value = index;
+                    document.getElementById('editJobPosition').value = item.job_position;
+                    document.getElementById('editWorkExpertise').value = item.work_expertise;
+                    document.getElementById('editTechnicalSkills').value = item.technical_skills;
+                    document.getElementById('editItemId').value = item.id;
 
                     document.getElementById('editModal').classList.remove('hidden');
                 }
 
+                // Update item in the database
                 function updateItem(event) {
                     event.preventDefault();
-                    const index = document.getElementById('editIndex').value;
-                    items[index].name = document.getElementById('editName').value;
-                    items[index].department = document.getElementById('editDepartment').value;
-                    items[index].hireDate = document.getElementById('editHireDate').value;
-                    items[index].status = document.getElementById('editStatus').value;
-                    items[index].jobPosition = document.getElementById('editJobPosition').value;
-                    items[index].workExpertise = document.getElementById('editWorkExpertise').value;
-                    items[index].technicalSkills = document.getElementById('editTechnicalSkills').value;
+                    const itemId = document.getElementById('editItemId').value;
 
-                    localStorage.setItem('items', JSON.stringify(items));
-                    closeEditModal();
-                    renderItems();
+                    const formData = new FormData();
+                    formData.append('id', itemId);
+                    formData.append('name', document.getElementById('editName').value);
+                    formData.append('department', document.getElementById('editDepartment').value);
+                    formData.append('hireDate', document.getElementById('editHireDate').value);
+                    formData.append('status', document.getElementById('editStatus').value);
+                    formData.append('jobPosition', document.getElementById('editJobPosition').value);
+                    formData.append('workExpertise', document.getElementById('editWorkExpertise').value);
+                    formData.append('technicalSkills', document.getElementById('editTechnicalSkills').value);
+
+                    fetch('update_item.php', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                fetchItemsFromDatabase(); // Refresh the list after updating
+                                closeEditModal();
+                            } else {
+                                console.error('Error updating item:', data.message);
+                            }
+                        })
+                        .catch(error => console.error('Error updating item:', error));
                 }
 
+                // Delete item from the database
+                function deleteItem(itemId) {
+                    const formData = new FormData();
+                    formData.append('id', itemId);
+
+                    fetch('delete_item.php', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                fetchItemsFromDatabase(); // Refresh the list after deletion
+                            } else {
+                                console.error('Error deleting item:', data.message);
+                            }
+                        })
+                        .catch(error => console.error('Error deleting item:', error));
+                }
+
+                // Close the edit modal
                 function closeEditModal() {
                     document.getElementById('editModal').classList.add('hidden');
                 }
-
-                function deleteItem(index) {
-                    items.splice(index, 1);
-                    localStorage.setItem('items', JSON.stringify(items));
-                    renderItems();
-                }
-
-                renderItems();
-                updateEmployeeSelect();
             </script>
-
 </body>
 
 </html>
