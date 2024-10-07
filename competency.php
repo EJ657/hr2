@@ -1,17 +1,5 @@
 <?php
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "employee_management"; // Your database name
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include('connection.php');
 ?>
 
 <!DOCTYPE html>
@@ -124,44 +112,22 @@ if ($conn->connect_error) {
 
             <!-- Form to Add Item -->
             <form action="add_item.php" method="POST" id="crudForm" class="mb-8 p-6 bg-white rounded-lg shadow-lg">
-                <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    // Capture form data
-                    $name = $_POST['name'];
-                    $hireDate = $_POST['hireDate'];
-                    $status = $_POST['status'];
-                    $jobPosition = $_POST['jobPosition'];
-                    $department = $_POST['department'];
-                    $workExpertise = $_POST['workExpertise'];
-                    $technicalSkills = $_POST['technicalSkills'];
-
-                    // SQL query to insert data into the employees table
-                    $sql = "INSERT INTO employees (name, hire_date, status, job_position, department, work_expertise, technical_skills) 
-                            VALUES ('$name', '$hireDate', '$status', '$jobPosition', '$department', '$workExpertise', '$technicalSkills')";
-
-                    if ($conn->query($sql) === TRUE) {
-                        echo "New record created successfully";
-                    } else {
-                        echo "Error: " . $sql . "<br>" . $conn->error;
-                    }
-                }
-                ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                        <input type="text" id="name" placeholder="Name"
+                        <input type="text" id="name" placeholder="Name" name="name"
                             class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
                     </div>
 
                     <div>
                         <label for="hireDate" class="block text-sm font-medium text-gray-700 mb-1">Hire Date</label>
-                        <input type="date" id="hireDate"
+                        <input type="date" id="hireDate" name="hireDate"
                             class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
                     </div>
 
                     <div>
                         <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                        <select id="status" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required>
+                        <select id="status" name="status" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required>
                             <option value="active">Active</option>
                             <option value="inactive">Inactive</option>
                         </select>
@@ -169,7 +135,7 @@ if ($conn->connect_error) {
 
                     <div>
                         <label for="jobPosition" class="block text-sm font-medium text-gray-700 mb-1">Job Position</label>
-                        <select id="jobPosition" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required>
+                        <select id="jobPosition" name="jobPosition" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required>
                             <option value="">Select Job Position</option>
                             <option value="Bus Driver">Bus Driver</option>
                             <option value="Bus Conductor">Bus Conductor</option>
@@ -186,7 +152,7 @@ if ($conn->connect_error) {
 
                     <div>
                         <label for="department" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
-                        <select id="department" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required >
+                        <select id="department" name="department" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required>
                             <option value="">Select Department</option>
                             <option value="Transportation Department">Transportation Department</option>
                             <option value="Customer Service Department">Customer Service Department</option>
@@ -201,13 +167,13 @@ if ($conn->connect_error) {
 
                     <div>
                         <label for="workExpertise" class="block text-sm font-medium text-gray-700 mb-1">Work Expertise</label>
-                        <input type="text" id="workExpertise" placeholder="Work Expertise"
+                        <input type="text" id="workExpertise" name="workExpertise" placeholder="Work Expertise"
                             class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
                     </div>
 
                     <div>
                         <label for="technicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills</label>
-                        <input type="text" id="technicalSkills" placeholder="Technical Skills"
+                        <input type="text" id="technicalSkills" name="technicalSkills" placeholder="Technical Skills"
                             class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
                     </div>
 
@@ -249,30 +215,7 @@ if ($conn->connect_error) {
                     <tbody id="itemTableBody">
                         <!-- Dynamic content will be injected here -->
                     </tbody>
-                    <tbody>
-                        <?php
-                        $sql = "SELECT * FROM employees";
-                        $result = $conn->query($sql);
 
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td>" . $row["name"] . "</td>";
-                                echo "<td>" . $row["department"] . "</td>";
-                                echo "<td>" . $row["request"] . "</td>";
-                                echo "<td>" . $row["hire_date"] . "</td>";
-                                echo "<td>" . $row["status"] . "</td>";
-                                echo "<td>" . $row["job_position"] . "</td>";
-                                echo "<td>" . $row["work_expertise"] . "</td>";
-                                echo "<td>" . $row["technical_skills"] . "</td>";
-                                echo "<td><a href='edit.php?id=" . $row["id"] . "'>Edit</a> | <a href='delete.php?id=" . $row["id"] . "'>Delete</a></td>";
-                                echo "</tr>";
-                            }
-                        } else {
-                            echo "<tr><td colspan='9'>No records found</td></tr>";
-                        }
-                        ?>
-                    </tbody>
                 </table>
             </div>
 
@@ -316,22 +259,22 @@ if ($conn->connect_error) {
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="editName" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                                <input type="text" id="editName" placeholder="Name" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
+                                <input type="text" id="editName" name="editName" placeholder="Name" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
                             </div>
                             <div>
                                 <label for="editHireDate" class="block text-sm font-medium text-gray-700 mb-1">Hire Date</label>
-                                <input type="date" id="editHireDate" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
+                                <input type="date" id="editHireDate" name="editHireDate" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
                             </div>
                             <div>
                                 <label for="editStatus" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                                <select id="editStatus" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
+                                <select id="editStatus" name="editStatus" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
                                     <option value="active">Active</option>
                                     <option value="inactive">Inactive</option>
                                 </select>
                             </div>
                             <div>
                                 <label for="editJobPosition" class="block text-sm font-medium text-gray-700 mb-1">Job Position</label>
-                                <select id="editJobPosition" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
+                                <select id="editJobPosition" name="editJobPosition" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
                                     <option value="">Select Job Position</option>
                                     <option value="Bus Driver">Bus Driver</option>
                                     <option value="Bus Conductor">Bus Conductor</option>
@@ -347,7 +290,7 @@ if ($conn->connect_error) {
                             </div>
                             <div>
                                 <label for="editDepartment" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
-                                <select id="editDepartment" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
+                                <select id="editDepartment" name="editDepartment" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
                                     <option value="">Select Department</option>
                                     <option value="Transportation Department">Transportation Department</option>
                                     <option value="Customer Service Department">Customer Service Department</option>
@@ -361,12 +304,12 @@ if ($conn->connect_error) {
                             </div>
                             <div>
                                 <label for="editWorkExpertise" class="block text-sm font-medium text-gray-700 mb-1">Work Expertise</label>
-                                <input type="text" id="editWorkExpertise" placeholder="Work Expertise" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
+                                <input type="text" id="editWorkExpertise" name="editWorkExpertise" placeholder="Work Expertise" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
                             </div>
                             <div>
                                 <label for="editTechnicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills</label>
-                                <input type="text" id="editTechnicalSkills" placeholder="Technical Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
-                                <input type="hidden" id="editIndex">
+                                <input type="text" id="editTechnicalSkills" name="editTechnicalSkills" placeholder="Technical Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required />
+                                <input type="hidden" id="editIndex" name="editIndex">
                             </div>
                             <button type="submit" class="col-span-2 bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-300 focus:ring focus:ring-blue-200">Update</button>
                             <button type="button" onclick="closeEditModal()" class="col-span-2 bg-gray-500 text-white p-3 rounded-lg hover:bg-gray-600 transition duration-300 mt-2 focus:ring focus:ring-gray-200">Cancel</button>
@@ -431,7 +374,7 @@ if ($conn->connect_error) {
                 <td class="py-2 px-4 border-b">${item.job_position}</td>
                 <td class="py-2 px-4 border-b">${item.work_expertise}</td>
                 <td class="py-2 px-4 border-b">${item.technical_skills}</td>
-                <td class="py-2 px-4 border-b">
+                <td class="py-2 px-4 flex">
                     <button onclick="editItem(${item.id})" class="bg-yellow-500 text-white p-1 rounded mr-2">Edit</button>
                     <button onclick="deleteItem(${item.id})" class="bg-red-500 text-white p-1 rounded">Delete</button>
                 </td>
@@ -443,8 +386,7 @@ if ($conn->connect_error) {
                 // Edit item in the database
                 function editItem(itemId) {
                     // Get the current item data from `items` array
-                    const item = items.find(item => item.id === itemId);
-
+                    const item = items.find(item => item.id === itemId.toString());
                     document.getElementById('editName').value = item.name;
                     document.getElementById('editDepartment').value = item.department;
                     document.getElementById('editHireDate').value = item.hire_date;
@@ -452,7 +394,7 @@ if ($conn->connect_error) {
                     document.getElementById('editJobPosition').value = item.job_position;
                     document.getElementById('editWorkExpertise').value = item.work_expertise;
                     document.getElementById('editTechnicalSkills').value = item.technical_skills;
-                    document.getElementById('editItemId').value = item.id;
+                    document.getElementById('editIndex').value = item.id;
 
                     document.getElementById('editModal').classList.remove('hidden');
                 }
@@ -460,7 +402,7 @@ if ($conn->connect_error) {
                 // Update item in the database
                 function updateItem(event) {
                     event.preventDefault();
-                    const itemId = document.getElementById('editItemId').value;
+                    const itemId = document.getElementById('editIndex').value;
 
                     const formData = new FormData();
                     formData.append('id', itemId);

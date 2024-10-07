@@ -82,42 +82,42 @@
 
         <!-- Main Content -->
         <div class="flex-1 p-6 bg-[#fbfbfe] h-screen overflow-y-auto">
-            <h2 class="text-3xl font-bold mb-6 text-gray-800">Courses Dashboard</h2>
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Training Module Dashboard</h2>
 
-            <!-- Course List Section -->
+            <!-- Training Module List Section -->
             <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
                 <!-- Key Metrics -->
                 <div class="flex flex-wrap gap-4 mb-6">
                     <div class="flex-1 bg-blue-600 p-4 rounded-lg text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
-                        <h3 class="text-sm font-semibold">Active Courses</h3>
+                        <h3 class="text-sm font-semibold">Active Modules</h3>
                         <p class="text-3xl font-bold" id="activeCount">0</p>
                     </div>
                     <div class="flex-1 bg-yellow-500 p-4 rounded-lg text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
-                        <h3 class="text-sm font-semibold">Pending Courses</h3>
+                        <h3 class="text-sm font-semibold">Pending Modules</h3>
                         <p class="text-3xl font-bold" id="pendingCount">0</p>
                     </div>
                     <div class="flex-1 bg-green-600 p-4 rounded-lg text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
-                        <h3 class="text-sm font-semibold">Completed Courses</h3>
+                        <h3 class="text-sm font-semibold">Completed Modules</h3>
                         <p class="text-3xl font-bold" id="completedCount">0</p>
                     </div>
                     <div class="flex-1 bg-red-600 p-4 rounded-lg text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
-                        <h3 class="text-sm font-semibold">Total Courses</h3>
+                        <h3 class="text-sm font-semibold">Total Modules</h3>
                         <p class="text-3xl font-bold" id="totalCount">0</p>
                     </div>
                 </div>
 
                 <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-2xl font-bold text-gray-700">Course List</h3>
-                    <button id="addNewCourseBtn" class="bg-blue-600 text-white rounded-lg px-4 py-2 hover:bg-blue-700 transition duration-200 shadow-md transform hover:scale-105">
-                        Add New Course
+                    <h3 class="text-2xl font-bold text-gray-700">Module List</h3>
+                    <button id="addNewModuleBtn" class="bg-blue-600 text-white rounded-lg px-4 py-2 hover:bg-blue-700 transition duration-200 shadow-md transform hover:scale-105">
+                        Add New Module
                     </button>
                 </div>
 
-                <!-- Course List Table -->
-                <table class="min-w-full bg-white border border-gray-200" id="courseTable">
+                <!-- Module List Table -->
+                <table class="min-w-full bg-white border border-gray-200" id="moduleTable">
                     <thead class="bg-gray-100 text-gray-700">
                         <tr>
-                            <th class="py-3 px-4 border-b text-left">Course Name</th>
+                            <th class="py-3 px-4 border-b text-left">Module Name</th>
                             <th class="py-3 px-4 border-b text-left">Category</th>
                             <th class="py-3 px-4 border-b text-left">Status</th>
                             <th class="py-3 px-4 border-b text-left">Due Date</th>
@@ -125,21 +125,21 @@
                             <th class="py-3 px-4 border-b text-left">Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="courseTableBody">
+                    <tbody id="moduleTableBody">
                         <!-- Dynamic content will be injected here -->
                     </tbody>
                 </table>
             </div>
 
-            <!-- Add/Edit Course Modal -->
-            <div id="courseModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+            <!-- Add/Edit Module Modal -->
+            <div id="moduleModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
                 <div class="bg-white p-8 rounded-lg shadow-lg max-w-3xl w-full">
-                    <h2 id="modalTitle" class="text-2xl font-bold mb-6 text-center text-gray-800">Add/Edit Course</h2>
-                    <form id="courseForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <h2 id="modalTitle" class="text-2xl font-bold mb-6 text-center text-gray-800">Add/Edit Module</h2>
+                    <form id="moduleForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label for="courseName" class="block text-sm font-medium text-gray-700 mb-1">Course Name</label>
-                            <select id="courseName" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required>
-                                <option value="">-- Select Course --</option>
+                            <label for="moduleName" class="block text-sm font-medium text-gray-700 mb-1">Module Name</label>
+                            <select id="moduleName" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500" required>
+                                <option value="">-- Select Module --</option>
                                 <option value="Defensive Driving Techniques">Defensive Driving Techniques</option>
                                 <option value="Customer Service Fundamentals">Customer Service Fundamentals</option>
                                 <option value="Bus Repair and Maintenance Basics">Bus Repair and Maintenance Basics</option>
@@ -153,9 +153,9 @@
                             </select>
                         </div>
                         <div>
-                            <label for="courseCategory" class="block text-sm font-medium text-gray-700 mb-1">Course Category</label>
-                            <select id="courseCategory" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
-                                <option value="">--Select Course Category--</option>
+                            <label for="moduleCategory" class="block text-sm font-medium text-gray-700 mb-1">Module Category</label>
+                            <select id="moduleCategory" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-200 focus:border-blue-500">
+                                <option value="">--Select Module Category--</option>
                                 <option value="Bus Driver">Bus Driver</option>
                                 <option value="Bus Conductor">Bus Conductor</option>
                                 <option value="Bus Maintenance Mechanic">Bus Maintenance Mechanic</option>
@@ -169,23 +169,23 @@
                             </select>
                         </div>
                         <div>
-                            <label for="courseStatus" class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                            <select id="courseStatus" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-300 focus:border-blue-500" required>
+                            <label for="moduleStatus" class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                            <select id="moduleStatus" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-300 focus:border-blue-500" required>
                                 <option value="active">Active</option>
                                 <option value="pending">Pending</option>
                                 <option value="completed">Completed</option>
                             </select>
                         </div>
                         <div>
-                            <label for="courseDueDate" class="block text-sm font-medium text-gray-700 mb-2">Due Date</label>
-                            <input type="date" id="courseDueDate" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-300 focus:border-blue-500" required>
+                            <label for="moduleDueDate" class="block text-sm font-medium text-gray-700 mb-2">Due Date</label>
+                            <input type="date" id="moduleDueDate" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-300 focus:border-blue-500" required>
                         </div>
                         <div>
-                            <label for="courseProgress" class="block text-sm font-medium text-gray-700 mb-2">Progress (%)</label>
-                            <input type="number" id="courseProgress" placeholder="Enter Progress (%)" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-300 focus:border-blue-500" required min="0" max="100">
+                            <label for="moduleProgress" class="block text-sm font-medium text-gray-700 mb-2">Progress (%)</label>
+                            <input type="number" id="moduleProgress" placeholder="Enter Progress (%)" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-blue-300 focus:border-blue-500" required min="0" max="100">
                         </div>
                         <div class="md:col-span-2 flex justify-end space-x-4 mt-6">
-                            <button type="submit" class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring focus:ring-blue-300 transform hover:scale-105">Save Course</button>
+                            <button type="submit" class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring focus:ring-blue-300 transform hover:scale-105">Save Module</button>
                             <button type="button" onclick="hideModal()" class="bg-gray-600 text-white p-3 rounded-lg hover:bg-gray-700 transition duration-200 focus:outline-none focus:ring focus:ring-gray-300 transform hover:scale-105">Cancel</button>
                         </div>
                     </form>
@@ -193,134 +193,134 @@
             </div>
 
             <script>
-                let courses = JSON.parse(localStorage.getItem('courses')) || [];
+                let modules = JSON.parse(localStorage.getItem('modules')) || [];
                 let isEditing = false;
                 let editingIndex = null;
 
-                const courseTableBody = document.getElementById('courseTableBody');
-                const courseModal = document.getElementById('courseModal');
-                const courseForm = document.getElementById('courseForm');
+                const moduleTableBody = document.getElementById('moduleTableBody');
+                const moduleModal = document.getElementById('moduleModal');
+                const moduleForm = document.getElementById('moduleForm');
                 const modalTitle = document.getElementById('modalTitle');
                 const activeCount = document.getElementById('activeCount');
                 const pendingCount = document.getElementById('pendingCount');
                 const completedCount = document.getElementById('completedCount');
                 const totalCount = document.getElementById('totalCount');
 
-                // Show course modal for adding/editing
+                // Show module modal for adding/editing
                 function showModal(edit = false) {
-                    modalTitle.textContent = edit ? "Edit Course" : "Add New Course";
-                    if (!edit) courseForm.reset();
-                    courseModal.classList.remove('hidden');
+                    modalTitle.textContent = edit ? "Edit Module" : "Add New Module";
+                    if (!edit) moduleForm.reset();
+                    moduleModal.classList.remove('hidden');
                 }
 
-                // Hide course modal
+                // Hide module modal
                 function hideModal() {
-                    courseModal.classList.add('hidden');
+                    moduleModal.classList.add('hidden');
                 }
 
-                // Render course list
-                function renderCourses() {
-                    courseTableBody.innerHTML = '';
+                // Render module list
+                function renderModules() {
+                    moduleTableBody.innerHTML = '';
                     let active = 0,
                         pending = 0,
                         completed = 0;
 
-                    courses.forEach((course, index) => {
+                    modules.forEach((module, index) => {
                         const row = document.createElement('tr');
                         row.innerHTML =
-                            `<td class="py-3 px-4 border-b">${course.name}</td>
-                     <td class="py-3 px-4 border-b">${course.category}</td>
-                     <td class="py-3 px-4 border-b text-${course.status === 'active' ? 'green-600' : course.status === 'pending' ? 'yellow-600' : 'gray-600'}">
-                         ${course.status.charAt(0).toUpperCase() + course.status.slice(1)}
+                            `<td class="py-3 px-4 border-b">${module.name}</td>
+                     <td class="py-3 px-4 border-b">${module.category}</td>
+                     <td class="py-3 px-4 border-b text-${module.status === 'active' ? 'green-600' : module.status === 'pending' ? 'yellow-600' : 'gray-600'}">
+                         ${module.status.charAt(0).toUpperCase() + module.status.slice(1)}
                      </td>
-                     <td class="py-3 px-4 border-b">${course.dueDate}</td>
+                     <td class="py-3 px-4 border-b">${module.dueDate}</td>
                      <td class="py-3 px-4 border-b">
                          <div class="w-full bg-gray-200 rounded-full h-3">
-                             <div class="bg-blue-600 h-3 rounded-full" style="width: ${course.progress}%;"></div>
+                             <div class="bg-blue-600 h-3 rounded-full" style="width: ${module.progress}%;"></div>
                          </div>
-                         <span class="text-sm">${course.progress}%</span>
+                         <span class="text-sm">${module.progress}%</span>
                      </td>
                      <td class="py-3 px-4 border-b">
-                         <button class="text-blue-600 hover:underline" onclick="editCourse(${index})">Edit</button> |
-                         <button class="text-red-600 hover:underline" onclick="deleteCourse(${index})">Delete</button>
+                         <button class="text-blue-600 hover:underline" onclick="editModule(${index})">Edit</button> |
+                         <button class="text-red-600 hover:underline" onclick="deleteModule(${index})">Delete</button>
                      </td>`;
-                        courseTableBody.appendChild(row);
+                        moduleTableBody.appendChild(row);
 
-                        // Count course statuses
-                        if (course.status === 'active') active++;
-                        else if (course.status === 'pending') pending++;
-                        else if (course.status === 'completed') completed++;
+                        // Count module statuses
+                        if (module.status === 'active') active++;
+                        else if (module.status === 'pending') pending++;
+                        else if (module.status === 'completed') completed++;
                     });
 
                     // Update metrics
                     activeCount.textContent = active;
                     pendingCount.textContent = pending;
                     completedCount.textContent = completed;
-                    totalCount.textContent = courses.length;
+                    totalCount.textContent = modules.length;
                 }
 
-                // Save courses to local storage
-                function saveCourses() {
-                    localStorage.setItem('courses', JSON.stringify(courses));
+                // Save modules to local storage
+                function saveModules() {
+                    localStorage.setItem('modules', JSON.stringify(modules));
                 }
 
-                // Add or Edit course form submission
-                courseForm.addEventListener('submit', function(e) {
+                // Add or Edit module form submission
+                moduleForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    const newCourse = {
-                        name: courseName.value,
-                        category: courseCategory.value,
-                        status: courseStatus.value,
-                        dueDate: courseDueDate.value,
-                        progress: courseProgress.value
+                    const newModule = {
+                        name: moduleName.value,
+                        category: moduleCategory.value,
+                        status: moduleStatus.value,
+                        dueDate: moduleDueDate.value,
+                        progress: moduleProgress.value
                     };
 
                     if (isEditing) {
-                        courses[editingIndex] = newCourse;
+                        modules[editingIndex] = newModule; // Fixed this line
                         isEditing = false;
                         editingIndex = null;
                     } else {
-                        courses.push(newCourse);
+                        modules.push(newModule);
                     }
 
-                    saveCourses();
-                    renderCourses();
+                    saveModules();
+                    renderModules();
                     hideModal();
                 });
-
-                // Edit course
-                function editCourse(index) {
+                
+                // Edit module
+                function editModule(index) {
                     isEditing = true;
                     editingIndex = index;
-                    const course = courses[index];
-                    courseName.value = course.name;
-                    courseCategory.value = course.category;
-                    courseStatus.value = course.status;
-                    courseDueDate.value = course.dueDate;
-                    courseProgress.value = course.progress;
+                    const module = modules[index];
+                    moduleName.value = module.name;
+                    moduleCategory.value = module.category;
+                    moduleStatus.value = module.status;
+                    moduleDueDate.value = module.dueDate;
+                    moduleProgress.value = module.progress;
                     showModal(true);
                 }
 
-                // Delete course
-                function deleteCourse(index) {
-                    courses.splice(index, 1);
-                    saveCourses();
-                    renderCourses();
+                // Delete module
+                function deleteModule(index) {
+                    modules.splice(index, 1);
+                    saveModules();
+                    renderModules();
                 }
 
-                // Show modal when "Add New Course" button is clicked
-                document.getElementById('addNewCourseBtn').addEventListener('click', () => showModal(false));
+                // Show modal when "Add New Module" button is clicked
+                document.getElementById('addNewModuleBtn').addEventListener('click', () => showModal(false));
 
                 // Hide modal on clicking outside or pressing escape
                 window.addEventListener('click', (e) => {
-                    if (e.target === courseModal) hideModal();
+                    if (e.target === moduleModal) hideModal();
                 });
                 window.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape') hideModal();
                 });
 
                 // Initial render
-                renderCourses();
+                renderModules();
             </script>
         </div>
     </div>

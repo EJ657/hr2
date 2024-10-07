@@ -17,10 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 job_position='$jobPosition', work_expertise='$workExpertise', technical_skills='$technicalSkills'
             WHERE id='$id'";
 
-    if ($conn->query($sql) === TRUE) {
-        echo json_encode(["message" => "Employee updated successfully"]);
+    if (mysqli_query($conn, $sql)) {
+        echo json_encode(["success" => true, "message" => "Employee updated successfully"]);
     } else {
-        echo json_encode(["error" => "Error updating record: " . $conn->error]);
+        echo json_encode(["success" => false, "message" => "Error updating record: " . $conn->error]);
     }
 
     $conn->close();

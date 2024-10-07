@@ -89,7 +89,7 @@
                 <!-- Enrollment Card -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <h3 class="text-xl font-bold mb-4">Enrollment</h3>
-                    <p class="text-gray-700 mb-6">Track course enrollments.</p>
+                    <p class="text-gray-700 mb-6">Track module enrollments.</p>
                     <a href="enrollment.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Enrollment</a>
                 </div>
 
@@ -100,11 +100,11 @@
                     <a href="employees.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Employees</a>
                 </div>
 
-                <!-- Courses Card -->
+                <!-- Modules Card -->
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold mb-4">Courses</h3>
-                    <p class="text-gray-700 mb-6">Manage all courses available in the system.</p>
-                    <a href="courses.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Courses</a>
+                    <h3 class="text-xl font-bold mb-4">Training Module</h3>
+                    <p class="text-gray-700 mb-6">Manage all Training Modules available in the system.</p>
+                    <a href="trainingmodule.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Training Module</a>
                 
                 
                 </div>

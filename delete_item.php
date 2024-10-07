@@ -7,10 +7,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $sql = "DELETE FROM employees WHERE id='$id'";
 
-    if ($conn->query($sql) === TRUE) {
-        echo json_encode(["message" => "Employee deleted successfully"]);
+    if (mysqli_query($conn, $sql)) {
+        echo json_encode(["success" => true, "message" => "Employee deleted successfully"]);
     } else {
-        echo json_encode(["error" => "Error deleting record: " . $conn->error]);
+        echo json_encode(["success" => false, "message" => "Error deleting record: " . $conn->error]);
     }
 
     $conn->close();
