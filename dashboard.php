@@ -9,105 +9,64 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.19.0/dist/full.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style.css">
     <title>Human Resources 2</title>
-    <style>
-        .hidden {
-            display: none;
-        }
-
-        .custom-dropdown-content {
-            left: auto;
-            right: 0;
-        }
-
-        .card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .button-active {
-            background-color: #3b82f6;
-            color: white;
-        }
-
-        .button-inactive {
-            background-color: #9ca3af;
-            color: white;
-        }
-
-        .table-header {
-            background-color: #f7f7f7;
-        }
-    </style>
 </head>
-
-<style>
-    .custom-bg {
-        background-color: #fbfbfe;
-    }
-</style>
 
 <body class="custom-bg">
 
     <class class="flex">
         <!-- Sidebar -->
-        <div class="fixed top-0 left-0 w-64 border-r bg-blue-600 text-white h-screen flex flex-col">
+        <div class="fixed top-0 left-0 w-56 bg-[#fbfbfe] text-black border m-4 mr-0 rounded-lg overflow-hidden h-screen flex flex-col">
             <!-- Logo Section -->
-            <img class="w-32 mx-auto mt-4 object-contain" src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg" alt="Transistor" width="150" height="40">
 
             <!-- Header with Icon -->
             <div class="flex items-center justify-between px-5 mt-2">
-                <h1 class="text-xl font-bold tracking-wide">Employee Management</h1>
-                <img class="w-6 h-6" src="icons/employeemanagement.png" alt="Employee Management Icon">
+                <p class='m-4 mb-4 font-bold text-2xl text-center text-[#00446b]'>NextFleet Dynamics</p>
             </div>
 
             <!-- Navigation Links -->
-            <ul class="flex-grow mt-6 space-y-3 px-4">
+            <ul class="flex-grow mt-2 space-y-3 px-4">
                 <li>
-                    <a href="dashboard.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="dashboard.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/dashboard.png" alt="Dashboard Icon">
                         <span>Dashboard</span>
-                        <img class="w-5 h-5 ml-3" src="icons/dashboard.png" alt="Dashboard Icon">
                     </a>
                 </li>
                 <li>
-                    <a href="competency.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="competency.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/competency.png" alt="Competency Icon">
                         <span>Competency Management</span>
-                        <img class="w-5 h-5 ml-3" src="icons/competency.png" alt="Competency Icon">
                     </a>
                 </li>
                 <li>
-                    <a href="learning.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="learning.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/learningtraining.png" alt="Learning and Training Icon">
                         <span>Learning & Training Management</span>
-                        <img class="w-5 h-5 ml-3" src="icons/learningtraining.png" alt="Learning and Training Icon">
                     </a>
                 </li>
                 <li>
-                    <a href="feedbacks.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="feedbacks.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/feedback.png" alt="Feedback Icon">
                         <span>Feedback</span>
-                        <img class="w-5 h-5 ml-3" src="icons/feedback.png" alt="Feedback Icon">
                     </a>
                 </li>
                 <li>
-                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="index.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/logout.png" alt="Logout Icon">
                         <span>Logout</span>
-                        <img class="w-5 h-5 ml-3" src="icons/logout.png" alt="Logout Icon">
                     </a>
                 </li>
             </ul>
         </div>
 
         <!-- Main Content -->
-        <div class="flex-grow p-6 overflow-auto flex flex-col bg-gray-100 ml-64">
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+        <div class="flex-grow p-6 overflow-auto flex flex-col bg-[#fbfbfe] ml-64">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6 border-2 rounded-lg px-3 py-3">
                 <div class="col-span-4">
-                    <h2 class="text-4xl font-bold text-gray-800">Dashboard</h2>
+                    <h2 class="text-4xl font-semibold text-gray-800">Employee Management Dashboard</h2>
                 </div>
                 <div class="col-span-1 flex justify-end">
                     <div class="relative">
-                        <button id="datePickerButton" class="bg-blue-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-blue-700 transition duration-300 flex items-center">
+                        <button id="datePickerButton" class="bg-[#00446b] text-white py-2 px-4 rounded-md shadow-md hover:bg-[#00446b] transition duration-300 flex items-center">
                             <span class="mr-2">Pick a Date</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m4-4H8" />
@@ -120,19 +79,19 @@
 
             <!-- Key Metrics -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                <div class="bg-blue-600 p-4 rounded-lg text-white shadow-lg hover:shadow-xl transition-shadow hover:scale-105">
-                    <h3 class="text-sm font-semibold">Total Active Courses</h3>
+                <div class="bg-[#00446b] p-4 rounded-lg text-white shadow-lg hover:shadow-xl transition-shadow hover:scale-105">
+                    <h3 class="text-sm font-semibold">Total Active Modules</h3>
                     <p class="text-3xl font-bold">10</p>
                 </div>
-                <div class="bg-yellow-500 p-4 rounded-lg text-white shadow-lg hover:shadow-xl transition-shadow hover:scale-105">
+                <div class="bg-[#00446b] p-4 rounded-lg text-white shadow-lg hover:shadow-xl transition-shadow hover:scale-105">
                     <h3 class="text-sm font-semibold">Total Participants</h3>
                     <p class="text-3xl font-bold">30</p>
                 </div>
-                <div class="bg-green-600 p-4 rounded-lg text-white shadow-lg hover:shadow-xl transition-shadow hover:scale-105">
+                <div class="bg-[#00446b] p-4 rounded-lg text-white shadow-lg hover:shadow-xl transition-shadow hover:scale-105">
                     <h3 class="text-sm font-semibold">Participants in Training Session</h3>
                     <p class="text-3xl font-bold">20</p>
                 </div>
-                <div class="bg-red-600 p-4 rounded-lg text-white shadow-lg hover:shadow-xl transition-shadow hover:scale-105">
+                <div class="bg-[#00446b] p-4 rounded-lg text-white shadow-lg hover:shadow-xl transition-shadow hover:scale-105">
                     <h3 class="text-sm font-semibold">Absentee Rate</h3>
                     <p class="text-3xl font-bold">0.5%</p>
                 </div>

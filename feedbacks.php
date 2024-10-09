@@ -5,84 +5,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.19.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <title>Human Resources 2</title>
-    <style>
-        .hidden {
-            display: none;
-        }
-
-        .button-active {
-            background-color: #3b82f6;
-            color: white;
-        }
-
-        .button-inactive {
-            background-color: #9ca3af;
-            color: white;
-        }
-    </style>
 </head>
 
-<style>
-    .custom-bg {
-        background-color: #fbfbfe;
-    }
-</style>
-
-<body class="custom-bg">
-
-
+<body>
     <div class="flex">
         <!-- Sidebar -->
-        <div class="w-64 border-r bg-blue-600 text-white h-screen flex flex-col">
+        <div class="fixed top-0 left-0 w-56 bg-[#fbfbfe] text-black border m-4 mr-0 rounded-lg overflow-hidden h-screen flex flex-col">
             <!-- Logo Section -->
-            <img class="w-32 mx-auto mt-4 object-contain" src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg" alt="Transistor" width="150" height="40">
 
             <!-- Header with Icon -->
             <div class="flex items-center justify-between px-5 mt-2">
-                <h1 class="text-xl font-bold tracking-wide">Employee Management</h1>
-                <img class="w-6 h-6" src="icons/employeemanagement.png" alt="Employee Management Icon">
+                <p class='m-4 mb-4 font-bold text-2xl text-center text-[#00446b]'>NextFleet Dynamics</p>
             </div>
 
             <!-- Navigation Links -->
-            <ul class="flex-grow mt-6 space-y-3 px-4">
+            <ul class="flex-grow mt-2 space-y-3 px-4">
                 <li>
-                    <a href="dashboard.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="dashboard.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/dashboard.png" alt="Dashboard Icon">
                         <span>Dashboard</span>
-                        <img class="w-5 h-5 ml-3" src="icons/dashboard.png" alt="Dashboard Icon">
                     </a>
                 </li>
                 <li>
-                    <a href="competency.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="competency.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/competency.png" alt="Competency Icon">
                         <span>Competency Management</span>
-                        <img class="w-5 h-5 ml-3" src="icons/competency.png" alt="Competency Icon">
                     </a>
                 </li>
                 <li>
-                    <a href="learning.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="learning.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/learningtraining.png" alt="Learning and Training Icon">
                         <span>Learning & Training Management</span>
-                        <img class="w-5 h-5 ml-3" src="icons/learningtraining.png" alt="Learning and Training Icon">
                     </a>
                 </li>
                 <li>
-                    <a href="feedbacks.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="feedbacks.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/feedback.png" alt="Feedback Icon">
                         <span>Feedback</span>
-                        <img class="w-5 h-5 ml-3" src="icons/feedback.png" alt="Feedback Icon">
                     </a>
                 </li>
                 <li>
-                    <a href="index.php" class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-blue-700">
+                    <a href="index.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/logout.png" alt="Logout Icon">
                         <span>Logout</span>
-                        <img class="w-5 h-5 ml-3" src="icons/logout.png" alt="Logout Icon">
                     </a>
                 </li>
             </ul>
         </div>
 
         <!-- Main Content -->
-        <div class="flex-1 p-6 bg-[#fbfbfe] h-screen overflow-y-auto">
-            <h2 class="text-2xl font-bold mb-4">Feedback</h2>
+        <div class="flex-grow p-6 overflow-auto flex flex-col bg-[#fbfbfe] ml-64">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6 border-2 rounded-lg px-3 py-3">
+                <div class="col-span-4">
+                    <h2 class="text-4xl font-semibold text-gray-800">Feedback</h2>
+                </div>
+            </div>
 
             <!-- Search Section -->
             <div class="flex items-center mb-4">

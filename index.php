@@ -55,8 +55,8 @@
 
     <script>
         // Correct email and password for validation
-        const correctEmail = "aaron";
-        const correctPassword = "aaronpogi";
+        const correctEmail = "ejdelosreyes";
+        const correctPassword = "password123";
 
         // Function to handle form submission
         document.getElementById('loginButton').addEventListener('click', function(event) {
