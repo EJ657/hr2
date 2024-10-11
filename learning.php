@@ -68,28 +68,26 @@
             </div>
 
             <!-- Category Cards Section -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 gap-6">
                 <!-- Module Card -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="bg-white p-4 rounded-lg shadow-md">
                     <h3 class="text-xl font-bold mb-4">Training Module</h3>
                     <p class="text-gray-700 mb-6">Track modules.</p>
-                    <a href="trainingmodule.php" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-[#00446be8]">View Module</a>
+                    <a href="trainingmodule.php" class="bg-[#00446b] text-white px-3 py-1.5 rounded hover:bg-[#00446be8]">View Module</a>
                 </div>
 
                 <!-- Employees Card -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="bg-white p-4 rounded-lg shadow-md">
                     <h3 class="text-xl font-bold mb-4">Employees</h3>
                     <p class="text-gray-700 mb-6">Manage employee information.</p>
-                    <a href="employees.php" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-[#00446be8]">View Employees</a>
+                    <a href="employees.php" class="bg-[#00446b] text-white px-3 py-1.5 rounded hover:bg-[#00446be8]">View Employees</a>
                 </div>
 
                 <!-- Modules Card -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="bg-white p-4 rounded-lg shadow-md">
                     <h3 class="text-xl font-bold mb-4">Training Module Management</h3>
                     <p class="text-gray-700 mb-6">Manage all Training Modules available in the system.</p>
-                    <a href="trainingmodulemanagement.php" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-[#00446be8]">View Training Module</a>
-                
-                
+                    <a href="trainingmodulemanagement.php" class="bg-[#00446b] text-white px-3 py-1.5 rounded hover:bg-[#00446be8]">View Training Module</a>
                 </div>
             </div>
         </div>
