@@ -1,10 +1,49 @@
 <?php
-include("connection.php"); // Include your connection file
+session_start();
+include("connection.php"); // Database connection
 
-// Check if the connection was successful and echo the message
-if (isset($success_message)) {
-    echo "<p>$success_message</p>";
+// Check if an error message is stored in the session
+$error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : "";
+
+// Clear the error message after displaying it
+unset($_SESSION['error_message']);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get user input
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Prepare and execute the query to find the user
+    $stmt = $conn->prepare("SELECT password FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($storedPassword);
+        $stmt->fetch();
+
+        if ($password === $storedPassword) {
+            // Login successful
+            $_SESSION['email'] = $email; // Store user email in session
+            header("Location: dashboard.php"); // Redirect to dashboard
+            exit(); // Ensure no further code is executed
+        } else {
+            // Set error message for invalid password
+            $_SESSION['error_message'] = "Invalid password.";
+            header("Location: index.php");
+            exit();
+        }
+    } else {
+        $_SESSION['error_message'] = "Email not found.";
+        header("Location: index.php");
+        exit();
+    }
+
+    $stmt->close();
 }
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +58,7 @@ if (isset($success_message)) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.19.0/dist/full.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/login.css">
@@ -36,9 +75,14 @@ if (isset($success_message)) {
             <p class="font-bold lg:text-4xl text-2xl w-full text-center text-[#00446b]">Bus Transportation Management System</p>
             <p class="font-semibold lg:text-3xl text-xl text-center mt-10 text-[#00446b]">Human Resources 2</p>
 
-            <form class="xl:w-4/6 lg:w-5/6 sm:w-2/3 py-4 rounded-3xl shadow-lg shad mt-10 flex flex-col items-center border" id="loginForm" method="POST" action="account.php">
+            <form class="xl:w-4/6 lg:w-5/6 sm:w-2/3 py-4 rounded-3xl shadow-lg shad mt-10 flex flex-col items-center border" id="loginForm" method="POST" action="index.php">
                 <p class="text-center mb-4 text-xl text-[#00446b]">Sign In</p>
                 <hr class="border w-full border-[#00446b]">
+
+                <!-- Display error message if any -->
+                <?php if (!empty($error_message)): ?>
+                    <div class="text-red-500 text-center mb-4"><?php echo $error_message; ?></div>
+                <?php endif; ?>
 
                 <div class="mt-8 w-4/5">
                     <input class="mt-1 block w-full bg-transparent rounded-md border p-2" type="email" placeholder="Email" id="emailInput" name="email" required>
@@ -67,32 +111,11 @@ if (isset($success_message)) {
     </div>
 
     <script>
-        // Function to handle form submission
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-            const email = document.getElementById('emailInput').value;
-            const password = document.getElementById('passwordInput').value;
-
-            // Check if email and password match the hardcoded values
-            if (email === "" || password === "") {
-                alert("Please enter both email and password.");
-            } else if (email === "ejdelosreyes@gmail.com" && password === "password123") {
-                // If email and password are correct, redirect to index.php
-                window.location.href = "dashboard.php";
-            } else {
-                // If incorrect, show an error
-                alert("Incorrect email or password.");
-            }
-        });
-
         // Toggle checkbox when "Remember me" is clicked
         document.getElementById('rememberMeLabel').addEventListener('click', function(event) {
             event.preventDefault(); // Prevent the default link behavior
             const checkbox = document.getElementById('rememberMeCheckbox');
             checkbox.checked = !checkbox.checked; // Toggle the checkbox state
-
-            // Trigger the change event manually to log the state
-            checkbox.dispatchEvent(new Event('change'));
         });
 
         // Function to handle "Forgot your password?" link
