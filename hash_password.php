@@ -1,5 +1,4 @@
 <?php
-
 include("connection.php");
 
 $password = 'password123'; // This is the plain text password

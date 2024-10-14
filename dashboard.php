@@ -1,3 +1,9 @@
+<?php
+include("connection.php");
+include("auth.php"); // Include the authentication file
+checkAuth(); // Call the function to check if user is authenticated
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +56,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="index.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                    <a href="logout.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
                         <img class="w-5 h-5 mr-3" src="icons/logout.png" alt="Logout Icon">
                         <span>Logout</span>
                     </a>
