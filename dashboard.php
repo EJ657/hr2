@@ -70,17 +70,6 @@ checkAuth(); // Call the function to check if user is authenticated
                 <div class="col-span-4">
                     <h2 class="text-4xl font-semibold text-gray-800">Employee Management Dashboard</h2>
                 </div>
-                <div class="col-span-1 flex justify-end">
-                    <div class="relative">
-                        <button id="datePickerButton" class="bg-[#00446b] text-white py-2 px-4 rounded-md shadow-md hover:bg-[#00446b] transition duration-300 flex items-center">
-                            <span class="mr-2">Pick a Date</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m4-4H8" />
-                            </svg>
-                        </button>
-                        <input type="date" id="datePicker" class="hidden absolute mt-1 border border-gray-300 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    </div>
-                </div>
             </div>
 
             <!-- Key Metrics -->
@@ -238,18 +227,6 @@ checkAuth(); // Call the function to check if user is authenticated
 
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script>
-                document.getElementById('datePickerButton').addEventListener('click', function() {
-                    const datePicker = document.getElementById('datePicker');
-                    datePicker.classList.toggle('hidden'); // Show/hide the date picker
-                    datePicker.focus(); // Set focus on the date picker input
-                });
-
-                document.getElementById('datePicker').addEventListener('change', function() {
-                    const selectedDate = this.value;
-                    const dateButton = document.getElementById('datePickerButton').querySelector('span');
-                    dateButton.innerText = `Date: ${selectedDate}`; // Show the selected date on the button
-                    this.classList.add('hidden'); // Hide the date picker after selection
-                });
                 // Initial chart setup
                 const ctx = document.getElementById('myChart').getContext('2d');
                 const myChart = new Chart(ctx, {
