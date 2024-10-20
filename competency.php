@@ -100,7 +100,7 @@ checkAuth();
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
                         <input type="text" id="name" placeholder="Name" name="name"
-                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b]" required />
+                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b]" required minlength="2" maxlength="25"/>
                     </div>
 
                     <div>
@@ -152,13 +152,13 @@ checkAuth();
                     <div>
                         <label for="workExpertise" class="block text-sm font-medium text-gray-700 mb-1">Work Expertise</label>
                         <input type="text" id="workExpertise" name="workExpertise" placeholder="Work Expertise"
-                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required />
+                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15"/>
                     </div>
 
                     <div>
                         <label for="technicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills</label>
                         <input type="text" id="technicalSkills" name="technicalSkills" placeholder="Technical Skills"
-                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required />
+                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15"/>
                     </div>
 
                     <button type="submit"
@@ -242,7 +242,7 @@ checkAuth();
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="editName" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                                <input type="text" id="editName" name="editName" placeholder="Name" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required />
+                                <input type="text" id="editName" name="editName" placeholder="Name" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25"/>
                             </div>
                             <div>
                                 <label for="editHireDate" class="block text-sm font-medium text-gray-700 mb-1">Hire Date</label>
@@ -287,11 +287,11 @@ checkAuth();
                             </div>
                             <div>
                                 <label for="editWorkExpertise" class="block text-sm font-medium text-gray-700 mb-1">Work Expertise</label>
-                                <input type="text" id="editWorkExpertise" name="editWorkExpertise" placeholder="Work Expertise" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required />
+                                <input type="text" id="editWorkExpertise" name="editWorkExpertise" placeholder="Work Expertise" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15"/>
                             </div>
                             <div>
                                 <label for="editTechnicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills</label>
-                                <input type="text" id="editTechnicalSkills" name="editTechnicalSkills" placeholder="Technical Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required />
+                                <input type="text" id="editTechnicalSkills" name="editTechnicalSkills" placeholder="Technical Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15"/>
                                 <input type="hidden" id="editIndex" name="editIndex">
                             </div>
                             <button type="submit" class="col-span-2 bg-[#00446b] text-white p-3 rounded-lg hover:bg-[#00446b] transition duration-300 focus:ring focus:ring-[#00446b]">Update</button>

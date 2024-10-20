@@ -75,7 +75,7 @@ checkAuth();
                     <tr class="">
                         <th class="py-3 px-4 border-b">Employee Name</th>
                         <th class="py-3 px-4 border-b">Email</th>
-                        <th class="py-3 px-4 border-b">Course</th>
+                        <th class="py-3 px-4 border-b">Module</th>
                         <th class="py-3 px-4 border-b">Department</th>
                     </tr>
                 </thead>
