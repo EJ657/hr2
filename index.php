@@ -27,8 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Login successful
             $_SESSION['email'] = $email; // Store user email in session
             header("Location: dashboard.php"); // Redirect to dashboard
-            exit(); // Ensure no further code is executed
-        } else {
+            exit();
             // Set error message for invalid password
             $_SESSION['error_message'] = "Invalid password.";
             header("Location: index.php");
