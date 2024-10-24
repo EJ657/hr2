@@ -237,6 +237,10 @@ checkAuth();
 
         // Delete module function
         function deleteModule(moduleId) {
+            if (!confirm("Are you sure you want to delete this module?")) {
+                return; // Exit if user cancels
+            }
+
             fetch('module_handler.php', {
                     method: 'POST',
                     headers: {
@@ -250,10 +254,11 @@ checkAuth();
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
+                        // Remove the module from the array
                         modules = modules.filter(module => module.id !== moduleId);
-                        renderModules();
+                        renderModules(); // Re-render the table
                     } else {
-                        console.error('Error deleting module:', data.message);
+                        alert('Error deleting module: ' + data.message);
                     }
                 })
                 .catch(error => console.error('Error:', error));
