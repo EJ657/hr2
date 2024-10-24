@@ -1,18 +1,21 @@
 <?php
-// delete_item.php
 include 'connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = $_POST['id'];
 
-    $sql = "DELETE FROM employees WHERE id='$id'";
+    // Prepare the delete statement
+    $stmt = $conn->prepare("DELETE FROM employees WHERE id = ?");
+    $stmt->bind_param("i", $id); 
 
-    if (mysqli_query($conn, $sql)) {
+    if ($stmt->execute()) {
         echo json_encode(["success" => true, "message" => "Employee deleted successfully"]);
     } else {
-        echo json_encode(["success" => false, "message" => "Error deleting record: " . $conn->error]);
+        echo json_encode(["success" => false, "message" => "Error deleting record: " . $stmt->error]);
     }
 
-    $conn->close();
+    $stmt->close();
 }
+
+$conn->close();
 ?>

@@ -21,45 +21,15 @@ checkAuth();
     <div class="flex">
         <!-- Sidebar -->
         <div class="fixed top-0 left-0 w-56 bg-[#fbfbfe] text-black border m-4 mr-0 rounded-lg overflow-hidden h-screen flex flex-col">
-            <!-- Logo Section -->
-
-            <!-- Header with Icon -->
             <div class="flex items-center justify-between px-5 mt-2">
                 <p class='m-4 mb-4 font-bold text-2xl text-center text-[#00446b]'>NextFleet Dynamics</p>
             </div>
-
-            <!-- Navigation Links -->
             <ul class="flex-grow mt-2 space-y-3 px-4">
-                <li>
-                    <a href="dashboard.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446be8] hover:text-white">
-                        <img class="w-5 h-5 mr-3" src="icons/dashboard.png" alt="Dashboard Icon">
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="competency.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446be8] hover:text-white">
-                        <img class="w-5 h-5 mr-3" src="icons/competency.png" alt="Competency Icon">
-                        <span>Competency Management</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="learning.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446be8] hover:text-white">
-                        <img class="w-5 h-5 mr-3" src="icons/learningtraining.png" alt="Learning and Training Icon">
-                        <span>Learning & Training Management</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="feedbacks.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446be8] hover:text-white">
-                        <img class="w-5 h-5 mr-3" src="icons/feedback.png" alt="Feedback Icon">
-                        <span>Feedback</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="logout.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
-                        <img class="w-5 h-5 mr-3" src="icons/logout.png" alt="Logout Icon">
-                        <span>Logout</span>
-                    </a>
-                </li>
+                <li><a href="dashboard.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446be8] hover:text-white">Dashboard</a></li>
+                <li><a href="competency.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446be8] hover:text-white">Competency Management</a></li>
+                <li><a href="learning.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446be8] hover:text-white">Learning & Training Management</a></li>
+                <li><a href="feedbacks.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446be8] hover:text-white">Feedback</a></li>
+                <li><a href="logout.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">Logout</a></li>
             </ul>
         </div>
 
@@ -73,7 +43,6 @@ checkAuth();
 
             <!-- Training Module List Section -->
             <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
-                <!-- Key Metrics -->
                 <div class="flex flex-wrap gap-4 mb-6">
                     <div class="flex-1 bg-[#00446b] p-4 rounded-lg text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
                         <h3 class="text-sm font-semibold">Active Modules</h3>
@@ -104,12 +73,12 @@ checkAuth();
                 <table class="min-w-full bg-white border border-gray-200" id="moduleTable">
                     <thead class="bg-gray-100 text-gray-700">
                         <tr>
-                            <th class="py-3 px-4 border-b text-left">Module Name</th>
-                            <th class="py-3 px-4 border-b text-left">Category</th>
-                            <th class="py-3 px-4 border-b text-left">Status</th>
-                            <th class="py-3 px-4 border-b text-left">Due Date</th>
-                            <th class="py-3 px-4 border-b text-left">Progress</th>
-                            <th class="py-3 px-4 border-b text-left">Actions</th>
+                            <th class="py-3 px-4 border-b">Module Name</th>
+                            <th class="py-3 px-4 border-b">Category</th>
+                            <th class="py-3 px-4 border-b">Status</th>
+                            <th class="py-3 px-4 border-b">Due Date</th>
+                            <th class="py-3 px-4 border-b">Progress</th>
+                            <th class="py-3 px-4 border-b">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="moduleTableBody">
@@ -169,58 +138,61 @@ checkAuth();
                         </div>
                         <div>
                             <label for="moduleProgress" class="block text-sm font-medium text-gray-700 mb-2">Progress (%)</label>
-                            <input type="number" id="moduleProgress" placeholder="Enter Progress (%)" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required min="0" max="100">
+                            <input type="number" id="moduleProgress" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" min="0" max="100" required>
                         </div>
-                        <div class="md:col-span-2 flex justify-end space-x-4 mt-6">
-                            <button type="submit" class="bg-[#00446b] text-white p-3 rounded-lg hover:bg-[#00446be8] transition duration-200 focus:outline-none focus:ring focus:ring-[#00446b] transform hover:scale-105">Save Module</button>
-                            <button type="button" onclick="hideModal()" class="bg-gray-600 text-white p-3 rounded-lg hover:bg-[#00446be8] transition duration-200 focus:outline-none focus:ring focus:ring-gray-300 transform hover:scale-105">Cancel</button>
+                        <div class="col-span-2">
+                            <button type="button" id="modalCloseBtn" class="bg-gray-400 text-white rounded-lg px-4 py-2 hover:bg-gray-500 transition duration-200">Close</button>
+                            <button type="submit" id="submitBtn" class="bg-[#00446b] text-white rounded-lg px-4 py-2 hover:bg-[#00446be8] transition duration-200">Save Module</button>
                         </div>
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <script>
-                let modules = JSON.parse(localStorage.getItem('modules')) || [];
-                let isEditing = false;
-                let editingIndex = null;
+    <script>
+        let modules = [];
+        let isEditing = false;
+        let editingIndex = null;
 
-                const moduleTableBody = document.getElementById('moduleTableBody');
-                const moduleModal = document.getElementById('moduleModal');
-                const moduleForm = document.getElementById('moduleForm');
-                const modalTitle = document.getElementById('modalTitle');
-                const activeCount = document.getElementById('activeCount');
-                const pendingCount = document.getElementById('pendingCount');
-                const completedCount = document.getElementById('completedCount');
-                const totalCount = document.getElementById('totalCount');
+        const moduleTableBody = document.getElementById('moduleTableBody');
+        const activeCount = document.getElementById('activeCount');
+        const pendingCount = document.getElementById('pendingCount');
+        const completedCount = document.getElementById('completedCount');
+        const totalCount = document.getElementById('totalCount');
 
-                // Show module modal for adding/editing
-                function showModal(edit = false) {
-                    modalTitle.textContent = edit ? "Edit Module" : "Add New Module";
-                    if (!edit) moduleForm.reset();
-                    moduleModal.classList.remove('hidden');
-                }
+        const moduleForm = document.getElementById('moduleForm');
+        const moduleModal = document.getElementById('moduleModal');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+        const addNewModuleBtn = document.getElementById('addNewModuleBtn');
 
-                // Hide module modal
-                function hideModal() {
-                    moduleModal.classList.add('hidden');
-                }
+        // Fetch modules from the database
+        function fetchModules() {
+            fetch('get_modules.php')
+                .then(response => response.json())
+                .then(data => {
+                    modules = data;
+                    renderModules();
+                })
+                .catch(error => console.error('Error fetching modules:', error));
+        }
 
-                // Render module list
-                function renderModules() {
-                    moduleTableBody.innerHTML = '';
-                    let active = 0,
-                        pending = 0,
-                        completed = 0;
+        // Render module list
+        function renderModules() {
+            moduleTableBody.innerHTML = '';
+            let active = 0,
+                pending = 0,
+                completed = 0;
 
-                    modules.forEach((module, index) => {
-                        const row = document.createElement('tr');
-                        row.innerHTML =
-                            `<td class="py-3 px-4 border-b">${module.name}</td>
+            modules.forEach((module, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML =
+                    `<td class="py-3 px-4 border-b">${module.name}</td>
                      <td class="py-3 px-4 border-b">${module.category}</td>
                      <td class="py-3 px-4 border-b text-${module.status === 'active' ? 'green-600' : module.status === 'pending' ? 'yellow-600' : 'gray-600'}">
                          ${module.status.charAt(0).toUpperCase() + module.status.slice(1)}
                      </td>
-                     <td class="py-3 px-4 border-b">${module.dueDate}</td>
+                     <td class="py-3 px-4 border-b">${module.due_date}</td>
                      <td class="py-3 px-4 border-b">
                          <div class="w-full bg-gray-200 rounded-full h-3">
                              <div class="bg-[#00446b] h-3 rounded-full" style="width: ${module.progress}%;"></div>
@@ -228,89 +200,142 @@ checkAuth();
                          <span class="text-sm">${module.progress}%</span>
                      </td>
                      <td class="py-3 px-4 border-b">
-                         <button class="text-[#00446b] hover:underline" onclick="editModule(${index})">Edit</button> |
-                         <button class="text-[#00446b] hover:underline" onclick="deleteModule(${index})">Delete</button>
+                         <button class="text-[#00446b] hover:underline" onclick="editModule(${module.id})">Edit</button> |
+                         <button class="text-[#00446b] hover:underline" onclick="deleteModule(${module.id})">Delete</button>
                      </td>`;
-                        moduleTableBody.appendChild(row);
+                moduleTableBody.appendChild(row);
 
-                        // Count module statuses
-                        if (module.status === 'active') active++;
-                        else if (module.status === 'pending') pending++;
-                        else if (module.status === 'completed') completed++;
-                    });
+                // Count module statuses
+                if (module.status === 'active') active++;
+                else if (module.status === 'pending') pending++;
+                else if (module.status === 'completed') completed++;
+            });
 
-                    // Update metrics
-                    activeCount.textContent = active;
-                    pendingCount.textContent = pending;
-                    completedCount.textContent = completed;
-                    totalCount.textContent = modules.length;
-                }
+            // Update metrics
+            activeCount.textContent = active;
+            pendingCount.textContent = pending;
+            completedCount.textContent = completed;
+            totalCount.textContent = modules.length;
+        }
 
-                // Save modules to local storage
-                function saveModules() {
-                    localStorage.setItem('modules', JSON.stringify(modules));
-                }
+        // Edit module function
+        function editModule(moduleId) {
+            const module = modules.find(m => m.id === moduleId);
+            if (module) {
+                document.getElementById('modalTitle').textContent = 'Edit Module';
+                document.getElementById('moduleName').value = module.name;
+                document.getElementById('moduleCategory').value = module.category;
+                document.getElementById('moduleStatus').value = module.status;
+                document.getElementById('moduleDueDate').value = module.due_date;
+                document.getElementById('moduleProgress').value = module.progress;
 
-                // Add or Edit module form submission
-                moduleForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const newModule = {
-                        name: moduleName.value,
-                        category: moduleCategory.value,
-                        status: moduleStatus.value,
-                        dueDate: moduleDueDate.value,
-                        progress: moduleProgress.value
-                    };
+                isEditing = true;
+                editingIndex = modules.indexOf(module);
+                moduleModal.classList.remove('hidden');
+            }
+        }
 
-                    if (isEditing) {
-                        modules[editingIndex] = newModule; // Fixed this line
-                        isEditing = false;
-                        editingIndex = null;
+        // Delete module function
+        function deleteModule(moduleId) {
+            fetch('module_handler.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        action: 'delete',
+                        id: moduleId
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        modules = modules.filter(module => module.id !== moduleId);
+                        renderModules();
                     } else {
-                        modules.push(newModule);
+                        console.error('Error deleting module:', data.message);
                     }
+                })
+                .catch(error => console.error('Error:', error));
+        }
 
-                    saveModules();
-                    renderModules();
-                    hideModal();
-                });
+        // Modal close button
+        modalCloseBtn.addEventListener('click', function() {
+            moduleModal.classList.add('hidden');
+        });
 
-                // Edit module
-                function editModule(index) {
-                    isEditing = true;
-                    editingIndex = index;
-                    const module = modules[index];
-                    moduleName.value = module.name;
-                    moduleCategory.value = module.category;
-                    moduleStatus.value = module.status;
-                    moduleDueDate.value = module.dueDate;
-                    moduleProgress.value = module.progress;
-                    showModal(true);
-                }
+        // Form submission
+        moduleForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newModule = {
+                name: document.getElementById('moduleName').value,
+                category: document.getElementById('moduleCategory').value,
+                status: document.getElementById('moduleStatus').value,
+                due_date: document.getElementById('moduleDueDate').value,
+                progress: document.getElementById('moduleProgress').value
+            };
 
-                // Delete module
-                function deleteModule(index) {
-                    modules.splice(index, 1);
-                    saveModules();
-                    renderModules();
-                }
+            if (isEditing) {
+                fetch('module_handler.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: new URLSearchParams({
+                            action: 'edit',
+                            id: modules[editingIndex].id,
+                            ...newModule
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            modules[editingIndex] = {
+                                ...newModule,
+                                id: modules[editingIndex].id
+                            };
+                            renderModules();
+                            moduleModal.classList.add('hidden');
+                        } else {
+                            alert(data.message);
+                        }
+                    });
+            } else {
+                fetch('module_handler.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: new URLSearchParams({
+                            action: 'add',
+                            ...newModule
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            modules.push({
+                                ...newModule,
+                                id: data.id
+                            });
+                            renderModules();
+                            moduleModal.classList.add('hidden');
+                        } else {
+                            alert(data.message);
+                        }
+                    });
+            }
+        });
 
-                // Show modal when "Add New Module" button is clicked
-                document.getElementById('addNewModuleBtn').addEventListener('click', () => showModal(false));
-
-                // Hide modal on clicking outside or pressing escape
-                window.addEventListener('click', (e) => {
-                    if (e.target === moduleModal) hideModal();
-                });
-                window.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') hideModal();
-                });
-
-                // Initial render
-                renderModules();
-            </script>
-        </div>
-    </div>
+        // Initialize
+        fetchModules();
+        addNewModuleBtn.addEventListener('click', () => {
+            document.getElementById('modalTitle').textContent = 'Add New Module';
+            moduleForm.reset();
+            isEditing = false;
+            moduleModal.classList.remove('hidden');
+        });
+    </script>
 </body>
 
 </html>

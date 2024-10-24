@@ -12,17 +12,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $workExpertise = $_POST['workExpertise'];
     $technicalSkills = $_POST['technicalSkills'];
 
+    // Prepare the SQL statement
     $sql = "UPDATE employees 
-            SET name='$name', department='$department', hire_date='$hireDate', status='$status', 
-                job_position='$jobPosition', work_expertise='$workExpertise', technical_skills='$technicalSkills'
-            WHERE id='$id'";
+            SET name=?, department=?, hire_date=?, status=?, 
+                job_position=?, work_expertise=?, technical_skills=?
+            WHERE id=?";
 
-    if (mysqli_query($conn, $sql)) {
-        echo json_encode(["success" => true, "message" => "Employee updated successfully"]);
+    $stmt = $conn->prepare($sql);
+    if ($stmt) {
+        // Bind parameters
+        $stmt->bind_param("sssssssi", $name, $department, $hireDate, $status, $jobPosition, $workExpertise, $technicalSkills, $id);
+        
+        // Execute the statement
+        if ($stmt->execute()) {
+            echo json_encode(["success" => true, "message" => "Employee updated successfully"]);
+        } else {
+            echo json_encode(["success" => false, "message" => "Error updating record: " . $stmt->error]);
+        }
+
+        // Close the statement
+        $stmt->close();
     } else {
-        echo json_encode(["success" => false, "message" => "Error updating record: " . $conn->error]);
+        echo json_encode(["success" => false, "message" => "Error preparing statement: " . $conn->error]);
     }
 
+    // Close the connection
     $conn->close();
 }
 ?>

@@ -287,11 +287,11 @@ checkAuth();
                             </div>
                             <div>
                                 <label for="editWorkExpertise" class="block text-sm font-medium text-gray-700 mb-1">Work Expertise</label>
-                                <input type="text" id="editWorkExpertise" name="editWorkExpertise" placeholder="Work Expertise" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15"/>
+                                <input type="text" id="editWorkExpertise" name="editWorkExpertise" placeholder="Work Expertise" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25"/>
                             </div>
                             <div>
                                 <label for="editTechnicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills</label>
-                                <input type="text" id="editTechnicalSkills" name="editTechnicalSkills" placeholder="Technical Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15"/>
+                                <input type="text" id="editTechnicalSkills" name="editTechnicalSkills" placeholder="Technical Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25"/>
                                 <input type="hidden" id="editIndex" name="editIndex">
                             </div>
                             <button type="submit" class="col-span-2 bg-[#00446b] text-white p-3 rounded-lg hover:bg-[#00446b] transition duration-300 focus:ring focus:ring-[#00446b]">Update</button>
