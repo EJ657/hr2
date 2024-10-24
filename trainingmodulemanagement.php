@@ -172,6 +172,7 @@ checkAuth();
                 .then(response => response.json())
                 .then(data => {
                     modules = data;
+                    console.log(data);
                     renderModules();
                 })
                 .catch(error => console.error('Error fetching modules:', error));
@@ -220,7 +221,8 @@ checkAuth();
 
         // Edit module function
         function editModule(moduleId) {
-            const module = modules.find(m => m.id === moduleId);
+            console.log(moduleId);
+            const module = modules.find(m => m.id == moduleId);
             if (module) {
                 document.getElementById('modalTitle').textContent = 'Edit Module';
                 document.getElementById('moduleName').value = module.name;
@@ -256,6 +258,7 @@ checkAuth();
                     if (data.success) {
                         // Remove the module from the array
                         modules = modules.filter(module => module.id !== moduleId);
+                        fetchModules();
                         renderModules(); // Re-render the table
                     } else {
                         alert('Error deleting module: ' + data.message);
