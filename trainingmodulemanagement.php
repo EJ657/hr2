@@ -21,15 +21,45 @@ checkAuth();
     <div class="flex">
         <!-- Sidebar -->
         <div class="fixed top-0 left-0 w-56 bg-[#fbfbfe] text-black border m-4 mr-0 rounded-lg overflow-hidden h-screen flex flex-col">
+            <!-- Logo Section -->
+
+            <!-- Header with Icon -->
             <div class="flex items-center justify-between px-5 mt-2">
                 <p class='m-4 mb-4 font-bold text-2xl text-center text-[#00446b]'>NextFleet Dynamics</p>
             </div>
+
+            <!-- Navigation Links -->
             <ul class="flex-grow mt-2 space-y-3 px-4">
-                <li><a href="dashboard.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446be8] hover:text-white">Dashboard</a></li>
-                <li><a href="competency.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446be8] hover:text-white">Competency Management</a></li>
-                <li><a href="learning.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446be8] hover:text-white">Learning & Training Management</a></li>
-                <li><a href="feedbacks.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446be8] hover:text-white">Feedback</a></li>
-                <li><a href="logout.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">Logout</a></li>
+                <li>
+                    <a href="dashboard.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/dashboard.png" alt="Dashboard Icon">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="competency.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/competency.png" alt="Competency Icon">
+                        <span>Competency Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="learning.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/learningtraining.png" alt="Learning and Training Icon">
+                        <span>Learning & Training Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="feedbacks.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/feedback.png" alt="Feedback Icon">
+                        <span>Feedback</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="logout.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/logout.png" alt="Logout Icon">
+                        <span>Logout</span>
+                    </a>
+                </li>
             </ul>
         </div>
 
