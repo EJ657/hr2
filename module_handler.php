@@ -22,7 +22,6 @@ if ($action === 'add') {
     }
     $stmt->close();
     exit; 
-
 }
 
 if ($action === 'edit') {
@@ -34,7 +33,7 @@ if ($action === 'edit') {
     $progress = $_POST['progress'];
 
     $stmt = $conn->prepare("UPDATE modules SET name=?, category=?, status=?, due_date=?, progress=? WHERE id=?");
-    $stmt->bind_param("ssssi", $name, $category, $status, $due_date, $progress, $id);
+    $stmt->bind_param("ssssii", $name, $category, $status, $due_date, $progress, $id);
     
     if ($stmt->execute()) {
         echo json_encode(['success' => true]);
@@ -43,7 +42,6 @@ if ($action === 'edit') {
     }
     $stmt->close();
     exit; 
-
 }
 
 if ($action === 'delete') {
@@ -60,6 +58,5 @@ if ($action === 'delete') {
     exit; 
 }
 
-// Handle unexpected actions
 echo json_encode(['success' => false, 'message' => 'Invalid action']);
 ?>
