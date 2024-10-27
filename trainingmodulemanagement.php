@@ -375,5 +375,4 @@ checkAuth();
         });
     </script>
 </body>
-
 </html>
