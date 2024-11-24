@@ -14,6 +14,7 @@ checkAuth(); // Call the function to check if user is authenticated
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.19.0/dist/full.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./icons/nexfleet.svg">
     <title>Human Resources 2</title>
 </head>
 

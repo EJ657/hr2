@@ -61,6 +61,7 @@ $conn->close();
 
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/login.css">
+    <link rel="icon" href="./icons/nexfleet.svg">
     <title>Login</title>
 </head>
 
