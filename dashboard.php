@@ -113,22 +113,22 @@ checkAuth(); // Call the function to check if user is authenticated
                             <td class="border p-2">EJ</td>
                             <td class="border p-2">HR</td>
                             <td class="border p-2">Effective Communication Skills</td>
-                            <td class="border p-2 font-semibold text-blue-600">80%</td>
+                            <td class="border p-2 font-semibold text-blue-600">75%</td>
                             <td class="border p-2"><span class="text-orange-500 font-semibold">In Progress</span></td>
                         </tr>
                         <tr class="hover:bg-gray-100 transition-colors">
                             <td class="border p-2">Aaron</td>
                             <td class="border p-2">IT</td>
                             <td class="border p-2">Introduction to Cybersecurity</td>
-                            <td class="border p-2 font-semibold text-blue-600">0%</td>
-                            <td class="border p-2"><span class="text-red-500 font-semibold">In Progress</span></td>
+                            <td class="border p-2 font-semibold text-blue-600">100%</td>
+                            <td class="border p-2"><span class="text-green-500 font-semibold">Completed</span></td>
                         </tr>
                         <tr class="hover:bg-gray-100 transition-colors">
                             <td class="border p-2">Christian</td>
                             <td class="border p-2">Finance</td>
                             <td class="border p-2">Financial Reporting and Analysis</td>
-                            <td class="border p-2 font-semibold text-blue-600">100%</td>
-                            <td class="border p-2"><span class="text-green-500 font-semibold">Completed</span></td>
+                            <td class="border p-2 font-semibold text-blue-600">50%</td>
+                            <td class="border p-2"><span class="text-orange-500 font-semibold">In Progress</span></td>
                         </tr>
                     </tbody>
                 </table>
