@@ -101,7 +101,7 @@ checkAuth();
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
                         <input type="text" id="name" placeholder="Name" name="name"
-                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b]" required minlength="2" maxlength="25"/>
+                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b]" required minlength="2" maxlength="25" />
                     </div>
 
                     <div>
@@ -122,16 +122,17 @@ checkAuth();
                         <label for="jobPosition" class="block text-sm font-medium text-gray-700 mb-1">Job Position</label>
                         <select id="jobPosition" name="jobPosition" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required>
                             <option value="">Select Job Position</option>
+                            <option value="Operations Manager">Operations Manager</option>
+                            <option value="Transportation Supervisor">Transportation Supervisor</option>
+                            <option value="Fleet Manager">Fleet Manager</option>
+                            <option value="Route Planner">Route Planner</option>
+                            <option value="Safety and Compliance Manager">Safety and Compliance Manager</option>
+                            <option value="Customer Service Manager">Customer Service Manager</option>
                             <option value="Bus Driver">Bus Driver</option>
                             <option value="Bus Conductor">Bus Conductor</option>
                             <option value="Bus Maintenance Mechanic">Bus Maintenance Mechanic</option>
                             <option value="Customer Service">Customer Service</option>
-                            <option value="Security Guard">Security Guard</option>
-                            <option value="Human Resource Manager">Human Resource Manager</option>
-                            <option value="Marketing Coordinator">Marketing Coordinator</option>
-                            <option value="Finance Manager">Finance Manager</option>
-                            <option value="IT Specialist">IT Specialist</option>
-                            <option value="Logistics Coordinator">Logistics Coordinator</option>
+
                         </select>
                     </div>
 
@@ -139,27 +140,25 @@ checkAuth();
                         <label for="department" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
                         <select id="department" name="department" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required>
                             <option value="">Select Department</option>
-                            <option value="Transportation Department">Transportation Department</option>
+                            <option value="Operations Department">Operations Department</option>
+                            <option value="Maintenance Department">Maintenance Department</option>
+                            <option value="Safety and Compliance Department">Safety and Compliance Department</option>
                             <option value="Customer Service Department">Customer Service Department</option>
-                            <option value="Security Department">Security Department</option>
                             <option value="Human Resources Department">Human Resources Department</option>
-                            <option value="Marketing Department">Marketing Department</option>
                             <option value="Finance Department">Finance Department</option>
-                            <option value="IT Department">IT Department</option>
-                            <option value="Logistics Department">Logistics Department</option>
                         </select>
                     </div>
 
                     <div>
-                        <label for="workExpertise" class="block text-sm font-medium text-gray-700 mb-1">Work Expertise</label>
-                        <input type="text" id="workExpertise" name="workExpertise" placeholder="Work Expertise"
-                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15"/>
+                        <label for="workExpertise" class="block text-sm font-medium text-gray-700 mb-1">Soft Skills</label>
+                        <input type="text" id="workExpertise" name="workExpertise" placeholder="Ex. Communication, Adaptability, Problem-Solving"
+                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15" />
                     </div>
 
                     <div>
-                        <label for="technicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills</label>
-                        <input type="text" id="technicalSkills" name="technicalSkills" placeholder="Technical Skills"
-                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15"/>
+                        <label for="technicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills(Hard Skills)</label>
+                        <input type="text" id="technicalSkills" name="technicalSkills" placeholder="Ex. Route Planning, Safety Protocols, Vehicle Maintenance"
+                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15" />
                     </div>
 
                     <button type="submit"
@@ -180,7 +179,7 @@ checkAuth();
                         <col span="1" style="width: 18%;"> <!-- Hire Date  -->
                         <col span="1" style="width: 10%;"> <!-- Status -->
                         <col span="1" style="width: 12%;"> <!-- Job Position -->
-                        <col span="1" style="width: 12%;"> <!-- Work Expertise -->
+                        <col span="1" style="width: 12%;"> <!-- Soft Skill -->
                         <col span="1" style="width: 12%;"> <!-- Technical Skills -->
                         <col span="1" style="width: 10%;"> <!-- Actions -->
                     </colgroup>
@@ -192,7 +191,7 @@ checkAuth();
                             <th class="py-3 px-4 border-b text-left">Hire Date</th>
                             <th class="py-3 px-4 border-b text-left">Status</th>
                             <th class="py-3 px-4 border-b text-left">Job Position</th>
-                            <th class="py-3 px-4 border-b text-left">Work Expertise</th>
+                            <th class="py-3 px-4 border-b text-left">Soft Skills</th>
                             <th class="py-3 px-4 border-b text-left">Technical Skills</th>
                             <th class="py-3 px-4 border-b text-left">Actions</th>
                         </tr>
@@ -243,7 +242,7 @@ checkAuth();
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="editName" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                                <input type="text" id="editName" name="editName" placeholder="Name" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25"/>
+                                <input type="text" id="editName" name="editName" placeholder="Name" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25" />
                             </div>
                             <div>
                                 <label for="editHireDate" class="block text-sm font-medium text-gray-700 mb-1">Hire Date</label>
@@ -260,39 +259,37 @@ checkAuth();
                                 <label for="editJobPosition" class="block text-sm font-medium text-gray-700 mb-1">Job Position</label>
                                 <select id="editJobPosition" name="editJobPosition" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]">
                                     <option value="">Select Job Position</option>
+                                    <option value="Operations Manager">Operations Manager</option>
+                                    <option value="Transportation Supervisor">Transportation Supervisor</option>
+                                    <option value="Fleet Manager">Fleet Manager</option>
+                                    <option value="Route Planner">Route Planner</option>
+                                    <option value="Safety and Compliance Manager">Safety and Compliance Manager</option>
+                                    <option value="Customer Service Manager">Customer Service Manager</option>
                                     <option value="Bus Driver">Bus Driver</option>
                                     <option value="Bus Conductor">Bus Conductor</option>
                                     <option value="Bus Maintenance Mechanic">Bus Maintenance Mechanic</option>
                                     <option value="Customer Service">Customer Service</option>
-                                    <option value="Security Guard">Security Guard</option>
-                                    <option value="Human Resource Manager">Human Resource Manager</option>
-                                    <option value="Marketing Coordinator">Marketing Coordinator</option>
-                                    <option value="Finance Manager">Finance Manager</option>
-                                    <option value="IT Specialist">IT Specialist</option>
-                                    <option value="Logistics Coordinator">Logistics Coordinator</option>
                                 </select>
                             </div>
                             <div>
                                 <label for="editDepartment" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
                                 <select id="editDepartment" name="editDepartment" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]">
                                     <option value="">Select Department</option>
-                                    <option value="Transportation Department">Transportation Department</option>
+                                    <option value="Operations Department">Operations Department</option>
+                                    <option value="Maintenance Department">Maintenance Department</option>
+                                    <option value="Safety and Compliance Department">Safety and Compliance Department</option>
                                     <option value="Customer Service Department">Customer Service Department</option>
-                                    <option value="Security Department">Security Department</option>
                                     <option value="Human Resources Department">Human Resources Department</option>
-                                    <option value="Marketing Department">Marketing Department</option>
                                     <option value="Finance Department">Finance Department</option>
-                                    <option value="IT Department">IT Department</option>
-                                    <option value="Logistics Department">Logistics Department</option>
                                 </select>
                             </div>
                             <div>
-                                <label for="editWorkExpertise" class="block text-sm font-medium text-gray-700 mb-1">Work Expertise</label>
-                                <input type="text" id="editWorkExpertise" name="editWorkExpertise" placeholder="Work Expertise" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25"/>
+                                <label for="editWorkExpertise" class="block text-sm font-medium text-gray-700 mb-1">Soft Skills</label>
+                                <input type="text" id="editWorkExpertise" name="editWorkExpertise" placeholder="Soft Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25" />
                             </div>
                             <div>
-                                <label for="editTechnicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills</label>
-                                <input type="text" id="editTechnicalSkills" name="editTechnicalSkills" placeholder="Technical Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25"/>
+                                <label for="editTechnicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills(Hard Skills)</label>
+                                <input type="text" id="editTechnicalSkills" name="editTechnicalSkills" placeholder="Technical Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25" />
                                 <input type="hidden" id="editIndex" name="editIndex">
                             </div>
                             <button type="submit" class="col-span-2 bg-[#00446b] text-white p-3 rounded-lg hover:bg-[#00446b] transition duration-300 focus:ring focus:ring-[#00446b]">Update</button>

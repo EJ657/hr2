@@ -93,6 +93,8 @@ checkAuth(); // Call the function to check if user is authenticated
                 </div>
             </div>
 
+            <canvas id="myChart"></canvas>
+
             <!-- Training Topics and Employee Performance -->
             <div class="bg-white shadow-lg rounded-lg p-4 mb-4 flex-grow text-sm transition-transform transform hover:shadow-xl">
                 <h3 class="text-lg font-semibold mb-4 border-b pb-1">Training Topics and Employee Performance</h3>
@@ -224,7 +226,67 @@ checkAuth(); // Call the function to check if user is authenticated
                 </div>
             </div>
 
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script>
+                // Initial chart setup
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['HR', 'IT', 'Finance'], // Initial labels
+                        datasets: [{
+                            label: 'Skill Proficiency',
+                            data: [75, 100, 50], // Initial data points
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    stepSize: 20
+                                }
+                            }
+                        },
+                        responsive: true
+                    }
+                });
+
+                // Show the modal form when "Update Chart" button is clicked
+                document.getElementById('openModalButton').addEventListener('click', function() {
+                    document.getElementById('chartModal').classList.remove('hidden');
+                });
+
+                // Handle form submission and update the chart
+                document.getElementById('saveChartButton').addEventListener('click', function() {
+                    // Get values from the form
+                    const label1 = document.getElementById('label1').value || 'HR';
+                    const value1 = document.getElementById('value1').value || 60;
+                    const label2 = document.getElementById('label2').value || 'IT';
+                    const value2 = document.getElementById('value2').value || 80;
+                    const label3 = document.getElementById('label3').value || 'Finance';
+                    const value3 = document.getElementById('value3').value || 70;
+
+                    // Update chart data
+                    myChart.data.labels = [label1, label2, label3];
+                    myChart.data.datasets[0].data = [value1, value2, value3];
+                    myChart.update();
+
+                    // Hide the modal after saving
+                    document.getElementById('chartModal').classList.add('hidden');
+                });
             </script>
         </div>
     </class>

@@ -14,20 +14,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Prepare and execute the query to find the user
-    $stmt = $conn->prepare("SELECT password FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT password, usertype FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($storedPassword);
+        $stmt->bind_result($storedPassword, $usertype);
         $stmt->fetch();
 
         if ($password === $storedPassword) {
-            // Login successful
-            $_SESSION['email'] = $email; // Store user email in session
-            header("Location: dashboard.php"); // Redirect to dashboard
+            // Login successful, store user email and usertype in session
+            $_SESSION['email'] = $email;
+            $_SESSION['usertype'] = $usertype;  // Store the usertype in session
+            
+            // Redirect based on usertype
+            if ($usertype == 'admin') {
+                header("Location: dashboard.php"); // Admin dashboard
+            } elseif ($usertype == 'employee') {
+                header("Location: employeedashboard.php"); // Employee dashboard
+            } elseif ($usertype == 'staff') {
+                header("Location: employeedashboard.php"); // Staff dashboard
+            }
             exit();
+        } else {
             // Set error message for invalid password
             $_SESSION['error_message'] = "Invalid password.";
             header("Location: index.php");
@@ -76,7 +86,7 @@ $conn->close();
             <p class="font-semibold lg:text-3xl text-xl text-center mt-10 text-[#00446b]">Human Resources 2</p>
 
             <form class="xl:w-4/6 lg:w-5/6 sm:w-2/3 py-4 rounded-3xl shadow-lg shad mt-10 flex flex-col items-center border" id="loginForm" method="POST" action="index.php">
-                <p class="text-center mb-4 text-xl text-[#00446b]">Sign In</p>
+                <p class="text-center mb-4 text-xl text-[#00446b]">Login</p>
                 <hr class="border w-full border-[#00446b]">
 
                 <!-- Display error message if any -->
@@ -92,13 +102,7 @@ $conn->close();
                 </div>
 
                 <div class="w-4/5 flex justify-between mt-4 lg:mb-12 mb-12">
-                    <label class="flex items-center">
-                        <input type="checkbox" name="remember" id="rememberMeCheckbox" />
-                        <span class="text-sm hover:text-[#00446b] rounded-md text-[#00446b] cursor-pointer" id="rememberMeLabel">
-                            <a href="#" class="hover:underline">Remember me</a>
-                        </span>
-                    </label>
-                    <a class="text-sm hover:text-[#00446be1] rounded-md text-[#00446b]" href="#" id="forgotPasswordLink">Forgot your password?</a>
+                    <a class="text-sm hover:text-[#00446be1] hover:underline rounded-md text-[#00446b]" href="#" id="forgotPasswordLink">Forgot password?</a>
                 </div>
 
                 <div class="flex items-center mt-4 mb-8 w-4/5">
@@ -111,13 +115,6 @@ $conn->close();
     </div>
 
     <script>
-        // Toggle checkbox when "Remember me" is clicked
-        document.getElementById('rememberMeLabel').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the default link behavior
-            const checkbox = document.getElementById('rememberMeCheckbox');
-            checkbox.checked = !checkbox.checked; // Toggle the checkbox state
-        });
-
         // Function to handle "Forgot your password?" link
         document.getElementById('forgotPasswordLink').addEventListener('click', function(event) {
             event.preventDefault(); // Prevent default anchor behavior
