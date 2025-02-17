@@ -1,7 +1,7 @@
 <?php
 include("connection.php");
-include("auth.php");
-checkAuth();
+include("auth.php"); // Include the authentication file
+checkAuth(); // Call the function to check if user is authenticated
 ?>
 
 <!DOCTYPE html>
@@ -11,8 +11,8 @@ checkAuth();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.19.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.19.0/dist/full.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./icons/nexfleet.svg">
     <title>Human Resources 2</title>
@@ -20,8 +20,7 @@ checkAuth();
 
 <body class="custom-bg">
 
-
-    <div class="flex">
+    <class class="flex">
         <!-- Sidebar -->
         <div class="fixed top-0 left-0 w-56 bg-[#fbfbfe] text-black border m-4 mr-0 rounded-lg overflow-hidden h-screen flex flex-col">
             <!-- Logo Section -->
@@ -58,7 +57,7 @@ checkAuth();
                     </a>
                 </li>
                 <li>
-                    <a href="logout.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                    <a href="logout.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white" onclick="return confirm('Are you sure you want to log out?');">
                         <img class="w-5 h-5 mr-3" src="icons/logout.png" alt="Logout Icon">
                         <span>Logout</span>
                     </a>
@@ -70,35 +69,12 @@ checkAuth();
         <div class="flex-grow p-6 overflow-auto flex flex-col bg-[#fbfbfe] ml-64">
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6 border-2 rounded-lg px-3 py-3">
                 <div class="col-span-4">
-                    <h2 class="text-4xl font-semibold text-gray-800">Learning and Training Management</h2>
-                </div>
-            </div>
-
-            <!-- Category Cards Section -->
-            <div class="grid grid-cols-1 gap-6">
-                <!-- Module Card -->
-                <div class="bg-white p-4 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold mb-4">Training Module</h3>
-                    <p class="text-gray-700 mb-6">Track modules.</p>
-                    <a href="trainingmodule.php" class="bg-[#00446b] text-white px-3 py-1.5 rounded hover:bg-[#00446be8]">View Module</a>
-                </div>
-
-                <!-- Employees Card -->
-                <div class="bg-white p-4 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold mb-4">Employees</h3>
-                    <p class="text-gray-700 mb-6">Manage employee information.</p>
-                    <a href="employees.php" class="bg-[#00446b] text-white px-3 py-1.5 rounded hover:bg-[#00446be8]">View Employees</a>
-                </div>
-
-                <!-- Modules Card -->
-                <div class="bg-white p-4 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold mb-4">Training Module Management</h3>
-                    <p class="text-gray-700 mb-6">Manage all Training Modules available in the system.</p>
-                    <a href="trainingmodulemanagement.php" class="bg-[#00446b] text-white px-3 py-1.5 rounded hover:bg-[#00446be8]">View Training Module</a>
+                    <h2 class="text-4xl font-semibold text-gray-800">Employee Management Dashboard</h2>
                 </div>
             </div>
         </div>
-    </div>
+    </class>
+
 </body>
 
 </html>

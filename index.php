@@ -32,9 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($usertype == 'admin') {
                 header("Location: dashboard.php"); // Admin dashboard
             } elseif ($usertype == 'employee') {
-                header("Location: employeedashboard.php"); // Employee dashboard
+                header("Location: 2employeedashboard.php"); // Employee dashboard
             } elseif ($usertype == 'staff') {
-                header("Location: employeedashboard.php"); // Staff dashboard
+                header("Location: 3staffdashboard.php"); // Staff dashboard
             }
             exit();
         } else {
@@ -114,12 +114,40 @@ $conn->close();
         </div>
     </div>
 
+    <!-- Modal for Password Reset Request -->
+    <div id="forgotPasswordModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center hidden">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+            <h2 class="text-xl font-semibold text-center text-[#00446b]">Reset Your Password</h2>
+            <form method="POST" action="forgot_password_request.php">
+                <div class="mt-4">
+                    <label for="resetEmail" class="block text-gray-700">Enter your email address:</label>
+                    <input type="email" name="email" id="resetEmail" class="w-full p-2 mt-2 border rounded-md" required>
+                </div>
+                <div class="mt-4">
+                    <label for="resetReason" class="block text-gray-700">Reason for password reset:</label>
+                    <textarea name="reason" id="resetReason" class="w-full p-2 mt-2 border rounded-md h-24" required></textarea>
+                </div>
+                <div class="mt-4 text-center">
+                    <button type="submit" class="px-6 py-2 bg-[#00446b] text-white rounded-md">Submit</button>
+                </div>
+            </form>
+            <div class="mt-4 text-center">
+                <button onclick="closeModal()" class="text-sm text-gray-500 hover:text-gray-700">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Function to handle "Forgot your password?" link
+        // Show the reset password modal when the "Forgot password?" link is clicked
         document.getElementById('forgotPasswordLink').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default anchor behavior
-            alert("Password recovery is currently not available. Please contact support.");
+            event.preventDefault();
+            document.getElementById('forgotPasswordModal').classList.remove('hidden');
         });
+
+        // Close the modal
+        function closeModal() {
+            document.getElementById('forgotPasswordModal').classList.add('hidden');
+        }
     </script>
 </body>
 

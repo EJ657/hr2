@@ -19,286 +19,313 @@ checkAuth();
 </head>
 
 <body">
-    <div class="flex">
-        <!-- Sidebar -->
+    <div class="flex"></div>
+    <!-- Sidebar -->
+    <div class="fixed top-0 left-0 w-56 bg-[#fbfbfe] text-black border m-4 mr-0 rounded-lg overflow-hidden h-screen flex flex-col shadow-lg">
         <!-- Logo Section -->
-        <div class="fixed top-0 left-0 w-56 bg-[#fbfbfe] text-black border m-4 mr-0 rounded-lg overflow-hidden h-screen flex flex-col">
+        <div class="flex flex-col h-full bg-base-200 p-4 space-y-4 overflow-y-auto scrollbar-hide">
             <!-- Header with Icon -->
-            <div class="flex items-center justify-between px-5 mt-2">
-                <p class='m-4 mb-4 font-bold text-2xl text-center text-[#00446b]'>NextFleet Dynamics</p>
+            <div class="flex items-center justify-center mt-2 mb-4">
+                <img class="w-10 h-10 mr-2" src="icons/nexfleet.svg" alt="NextFleet Logo">
+                <p class="font-bold text-2xl text-center text-[#00446b]">NextFleet Dynamics</p>
             </div>
 
             <!-- Navigation Links -->
-            <ul class="flex-grow mt-2 space-y-3 px-4">
+            <ul class="flex flex-col space-y-3">
+
+                <!-- Dashboard Link -->
                 <li>
                     <a href="dashboard.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
                         <img class="w-5 h-5 mr-3" src="icons/dashboard.png" alt="Dashboard Icon">
                         <span>Dashboard</span>
                     </a>
                 </li>
+
+                <!-- Competency Management Link -->
                 <li>
                     <a href="competency.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
                         <img class="w-5 h-5 mr-3" src="icons/competency.png" alt="Competency Icon">
                         <span>Competency Management</span>
                     </a>
                 </li>
+
+                <!-- Learning & Training Management -->
                 <li>
-                    <a href="learning.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
-                        <img class="w-5 h-5 mr-3" src="icons/learningtraining.png" alt="Learning and Training Icon">
-                        <span>Learning & Training Management</span>
+                    <details class="group">
+                        <summary class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white cursor-pointer">
+                            <img class="w-5 h-5 mr-3" src="icons/learningtraining.png" alt="Learning and Training Icon">
+                            <span>Learning & Training Management</span>
+                        </summary>
+
+                        <!-- Submenu -->
+                        <ul class="p-2 space-y-2 pl-6">
+                            <li class="flex items-center">
+                                <img class="w-5 h-5 mr-3" src="icons/learningmodule.png" alt="Learning Module Icon">
+                                <a href="trainingmodule.php" class="block py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                                    Assign Module
+                                </a>
+                            </li>
+                            <li class="flex items-center">
+                                <img class="w-5 h-5 mr-3" src="icons/trainingemployeelist.png" alt="View Employees Icon">
+                                <a href="employees.php" class="block py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                                    View Employees
+                                </a>
+                            </li>
+                            <li class="flex items-center">
+                                <img class="w-5 h-5 mr-3" src="icons/learningmodulemanagement.png" alt="View Learning Modules Icon">
+                                <a href="trainingmodulemanagement.php" class="block py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                                    View Learning Modules
+                                </a>
+                            </li>
+                        </ul>
+                    </details>
+                </li>
+
+                <!-- AI -->
+                <li>
+                    <a href="ai.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/ai.png" alt="Robot Icon">
+                        <span>Automated Feedback Analysis</span>
                     </a>
                 </li>
+
+                <!-- Feedback Link -->
                 <li>
                     <a href="feedbacks.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
                         <img class="w-5 h-5 mr-3" src="icons/feedback.png" alt="Feedback Icon">
-                        <span>Feedback</span>
+                        <span>Review Request Feedback</span>
                     </a>
                 </li>
+
+                <!-- Logout Link -->
                 <li>
-                    <a href="logout.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                    <a href="logout.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white" onclick="return confirm('Are you sure you want to log out?');">
                         <img class="w-5 h-5 mr-3" src="icons/logout.png" alt="Logout Icon">
                         <span>Logout</span>
                     </a>
                 </li>
             </ul>
         </div>
+    </div>
 
-        <!-- Main Content -->
-        <div class="flex-grow p-6 overflow-auto flex flex-col bg-[#fbfbfe] ml-64">
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6 border-2 rounded-lg px-3 py-3">
-                <div class="col-span-4">
-                    <h2 class="text-4xl font-semibold text-gray-800">Competency Management</h2>
-                </div>
-            </div>
+    <style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
 
-            <!-- Search and Filter Section -->
-            <div class="flex items-center mb-6">
-                <input type="text" id="searchBar" oninput="filterItems()" placeholder="Search..."
-                    class="p-3 border border-gray-300 rounded-lg shadow-sm flex-1 mr-4 focus:ring focus:ring-[#00446b] focus:border-[#00446b] transition duration-200" />
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 
-                <!-- Active Button -->
-                <button id="activeButton" onclick="toggleStatus('active')"
-                    class="bg-[#00446b] text-white p-3 rounded-lg hover:bg-gray-600 transition duration-300 focus:ring focus:ring-gray-200">
-                    Active
-                </button>
-
-                <!-- Inactive Button -->
-                <button id="inactiveButton" onclick="toggleStatus('inactive')"
-                    class="bg-[#00446b] text-white p-3 rounded-lg hover:bg-gray-600 transition duration-300 ml-4 focus:ring focus:ring-gray-200">
-                    Inactive
-                </button>
-
-                <!-- Show All Button -->
-                <button id="showAllButton" onclick="toggleStatus('all')"
-                    class="bg-[#00446b] text-white p-3 rounded-lg hover:bg-gray-600 transition duration-300 ml-4 focus:ring focus:ring-gray-200">
-                    Show All
-                </button>
-            </div>
-
-            <!-- Form to Add Item -->
-            <form action="add_item.php" method="POST" id="crudForm" class="mb-8 p-6 bg-white rounded-lg shadow-lg">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                        <input type="text" id="name" placeholder="Name" name="name"
-                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b]" required minlength="2" maxlength="25" />
-                    </div>
-
-                    <div>
-                        <label for="hireDate" class="block text-sm font-medium text-gray-700 mb-1">Hire Date</label>
-                        <input type="date" id="hireDate" name="hireDate"
-                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required />
-                    </div>
-
-                    <div>
-                        <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                        <select id="status" name="status" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required>
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="jobPosition" class="block text-sm font-medium text-gray-700 mb-1">Job Position</label>
-                        <select id="jobPosition" name="jobPosition" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required>
-                            <option value="">Select Job Position</option>
-                            <option value="Operations Manager">Operations Manager</option>
-                            <option value="Transportation Supervisor">Transportation Supervisor</option>
-                            <option value="Fleet Manager">Fleet Manager</option>
-                            <option value="Route Planner">Route Planner</option>
-                            <option value="Safety and Compliance Manager">Safety and Compliance Manager</option>
-                            <option value="Customer Service Manager">Customer Service Manager</option>
-                            <option value="Bus Driver">Bus Driver</option>
-                            <option value="Bus Conductor">Bus Conductor</option>
-                            <option value="Bus Maintenance Mechanic">Bus Maintenance Mechanic</option>
-                            <option value="Customer Service">Customer Service</option>
-
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="department" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
-                        <select id="department" name="department" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required>
-                            <option value="">Select Department</option>
-                            <option value="Operations Department">Operations Department</option>
-                            <option value="Maintenance Department">Maintenance Department</option>
-                            <option value="Safety and Compliance Department">Safety and Compliance Department</option>
-                            <option value="Customer Service Department">Customer Service Department</option>
-                            <option value="Human Resources Department">Human Resources Department</option>
-                            <option value="Finance Department">Finance Department</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="workExpertise" class="block text-sm font-medium text-gray-700 mb-1">Soft Skills</label>
-                        <input type="text" id="workExpertise" name="workExpertise" placeholder="Ex. Communication, Adaptability, Problem-Solving"
-                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15" />
-                    </div>
-
-                    <div>
-                        <label for="technicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills(Hard Skills)</label>
-                        <input type="text" id="technicalSkills" name="technicalSkills" placeholder="Ex. Route Planning, Safety Protocols, Vehicle Maintenance"
-                            class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15" />
-                    </div>
-
-                    <button type="submit"
-                        class="col-span-2 bg-[#00446b] text-white p-3 rounded-lg bg-[#00446bec] transition duration-300 focus:ring focus:ring-[#00446b]">
-                        Add Employee
-                    </button>
-                </div>
-            </form>
-
-            <!-- Table to Display Items -->
-            <div class="overflow-x-auto bg-white p-6 rounded-lg shadow-lg">
-                <h3 class="text-2xl font-bold mb-4 text-gray-800">Employee List</h3>
-                <table class="min-w-full bg-white border border-gray-300">
-                    <colgroup>
-                        <col span="1" style="width: 10%;"> <!-- Name -->
-                        <col span="1" style="width: 12%;"> <!-- Department -->
-                        <col span="1" style="width: 12%;"> <!-- Request -->
-                        <col span="1" style="width: 18%;"> <!-- Hire Date  -->
-                        <col span="1" style="width: 10%;"> <!-- Status -->
-                        <col span="1" style="width: 12%;"> <!-- Job Position -->
-                        <col span="1" style="width: 12%;"> <!-- Soft Skill -->
-                        <col span="1" style="width: 12%;"> <!-- Technical Skills -->
-                        <col span="1" style="width: 10%;"> <!-- Actions -->
-                    </colgroup>
-                    <thead class="bg-gray-200 font-medium text-gray-700">
-                        <tr>
-                            <th class="py-3 px-4 border-b text-left">Name</th>
-                            <th class="py-3 px-4 border-b text-left">Department</th>
-                            <th class="py-3 px-4 border-b text-left">Request</th>
-                            <th class="py-3 px-4 border-b text-left">Hire Date</th>
-                            <th class="py-3 px-4 border-b text-left">Status</th>
-                            <th class="py-3 px-4 border-b text-left">Job Position</th>
-                            <th class="py-3 px-4 border-b text-left">Soft Skills</th>
-                            <th class="py-3 px-4 border-b text-left">Technical Skills</th>
-                            <th class="py-3 px-4 border-b text-left">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="itemTableBody">
-                        <!-- Dynamic content will be injected here -->
-                    </tbody>
-
-                </table>
-            </div>
-
-            <style>
-                .action-button {
-                    padding: 6px 12px;
-                    border-radius: 4px;
-                    font-size: 0.875rem;
-                    transition: background-color 0.3s, transform 0.2s;
-                }
-
-                .action-button:hover {
-                    transform: translateY(-2px);
-                }
-
-                table {
-                    width: 100%;
-                    border-collapse: collapse;
-                }
-
-                th,
-                td {
-                    text-align: left;
-                }
-
-                colgroup col:nth-child(4) {
-                    width: 18%;
-                }
-
-                td {
-                    vertical-align: middle;
-                }
-            </style>
-
-            <!-- Edit Item Modal -->
-            <div id="editModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-                <div class="bg-white p-8 rounded-lg shadow-lg max-w-3xl w-full">
-                    <h2 class="text-xl font-bold mb-4">Edit Employee</h2>
-                    <form id="editForm" onsubmit="updateItem(event)">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="editName" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                                <input type="text" id="editName" name="editName" placeholder="Name" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25" />
-                            </div>
-                            <div>
-                                <label for="editHireDate" class="block text-sm font-medium text-gray-700 mb-1">Hire Date</label>
-                                <input type="date" id="editHireDate" name="editHireDate" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required />
-                            </div>
-                            <div>
-                                <label for="editStatus" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                                <select id="editStatus" name="editStatus" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]">
-                                    <option value="active">Active</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="editJobPosition" class="block text-sm font-medium text-gray-700 mb-1">Job Position</label>
-                                <select id="editJobPosition" name="editJobPosition" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]">
-                                    <option value="">Select Job Position</option>
-                                    <option value="Operations Manager">Operations Manager</option>
-                                    <option value="Transportation Supervisor">Transportation Supervisor</option>
-                                    <option value="Fleet Manager">Fleet Manager</option>
-                                    <option value="Route Planner">Route Planner</option>
-                                    <option value="Safety and Compliance Manager">Safety and Compliance Manager</option>
-                                    <option value="Customer Service Manager">Customer Service Manager</option>
-                                    <option value="Bus Driver">Bus Driver</option>
-                                    <option value="Bus Conductor">Bus Conductor</option>
-                                    <option value="Bus Maintenance Mechanic">Bus Maintenance Mechanic</option>
-                                    <option value="Customer Service">Customer Service</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="editDepartment" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
-                                <select id="editDepartment" name="editDepartment" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]">
-                                    <option value="">Select Department</option>
-                                    <option value="Operations Department">Operations Department</option>
-                                    <option value="Maintenance Department">Maintenance Department</option>
-                                    <option value="Safety and Compliance Department">Safety and Compliance Department</option>
-                                    <option value="Customer Service Department">Customer Service Department</option>
-                                    <option value="Human Resources Department">Human Resources Department</option>
-                                    <option value="Finance Department">Finance Department</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="editWorkExpertise" class="block text-sm font-medium text-gray-700 mb-1">Soft Skills</label>
-                                <input type="text" id="editWorkExpertise" name="editWorkExpertise" placeholder="Soft Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25" />
-                            </div>
-                            <div>
-                                <label for="editTechnicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills(Hard Skills)</label>
-                                <input type="text" id="editTechnicalSkills" name="editTechnicalSkills" placeholder="Technical Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25" />
-                                <input type="hidden" id="editIndex" name="editIndex">
-                            </div>
-                            <button type="submit" class="col-span-2 bg-[#00446b] text-white p-3 rounded-lg hover:bg-[#00446b] transition duration-300 focus:ring focus:ring-[#00446b]">Update</button>
-                            <button type="button" onclick="closeEditModal()" class="col-span-2 bg-gray-500 text-white p-3 rounded-lg hover:bg-gray-600 transition duration-300 mt-2 focus:ring focus:ring-gray-200">Cancel</button>
-                        </div>
-                    </form>
-                </div>
+    <!-- Main Content -->
+    <div class="flex-grow p-6 overflow-auto flex flex-col bg-[#fbfbfe] ml-64">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6 border-2 rounded-lg px-3 py-3">
+            <div class="col-span-4">
+                <h2 class="text-4xl font-semibold text-gray-800">Competency Management</h2>
             </div>
         </div>
+
+        <!-- Search and Filter Section -->
+        <div class="flex items-center mb-6">
+            <input type="text" id="searchBar" oninput="filterItems()" placeholder="Search..."
+                class="p-3 border border-gray-300 rounded-lg shadow-sm flex-1 mr-4 focus:ring focus:ring-[#00446b] focus:border-[#00446b] transition duration-200" />
+
+            <!-- Active Button -->
+            <button id="activeButton" onclick="toggleStatus('active')"
+                class="bg-[#00446b] text-white p-3 rounded-lg hover:bg-gray-600 transition duration-300 focus:ring focus:ring-gray-200">
+                Active
+            </button>
+
+            <!-- Inactive Button -->
+            <button id="inactiveButton" onclick="toggleStatus('inactive')"
+                class="bg-[#00446b] text-white p-3 rounded-lg hover:bg-gray-600 transition duration-300 ml-4 focus:ring focus:ring-gray-200">
+                Inactive
+            </button>
+
+            <!-- Show All Button -->
+            <button id="showAllButton" onclick="toggleStatus('all')"
+                class="bg-[#00446b] text-white p-3 rounded-lg hover:bg-gray-600 transition duration-300 ml-4 focus:ring focus:ring-gray-200">
+                Show All
+            </button>
+        </div>
+
+        <!-- Form to Add Item -->
+        <form action="add_item.php" method="POST" id="crudForm" class="mb-8 p-6 bg-white rounded-lg shadow-lg">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                    <input type="text" id="name" placeholder="Name" name="name"
+                        class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b]" required minlength="2" maxlength="25" />
+                </div>
+
+                <div>
+                    <label for="hireDate" class="block text-sm font-medium text-gray-700 mb-1">Hire Date</label>
+                    <input type="date" id="hireDate" name="hireDate"
+                        class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required />
+                </div>
+
+                <div>
+                    <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                    <select id="status" name="status" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="jobPosition" class="block text-sm font-medium text-gray-700 mb-1">Job Position</label>
+                    <select id="jobPosition" name="jobPosition" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required>
+                        <option value="">Select Job Position</option>
+                        <option value="Operations Manager">Operations Manager</option>
+                        <option value="Transportation Supervisor">Transportation Supervisor</option>
+                        <option value="Fleet Manager">Fleet Manager</option>
+                        <option value="Route Planner">Route Planner</option>
+                        <option value="Safety and Compliance Manager">Safety and Compliance Manager</option>
+                        <option value="Customer Service Manager">Customer Service Manager</option>
+                        <option value="Bus Driver">Bus Driver</option>
+                        <option value="Bus Conductor">Bus Conductor</option>
+                        <option value="Bus Maintenance Mechanic">Bus Maintenance Mechanic</option>
+                        <option value="Customer Service">Customer Service</option>
+
+                    </select>
+                </div>
+
+                <div>
+                    <label for="department" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
+                    <select id="department" name="department" class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required>
+                        <option value="">Select Department</option>
+                        <option value="Operations Department">Bus Transportation Department</option>
+                        <option value="Operations Department">Operations Department</option>
+                        <option value="Maintenance Department">Maintenance Department</option>
+                        <option value="Safety and Compliance Department">Safety and Compliance Department</option>
+                        <option value="Customer Service Department">Customer Service Department</option>
+                        <option value="Human Resources Department">Human Resources Department</option>
+                        <option value="Finance Department">Finance Department</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="workExpertise" class="block text-sm font-medium text-gray-700 mb-1">Soft Skills</label>
+                    <input type="text" id="workExpertise" name="workExpertise" placeholder="Ex. Communication, Adaptability, Problem-Solving"
+                        class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15" />
+                </div>
+
+                <div>
+                    <label for="technicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills(Hard Skills)</label>
+                    <input type="text" id="technicalSkills" name="technicalSkills" placeholder="Ex. Route Planning, Safety Protocols, Vehicle Maintenance"
+                        class="p-3 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="15" />
+                </div>
+
+                <button type="submit"
+                    class="col-span-2 bg-[#00446b] text-white p-3 rounded-lg bg-[#00446bec] transition duration-300 focus:ring focus:ring-[#00446b]">
+                    Add Employee
+                </button>
+            </div>
+        </form>
+
+        <!-- Table to Display Items -->
+        <div class="overflow-x-auto bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">Employee List</h3>
+            <table class="min-w-full bg-white border border-gray-300">
+                <colgroup>
+                    <col span="1" style="width: 10%;"> <!-- Name -->
+                    <col span="1" style="width: 12%;"> <!-- Department -->
+                    <col span="1" style="width: 12%;"> <!-- Request -->
+                    <col span="1" style="width: 18%;"> <!-- Hire Date  -->
+                    <col span="1" style="width: 10%;"> <!-- Status -->
+                    <col span="1" style="width: 12%;"> <!-- Job Position -->
+                    <col span="1" style="width: 12%;"> <!-- Soft Skill -->
+                    <col span="1" style="width: 12%;"> <!-- Technical Skills -->
+                    <col span="1" style="width: 10%;"> <!-- Actions -->
+                </colgroup>
+                <thead class="bg-gray-200 font-medium text-gray-700">
+                    <tr>
+                        <th class="py-3 px-4 border-b text-left">Name</th>
+                        <th class="py-3 px-4 border-b text-left">Department</th>
+                        <th class="py-3 px-4 border-b text-left">Request</th>
+                        <th class="py-3 px-4 border-b text-left">Hire Date</th>
+                        <th class="py-3 px-4 border-b text-left">Status</th>
+                        <th class="py-3 px-4 border-b text-left">Job Position</th>
+                        <th class="py-3 px-4 border-b text-left">Soft Skills</th>
+                        <th class="py-3 px-4 border-b text-left">Technical Skills</th>
+                        <th class="py-3 px-4 border-b text-left">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="itemTableBody">
+                    <!-- Dynamic content will be injected here -->
+                </tbody>
+
+            </table>
+        </div>
+
+        <!-- Edit Item Modal -->
+        <div id="editModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+            <div class="bg-white p-8 rounded-lg shadow-lg max-w-3xl w-full">
+                <h2 class="text-xl font-bold mb-4">Edit Employee</h2>
+                <form id="editForm" onsubmit="updateItem(event)">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="editName" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                            <input type="text" id="editName" name="editName" placeholder="Name" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25" />
+                        </div>
+                        <div>
+                            <label for="editHireDate" class="block text-sm font-medium text-gray-700 mb-1">Hire Date</label>
+                            <input type="date" id="editHireDate" name="editHireDate" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required />
+                        </div>
+                        <div>
+                            <label for="editStatus" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                            <select id="editStatus" name="editStatus" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]">
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="editJobPosition" class="block text-sm font-medium text-gray-700 mb-1">Job Position</label>
+                            <select id="editJobPosition" name="editJobPosition" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]">
+                                <option value="">Select Job Position</option>
+                                <option value="Operations Manager">Operations Manager</option>
+                                <option value="Transportation Supervisor">Transportation Supervisor</option>
+                                <option value="Fleet Manager">Fleet Manager</option>
+                                <option value="Route Planner">Route Planner</option>
+                                <option value="Safety and Compliance Manager">Safety and Compliance Manager</option>
+                                <option value="Customer Service Manager">Customer Service Manager</option>
+                                <option value="Bus Driver">Bus Driver</option>
+                                <option value="Bus Conductor">Bus Conductor</option>
+                                <option value="Bus Maintenance Mechanic">Bus Maintenance Mechanic</option>
+                                <option value="Customer Service">Customer Service</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="editDepartment" class="block text-sm font-medium text-gray-700 mb-1">Department</label>
+                            <select id="editDepartment" name="editDepartment" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]">
+                                <option value="">Select Department</option>
+                                <option value="Operations Department">Bus Transportation Department</option>
+                                <option value="Operations Department">Operations Department</option>
+                                <option value="Maintenance Department">Maintenance Department</option>
+                                <option value="Safety and Compliance Department">Safety and Compliance Department</option>
+                                <option value="Customer Service Department">Customer Service Department</option>
+                                <option value="Human Resources Department">Human Resources Department</option>
+                                <option value="Finance Department">Finance Department</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="editWorkExpertise" class="block text-sm font-medium text-gray-700 mb-1">Soft Skills</label>
+                            <input type="text" id="editWorkExpertise" name="editWorkExpertise" placeholder="Soft Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25" />
+                        </div>
+                        <div>
+                            <label for="editTechnicalSkills" class="block text-sm font-medium text-gray-700 mb-1">Technical Skills(Hard Skills)</label>
+                            <input type="text" id="editTechnicalSkills" name="editTechnicalSkills" placeholder="Technical Skills" class="p-4 border border-gray-300 rounded-lg w-full focus:ring focus:ring-[#00446b] focus:border-[#00446b]" required minlength="2" maxlength="25" />
+                            <input type="hidden" id="editIndex" name="editIndex">
+                        </div>
+                        <button type="submit" class="col-span-2 bg-[#00446b] text-white p-3 rounded-lg hover:bg-[#00446b] transition duration-300 focus:ring focus:ring-[#00446b]">Update</button>
+                        <button type="button" onclick="closeEditModal()" class="col-span-2 bg-gray-500 text-white p-3 rounded-lg hover:bg-gray-600 transition duration-300 mt-2 focus:ring focus:ring-gray-200">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     </div>
 
     <script>
