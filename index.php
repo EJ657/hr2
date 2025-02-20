@@ -33,8 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: dashboard.php"); // Admin dashboard
             } elseif ($usertype == 'employee') {
                 header("Location: 2employeedashboard.php"); // Employee dashboard
-            } elseif ($usertype == 'staff') {
-                header("Location: 3staffdashboard.php"); // Staff dashboard
             }
             exit();
         } else {

@@ -1,1 +1,26 @@
+# Ignore environment variables file
+.env
+
+# Node.js dependencies
 node_modules/
+
+# Laravel / Composer directories
+vendor/
+
+# .env local configurations
+*.env.local
+
+# Logs
+*.log
+
+# Cache files
+*.cache
+
+# IDE files (e.g., Visual Studio Code)
+.vscode/
+
+# Operating system files (macOS)
+.DS_Store
+
+# Windows thumbs.db
+Thumbs.db
