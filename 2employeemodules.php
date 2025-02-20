@@ -123,7 +123,7 @@ checkAuth(); // Call the function to check if user is authenticated
             <div class="fixed top-0 left-64 right-0 z-10 bg-white shadow-md">
                 <div class="flex justify-between items-center py-3 px-6 border-b-2">
                     <div>
-                        <h2 class="text-4xl font-semibold text-gray-800">Employee Management Dashboard</h2>
+                        <h2 class="text-4xl font-semibold text-gray-800">Employee Modules</h2>
                     </div>
                     <div class="flex items-center space-x-4">
                         <!-- Notification Icon -->
