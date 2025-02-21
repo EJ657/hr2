@@ -80,7 +80,7 @@ checkAuth();
                             </li>
                             <li class="flex items-center">
                                 <img class="w-5 h-5 mr-3" src="icons/learningmodulemanagement.png" alt="View Learning Modules Icon">
-                                <a href="trainingmodulemanagement.php" class="block py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                                <a href="viewlearningmodule.php" class="block py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
                                     View Learning Modules
                                 </a>
                             </li>
@@ -295,27 +295,21 @@ checkAuth();
             </script>
 
             <!-- Enrollment Learning Module Form -->
-            <form id="enrollmentForm" class="p-8 bg-white rounded-lg shadow-md max-w-lg mx-auto">
+            <form id="enrollmentForm" class="p-8 bg-white rounded-lg shadow-md max-w-4xl mx-auto space-y-6 mt-16">
 
                 <!-- Employee Name -->
                 <div class="mb-6">
-                    <label for="employeeName" class="block text-gray-700 font-medium mb-2">Select Employee:</label>
-                    <select id="employeeName" class="block w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-[#00446b]">
+                    <label for="employeeName" class="block text-gray-700 font-medium mb-2 text-xl">Select Employee:</label>
+                    <select id="employeeName" class="block w-full border border-gray-300 rounded-lg p-4 focus:ring focus:ring-[#00446b] text-lg">
                         <option value="">-- Select Employee --</option>
                         <!-- Options will be dynamically populated here -->
                     </select>
                 </div>
 
-                <!-- Employee Email -->
-                <div class="mb-6">
-                    <label for="email" class="block text-gray-700 font-medium mb-2">Employee Email:</label>
-                    <input type="email" id="email" required placeholder="example@gmail.com" class="block w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-[#00446b]" />
-                </div>
-
                 <!-- Select Module -->
                 <div class="mb-6">
-                    <label for="module" class="block text-gray-700 font-medium mb-2">Select Module:</label>
-                    <select id="module" class="block w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-[#00446b]">
+                    <label for="module" class="block text-gray-700 font-medium mb-2 text-xl">Select Module:</label>
+                    <select id="module" class="block w-full border border-gray-300 rounded-lg p-4 focus:ring focus:ring-[#00446b] text-lg">
                         <option value="">-- Select Module --</option>
                         <option value="Module 1">Defensive Driving Techniques</option>
                         <option value="Module 2">Customer Service Fundamentals</option>
@@ -335,23 +329,8 @@ checkAuth();
                     </select>
                 </div>
 
-                <!-- Department -->
-                <div class="mb-6">
-                    <label for="department" class="block text-gray-700 font-medium mb-2">Department:</label>
-                    <select id="department" class="block w-full border border-gray-300 rounded-lg p-3 focus:ring focus:ring-[#00446b]">
-                        <option value="">Select Department</option>
-                        <option value="Operations Department">Bus Transportation Department</option>
-                        <option value="Operations Department">Operations Department</option>
-                        <option value="Maintenance Department">Maintenance Department</option>
-                        <option value="Safety and Compliance Department">Safety and Compliance Department</option>
-                        <option value="Customer Service Department">Customer Service Department</option>
-                        <option value="Human Resources Department">Human Resources Department</option>
-                        <option value="Finance Department">Finance Department</option>
-                    </select>
-                </div>
-
                 <!-- Enroll Button -->
-                <button type="button" id="enrollButton" class="w-full bg-[#00446b] text-white rounded-lg p-3 hover:bg-[#00446be8] transition duration-300">Enroll Employee</button>
+                <button type="button" id="enrollButton" class="w-full bg-[#00446b] text-white rounded-lg p-4 text-lg hover:bg-[#00446be8] transition duration-300">Enroll Employee</button>
             </form>
         </div>
 
@@ -373,8 +352,6 @@ checkAuth();
                 });
             }
 
-
-
             // Call the function to populate the dropdown on page load
             document.addEventListener('DOMContentLoaded', populateEmployeeDropdown);
 
@@ -382,12 +359,10 @@ checkAuth();
             document.getElementById('enrollButton').addEventListener('click', function() {
                 // Get the form values
                 const employeeName = document.getElementById('employeeName').value.trim();
-                const email = document.getElementById('email').value.trim();
                 const module = document.getElementById('module').value;
-                const department = document.getElementById('department').value;
 
                 // Validate the form fields
-                if (employeeName && email && module && department) {
+                if (employeeName && module) {
                     alert(`Employee ${employeeName} enrolled successfully!`);
                     document.getElementById('enrollmentForm').reset();
                 } else {
