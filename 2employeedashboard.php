@@ -27,36 +27,38 @@ checkAuth(); // Call the function to check if user is authenticated
             <div class="flex flex-col h-full bg-base-200 p-4 space-y-4 overflow-y-auto scrollbar-hide">
                 <!-- Header with Icon -->
                 <div class="flex items-center justify-center mt-2 mb-4">
-                    <img class="w-10 h-10 mr-2" src="icons/nexfleet.svg" alt="NextFleet Logo">
-                    <p class="font-bold text-2xl text-center text-[#00446b]">NextFleet Dynamics</p>
+                    <a href="2employeedashboard.php" class="flex items-center">
+                        <img class="w-10 h-10 mr-2" src="icons/nexfleet.svg" alt="NextFleet Logo">
+                        <p class="font-bold text-2xl text-center text-[#00446b]">NextFleet Dynamics</p>
+                    </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <ul class="flex flex-col space-y-3">
 
-                    <!-- Dashboard Link -->
+                    <!-- Employee Dashboard Link -->
                     <li>
-                        <a href="dashboard.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
-                            <img class="w-5 h-5 mr-3" src="icons/dashboard.png" alt="Dashboard Icon">
+                        <a href="2employeedashboard.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                            <img class="w-5 h-5 mr-3" src="icons/dashboard.png" alt="Employee Dashboard Icon">
                             <span>Dashboard</span>
                         </a>
                     </li>
 
-                    <!-- Competency Management Link -->
+                    <!-- Employee Module Link -->
                     <li>
-                        <a href="competency.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
-                            <img class="w-5 h-5 mr-3" src="icons/competency.png" alt="Competency Icon">
-                            <span>Competency Management</span>
+                        <a href="2employeemodules.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                            <img class="w-5 h-5 mr-3" src="icons/competency.png" alt="Module Icon">
+                            <span>Modules</span>
                         </a>
                     </li>
 
-                    <!-- Learning & Training Management -->
+                    <!-- Others -->
                     <li>
                         <details class="group">
                             <summary class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white cursor-pointer">
                                 <div class="flex items-center">
-                                    <img class="w-5 h-5 mr-3" src="icons/learningtraining.png" alt="Learning and Training Icon">
-                                    <span>Learning & Training Management</span>
+                                    <img class="w-5 h-5 mr-3" src="icons/learningtraining.png" alt="Others Icon">
+                                    <span>Others</span>
                                 </div>
                                 <svg class="w-5 h-5 transition-transform transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -67,40 +69,24 @@ checkAuth(); // Call the function to check if user is authenticated
                             <ul class="p-2 space-y-2 pl-6">
                                 <li class="flex items-center">
                                     <img class="w-5 h-5 mr-3" src="icons/learningmodule.png" alt="Learning Module Icon">
-                                    <a href="trainingmodule.php" class="block py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
-                                        Assign Module
+                                    <a href="2messageadmin.php" class="block py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                                        Message Admin
                                     </a>
                                 </li>
                                 <li class="flex items-center">
                                     <img class="w-5 h-5 mr-3" src="icons/trainingemployeelist.png" alt="View Employees Icon">
-                                    <a href="employees.php" class="block py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
-                                        View Employees
+                                    <a href="2settings.php" class="block py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                                        Settings
                                     </a>
                                 </li>
                                 <li class="flex items-center">
                                     <img class="w-5 h-5 mr-3" src="icons/learningmodulemanagement.png" alt="View Learning Modules Icon">
-                                    <a href="trainingmodulemanagement.php" class="block py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
-                                        View Learning Modules
+                                    <a href="2aboutus.php" class="block py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                                        About us
                                     </a>
                                 </li>
                             </ul>
                         </details>
-                    </li>
-
-                    <!-- AI -->
-                    <li>
-                        <a href="ai.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
-                            <img class="w-5 h-5 mr-3" src="icons/ai.png" alt="Robot Icon">
-                            <span>Automated Feedback Analysis</span>
-                        </a>
-                    </li>
-
-                    <!-- Feedback Link -->
-                    <li>
-                        <a href="feedbacks.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
-                            <img class="w-5 h-5 mr-3" src="icons/feedback.png" alt="Feedback Icon">
-                            <span>Review Request Feedback</span>
-                        </a>
                     </li>
                 </ul>
             </div>
@@ -239,15 +225,15 @@ checkAuth(); // Call the function to check if user is authenticated
                             </div>
                             <div class="mb-4">
                                 <label for="profileName" class="block text-gray-700">Name</label>
-                                <input type="text" id="profileName" class="w-full border rounded px-3 py-2 bg-gray-100" placeholder="Admin" disabled>
+                                <input type="text" id="profileName" class="w-full border rounded px-3 py-2 bg-gray-100" placeholder="Employee" disabled>
                             </div>
                             <div class="mb-4">
                                 <label for="profileEmail" class="block text-gray-700">Email</label>
-                                <input type="email" id="profileEmail" class="w-full border rounded px-3 py-2" value="admin@gmail.com" disabled>
+                                <input type="email" id="profileEmail" class="w-full border rounded px-3 py-2" value="employee@gmail.com" disabled>
                             </div>
                             <div class="mb-4">
                                 <label for="profileRole" class="block text-gray-700">Role</label>
-                                <input type="text" id="profileRole" class="w-full border rounded px-3 py-2" value="admin" disabled>
+                                <input type="text" id="profileRole" class="w-full border rounded px-3 py-2" value="employee" disabled>
                             </div>
                             <div class="flex justify-end">
                                 <button onclick="saveProfileDetails()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Save</button>
@@ -262,7 +248,7 @@ checkAuth(); // Call the function to check if user is authenticated
                             <p class="mb-4">Are you sure you want to log out?</p>
                             <div class="flex justify-end space-x-4">
                                 <button onclick="closeLogoutModal()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700">Cancel</button>
-                                <a href="logout.php" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Log Out</a>
+                                <a href="logout.php" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-blue-700">Log Out</a>
                             </div>
                         </div>
                     </div>

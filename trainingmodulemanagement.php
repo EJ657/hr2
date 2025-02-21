@@ -26,8 +26,10 @@ checkAuth();
         <div class="flex flex-col h-full bg-base-200 p-4 space-y-4 overflow-y-auto scrollbar-hide">
             <!-- Header with Icon -->
             <div class="flex items-center justify-center mt-2 mb-4">
-                <img class="w-10 h-10 mr-2" src="icons/nexfleet.svg" alt="NextFleet Logo">
-                <p class="font-bold text-2xl text-center text-[#00446b]">NextFleet Dynamics</p>
+                <a href="dashboard.php" class="flex items-center">
+                    <img class="w-10 h-10 mr-2" src="icons/nexfleet.svg" alt="NextFleet Logo">
+                    <p class="font-bold text-2xl text-center text-[#00446b]">NextFleet Dynamics</p>
+                </a>
             </div>
 
             <!-- Navigation Links -->

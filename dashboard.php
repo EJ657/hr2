@@ -28,8 +28,10 @@ checkAuth(); // Call the function to check if user is authenticated
         <div class="flex flex-col h-full bg-base-200 p-4 space-y-4 overflow-y-auto scrollbar-hide">
             <!-- Header with Icon -->
             <div class="flex items-center justify-center mt-2 mb-4">
-                <img class="w-10 h-10 mr-2" src="icons/nexfleet.svg" alt="NextFleet Logo">
-                <p class="font-bold text-2xl text-center text-[#00446b]">NextFleet Dynamics</p>
+                <a href="dashboard.php" class="flex items-center">
+                    <img class="w-10 h-10 mr-2" src="icons/nexfleet.svg" alt="NextFleet Logo">
+                    <p class="font-bold text-2xl text-center text-[#00446b]">NextFleet Dynamics</p>
+                </a>
             </div>
 
             <!-- Navigation Links -->
@@ -93,6 +95,14 @@ checkAuth(); // Call the function to check if user is authenticated
                     <a href="ai.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
                         <img class="w-5 h-5 mr-3" src="icons/ai.png" alt="Robot Icon">
                         <span>Automated Feedback Analysis</span>
+                    </a>
+                </li>
+
+                <!-- Employee Reviews Link -->
+                <li>
+                    <a href="feedbacks.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                        <img class="w-5 h-5 mr-3" src="icons/feedback.png" alt="Feedback Icon">
+                        <span>Employee Reviews</span>
                     </a>
                 </li>
 
@@ -278,21 +288,21 @@ checkAuth(); // Call the function to check if user is authenticated
                 <!-- Metric 1: Total Active Modules -->
                 <div class="bg-gradient-to-r bg-[#00446b] p-6 rounded-lg text-white shadow-lg hover:shadow-2xl transition-all transform hover:scale-105">
                     <h3 class="text-sm font-semibold opacity-90">Total Active Modules</h3>
-                    <p class="text-4xl font-bold text-white">10</p>
+                    <p class="text-4xl font-bold text-white">15</p>
                     <p class="mt-2 text-xs text-gray-200 opacity-70">Total active modules available in the system</p>
                 </div>
 
                 <!-- Metric 2: Total Participants -->
                 <div class="bg-gradient-to-r bg-[#00446b] p-6 rounded-lg text-white shadow-lg hover:shadow-2xl transition-all transform hover:scale-105">
                     <h3 class="text-sm font-semibold opacity-90">Total Participants</h3>
-                    <p class="text-4xl font-bold text-white">30</p>
+                    <p class="text-4xl font-bold text-white">1</p>
                     <p class="mt-2 text-xs text-gray-200 opacity-70">Total number of registered participants</p>
                 </div>
 
                 <!-- Metric 3: Participants in Training Session -->
                 <div class="bg-gradient-to-r bg-[#00446b] p-6 rounded-lg text-white shadow-lg hover:shadow-2xl transition-all transform hover:scale-105">
                     <h3 class="text-sm font-semibold opacity-90">Participants in Training Session</h3>
-                    <p class="text-4xl font-bold text-white">20</p>
+                    <p class="text-4xl font-bold text-white">1</p>
                     <p class="mt-2 text-xs text-gray-200 opacity-70">Number of participants currently in training</p>
                 </div>
             </div>
