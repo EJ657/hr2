@@ -15,10 +15,11 @@ checkAuth();
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./icons/nexfleet.svg">
-    <title>Human Resources - Training Module</title>
+    <title>Human Resources 2</title>
 </head>
 
 <body class="custom-bg">
+
     <div class="flex"></div>
     <!-- Sidebar -->
     <div class="fixed top-0 left-0 w-56 bg-[#fbfbfe] text-black border m-4 mr-0 rounded-lg overflow-hidden h-screen flex flex-col shadow-lg">
@@ -295,7 +296,7 @@ checkAuth();
         </div>
 
         <!-- Content Section -->
-        <div class="mt-16">
+        <div class="mt-2">
 
             <script>
                 // Toggle profile dropdown visibility
@@ -317,84 +318,78 @@ checkAuth();
                     }
                 }
             </script>
-
-            <!-- Enrollment Learning Module Form -->
-            <form id="enrollmentForm" class="p-8 bg-white rounded-lg shadow-md max-w-4xl mx-auto space-y-6 mt-16">
-
-                <!-- Employee Name -->
-                <div class="mb-6">
-                    <label for="employeeName" class="block text-gray-700 font-medium mb-2 text-xl">Select Employee:</label>
-                    <select id="employeeName" class="block w-full border border-gray-300 rounded-lg p-4 focus:ring focus:ring-[#00446b] text-lg">
-                        <option value="">-- Select Employee --</option>
-                        <!-- Options will be dynamically populated here -->
-                    </select>
-                </div>
-
-                <!-- Select Module -->
-                <div class="mb-6">
-                    <label for="module" class="block text-gray-700 font-medium mb-2 text-xl">Select Module:</label>
-                    <select id="module" class="block w-full border border-gray-300 rounded-lg p-4 focus:ring focus:ring-[#00446b] text-lg">
-                        <option value="">-- Select Module --</option>
-                        <option value="Module 1">Defensive Driving Techniques</option>
-                        <option value="Module 2">Customer Service Fundamentals</option>
-                        <option value="Module 3">Bus Repair and Maintenance Basics</option>
-                        <option value="Module 4">Effective Communication Skills</option>
-                        <option value="Module 5">Emergency Response Procedures</option>
-                        <option value="Module 6">Conflict Resolution in the Workplace</option>
-                        <option value="Module 7">Digital Marketing Essentials</option>
-                        <option value="Module 8">Financial Reporting and Analysis</option>
-                        <option value="Module 9">Leadership and Management Skills</option>
-                        <option value="Module 10">Supply Chain Management Basics</option>
-                        <option value="Module 11">Fleet and Transportation Management</option>
-                        <option value="Module 12">Route Planning and Optimization</option>
-                        <option value="Module 13">Health and Safety Training</option>
-                        <option value="Module 14">Complaint Handling and Resolution</option>
-                        <option value="Module 15">Vehicle Operations and Safety</option>
-                    </select>
-                </div>
-
-                <!-- Enroll Button -->
-                <button type="button" id="enrollButton" class="w-full bg-[#00446b] text-white rounded-lg p-4 text-lg hover:bg-[#00446be8] transition duration-300">Enroll Employee</button>
-            </form>
+        </div>
+        <!-- Simple Realtime Messaging System -->
+        <div class="flex flex-col h-full mt-24">
+            <div class="flex-grow p-4 overflow-y-auto bg-white rounded-lg shadow-md flex flex-col-reverse">
+            <div id="messages" class="space-y-4 flex flex-col-reverse">
+                <!-- Messages will be dynamically loaded here -->
+            </div>
+            </div>
+            <div class="mt-4 flex items-center">
+            <input id="messageInput" type="text" class="flex-grow border rounded px-4 py-2" placeholder="Type your message...">
+            <input id="fileInput" type="file" class="ml-4">
+            <button id="sendButton" class="ml-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Send</button>
+            </div>
         </div>
 
         <script>
-            // Retrieve employee data from localStorage and populate the select dropdown
-            function populateEmployeeDropdown() {
-                const employeeNameSelect = document.getElementById('employeeName');
-                const employees = JSON.parse(localStorage.getItem('employees')) || [];
+            // Function to add a message to the chat
+            function addMessage(message, isOwnMessage = false, isFile = false) {
+                const messageContainer = document.createElement('div');
+                messageContainer.classList.add('flex', isOwnMessage ? 'justify-end' : 'justify-start');
 
-                // Clear previous options
-                employeeNameSelect.innerHTML = '<option value="">-- Select Employee --</option>';
+                const messageBubble = document.createElement('div');
+                messageBubble.classList.add('px-4', 'py-2', 'rounded-lg', 'shadow-md', isOwnMessage ? 'bg-blue-500' : 'bg-gray-200', isOwnMessage ? 'text-white' : 'text-black');
 
-                // Add each employee to the dropdown
-                employees.forEach(employee => {
-                    const option = document.createElement('option');
-                    option.value = employee.name;
-                    option.textContent = employee.name;
-                    employeeNameSelect.appendChild(option);
-                });
+                if (isFile) {
+                    const fileLink = document.createElement('a');
+                    fileLink.href = message;
+                    fileLink.target = '_blank';
+                    fileLink.textContent = 'View Attachment';
+                    messageBubble.appendChild(fileLink);
+                } else {
+                    messageBubble.textContent = message;
+                }
+
+                messageContainer.appendChild(messageBubble);
+                document.getElementById('messages').prepend(messageContainer);
+                document.getElementById('messages').scrollTop = 0;
             }
 
-            // Call the function to populate the dropdown on page load
-            document.addEventListener('DOMContentLoaded', populateEmployeeDropdown);
+            // Event listener for the send button
+            document.getElementById('sendButton').addEventListener('click', function() {
+                const messageInput = document.getElementById('messageInput');
+                const fileInput = document.getElementById('fileInput');
+                const message = messageInput.value.trim();
 
-            // Listen for the Enroll button click event
-            document.getElementById('enrollButton').addEventListener('click', function() {
-                // Get the form values
-                const employeeName = document.getElementById('employeeName').value.trim();
-                const module = document.getElementById('module').value;
-
-                // Validate the form fields
-                if (employeeName && module) {
-                    alert(`Employee ${employeeName} enrolled successfully!`);
-                    document.getElementById('enrollmentForm').reset();
-                } else {
-                    alert('Please fill in all fields.');
+                if (fileInput.files.length > 0) {
+                    const file = fileInput.files[0];
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        addMessage(e.target.result, true, true);
+                        // Here you would typically send the file to the server
+                    };
+                    reader.readAsDataURL(file);
+                    fileInput.value = '';
+                } else if (message) {
+                    addMessage(message, true);
+                    messageInput.value = '';
+                    // Here you would typically send the message to the server
                 }
             });
+
+            // Function to simulate receiving a message from another user
+            function receiveMessage(message, isFile = false) {
+                addMessage(message, false, isFile);
+            }
+
+            // Example of receiving a message from another user
+            // This should be replaced with actual logic to receive messages from the server
+            // setTimeout(() => {
+            //     receiveMessage('Hello! How can I help you today?');
+            // }, 2000);
         </script>
-    </div>
 
 </body>
 

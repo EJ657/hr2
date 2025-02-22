@@ -85,24 +85,48 @@ checkAuth();
                                     View Learning Modules
                                 </a>
                             </li>
+                            <!-- AI -->
+                            <li>
+                                <a href="ai.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                                    <img class="w-5 h-5 mr-3" src="icons/ai.png" alt="Robot Icon">
+                                    <span>Automated Feedback Analysis</span>
+                                </a>
+                            </li>
                         </ul>
                     </details>
                 </li>
-
-                <!-- AI -->
                 <li>
-                    <a href="ai.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
-                        <img class="w-5 h-5 mr-3" src="icons/ai.png" alt="Robot Icon">
-                        <span>Automated Feedback Analysis</span>
-                    </a>
-                </li>
+                    <!-- Others -->
+                    <details class="group">
+                        <summary class="flex items-center justify-between py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white cursor-pointer">
+                            <div class="flex items-center">
+                                <img class="w-5 h-5 mr-3" src="icons/settings.png" alt="Settings Icon">
+                                <span>Others</span>
+                            </div>
+                            <svg class="w-5 h-5 transition-transform transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </summary>
 
-                <!-- Feedback Link -->
-                <li>
-                    <a href="feedbacks.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
-                        <img class="w-5 h-5 mr-3" src="icons/feedback.png" alt="Feedback Icon">
-                        <span>Review Request Feedback</span>
-                    </a>
+                        <!-- Submenu -->
+                        <ul class="p-2 space-y-2 pl-6">
+                            <li class="flex items-center">
+                                <!-- Message Integration Link -->
+                                <a href="messages.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                                    <img class="w-5 h-5 mr-3" src="icons/message.png" alt="Message Icon">
+                                    <span>Messages</span>
+                                </a>
+                            </li>
+
+                            <!-- Feedback Link -->
+                            <li class="flex items-center">
+                                <a href="feedbacks.php" class="flex items-center py-2 px-4 font-semibold rounded transition-colors duration-300 ease-in-out hover:bg-[#00446b] hover:text-white">
+                                    <img class="w-5 h-5 mr-3" src="icons/reviewrequestacc.png" alt="Feedback Icon">
+                                    <span>Review Request Account</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </details>
                 </li>
             </ul>
         </div>
@@ -294,6 +318,39 @@ checkAuth();
                     }
                 }
             </script>
+        </div>
+        <!-- Account Review Request -->
+        <div class="mt-8">
+            <h2 class="text-2xl font-semibold mb-4">Account Review Requests</h2>
+            <div class="overflow-x-auto">
+            <table class="table-auto w-full bg-white rounded-lg shadow-lg">
+                <thead>
+                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                    <th class="py-3 px-6 text-left">Email</th>
+                    <th class="py-3 px-6 text-left">Reason for Request</th>
+                    <th class="py-3 px-6 text-center">Actions</th>
+                </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                <tr class='border-b border-gray-200 hover:bg-gray-100'>
+                    <td class='py-3 px-6 text-left whitespace-nowrap'>example@example.com</td>
+                    <td class='py-3 px-6 text-left'>Forgot password due to multiple attempts</td>
+                    <td class='py-3 px-6 text-center'>
+                    <button class='bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700'>Approve</button>
+                    <button class='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 ml-2'>Reject</button>
+                    </td>
+                </tr>
+                <tr class='border-b border-gray-200 hover:bg-gray-100'>
+                    <td class='py-3 px-6 text-left whitespace-nowrap'>user@example.com</td>
+                    <td class='py-3 px-6 text-left'>Unable to access email for reset</td>
+                    <td class='py-3 px-6 text-center'>
+                    <button class='bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700'>Approve</button>
+                    <button class='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 ml-2'>Reject</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
         </div>
 </body>
 
