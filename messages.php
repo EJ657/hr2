@@ -276,7 +276,7 @@ checkAuth();
                             <input type="text" id="profileRole" class="w-full border rounded px-3 py-2" value="admin" disabled>
                         </div>
                         <div class="flex justify-end">
-                            <button onclick="saveProfileDetails()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Save</button>
+                            <button onclick="saveProfileDetails()" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-gray-700">Save</button>
                         </div>
                     </div>
                 </div>
@@ -288,7 +288,7 @@ checkAuth();
                         <p class="mb-4">Are you sure you want to log out?</p>
                         <div class="flex justify-end space-x-4">
                             <button onclick="closeLogoutModal()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700">Cancel</button>
-                            <a href="logout.php" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-blue-700">Log Out</a>
+                            <a href="logout.php" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-gray-700">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -322,14 +322,14 @@ checkAuth();
         <!-- Simple Realtime Messaging System -->
         <div class="flex flex-col h-full mt-24">
             <div class="flex-grow p-4 overflow-y-auto bg-white rounded-lg shadow-md flex flex-col-reverse">
-            <div id="messages" class="space-y-4 flex flex-col-reverse">
-                <!-- Messages will be dynamically loaded here -->
-            </div>
+                <div id="messages" class="space-y-4 flex flex-col-reverse">
+                    <!-- Messages will be dynamically loaded here -->
+                </div>
             </div>
             <div class="mt-4 flex items-center">
-            <input id="messageInput" type="text" class="flex-grow border rounded px-4 py-2" placeholder="Type your message...">
-            <input id="fileInput" type="file" class="ml-4">
-            <button id="sendButton" class="ml-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Send</button>
+                <input id="messageInput" type="text" class="flex-grow border rounded px-4 py-2" placeholder="Type your message...">
+                <input id="fileInput" type="file" class="ml-4">
+                <button id="sendButton" class="ml-4 bg-[#00446b] text-white px-4 py-2 rounded hover:bg-gray-700">Send</button>
             </div>
         </div>
 
@@ -340,7 +340,7 @@ checkAuth();
                 messageContainer.classList.add('flex', isOwnMessage ? 'justify-end' : 'justify-start');
 
                 const messageBubble = document.createElement('div');
-                messageBubble.classList.add('px-4', 'py-2', 'rounded-lg', 'shadow-md', isOwnMessage ? 'bg-blue-500' : 'bg-gray-200', isOwnMessage ? 'text-white' : 'text-black');
+                messageBubble.classList.add('px-4', 'py-2', 'rounded-lg', 'shadow-md', isOwnMessage ? 'bg-[#00446b]' : 'bg-gray-200', isOwnMessage ? 'text-white' : 'text-black');
 
                 if (isFile) {
                     const fileLink = document.createElement('a');

@@ -27,7 +27,7 @@ checkAuth(); // Call the function to check if user is authenticated
         <div class="bg-white shadow-lg rounded-lg p-6 mb-6 flex-grow text-center transition-transform transform hover:shadow-xl">
             <h3 class="text-2xl font-semibold mb-4 text-red-600">404 - Page Not Found</h3>
             <p class="text-gray-700 mb-4">Sorry, the page you are looking for does not exist.</p>
-            <a href="dashboard.php" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors duration-300">Go to Dashboard</a>
+            <a href="dashboard.php" class="inline-block bg-[#00446b] text-white py-2 px-4 rounded hover:bg-gray-700 transition-colors duration-300">Go to Dashboard</a>
         </div>
     </div>
 </body>

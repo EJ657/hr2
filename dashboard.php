@@ -277,7 +277,7 @@ checkAuth(); // Call the function to check if user is authenticated
                             <input type="text" id="profileRole" class="w-full border rounded px-3 py-2" value="admin" disabled>
                         </div>
                         <div class="flex justify-end">
-                            <button onclick="saveProfileDetails()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Save</button>
+                            <button onclick="saveProfileDetails()" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-gray-700">Save</button>
                         </div>
                     </div>
                 </div>
@@ -289,7 +289,7 @@ checkAuth(); // Call the function to check if user is authenticated
                         <p class="mb-4">Are you sure you want to log out?</p>
                         <div class="flex justify-end space-x-4">
                             <button onclick="closeLogoutModal()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700">Cancel</button>
-                            <a href="logout.php" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-blue-700">Log Out</a>
+                            <a href="logout.php" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-gray-700">Log Out</a>
                         </div>
                     </div>
                 </div>

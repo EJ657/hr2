@@ -146,7 +146,7 @@ checkAuth();
     <!-- Main Content -->
     <div class="flex-grow p-6 overflow-auto flex flex-col bg-[#fbfbfe] ml-64">
         <!-- Top Navigation Bar -->
-        <div class="fixed top-0 left-64 right-0 z-10 bg-white shadow-md">
+        <div id="topNavBar" class="fixed top-0 left-64 right-0 z-10 bg-white shadow-md">
             <div class="flex justify-between items-center py-3 px-6 border-b-2">
                 <div>
                     <h2 class="text-4xl font-semibold text-gray-800">Employee Management</h2>
@@ -276,7 +276,7 @@ checkAuth();
                             <input type="text" id="profileRole" class="w-full border rounded px-3 py-2" value="admin" disabled>
                         </div>
                         <div class="flex justify-end">
-                            <button onclick="saveProfileDetails()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Save</button>
+                            <button onclick="saveProfileDetails()" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-gray-700">Save</button>
                         </div>
                     </div>
                 </div>
@@ -288,7 +288,7 @@ checkAuth();
                         <p class="mb-4">Are you sure you want to log out?</p>
                         <div class="flex justify-end space-x-4">
                             <button onclick="closeLogoutModal()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700">Cancel</button>
-                            <a href="logout.php" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-blue-700">Log Out</a>
+                            <a href="logout.php" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-gray-700">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -296,7 +296,7 @@ checkAuth();
         </div>
 
         <!-- Content Section -->
-        <div class="mt-2">
+        <div class="mt-8">
 
             <script>
                 // Toggle profile dropdown visibility
@@ -323,35 +323,77 @@ checkAuth();
         <div class="mt-8">
             <h2 class="text-2xl font-semibold mb-4">Account Review Requests</h2>
             <div class="overflow-x-auto">
-            <table class="table-auto w-full bg-white rounded-lg shadow-lg">
-                <thead>
-                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                    <th class="py-3 px-6 text-left">Email</th>
-                    <th class="py-3 px-6 text-left">Reason for Request</th>
-                    <th class="py-3 px-6 text-center">Actions</th>
-                </tr>
-                </thead>
-                <tbody class="text-gray-600 text-sm font-light">
-                <tr class='border-b border-gray-200 hover:bg-gray-100'>
-                    <td class='py-3 px-6 text-left whitespace-nowrap'>example@example.com</td>
-                    <td class='py-3 px-6 text-left'>Forgot password due to multiple attempts</td>
-                    <td class='py-3 px-6 text-center'>
-                    <button class='bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700'>Approve</button>
-                    <button class='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 ml-2'>Reject</button>
-                    </td>
-                </tr>
-                <tr class='border-b border-gray-200 hover:bg-gray-100'>
-                    <td class='py-3 px-6 text-left whitespace-nowrap'>user@example.com</td>
-                    <td class='py-3 px-6 text-left'>Unable to access email for reset</td>
-                    <td class='py-3 px-6 text-center'>
-                    <button class='bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700'>Approve</button>
-                    <button class='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 ml-2'>Reject</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                <table class="table-auto w-full bg-white rounded-lg shadow-lg">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                            <th class="py-3 px-6 text-left">Email</th>
+                            <th class="py-3 px-6 text-left">Reason for Request</th>
+                            <th class="py-3 px-6 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-600 text-sm font-light">
+                        <tr class='border-b border-gray-200 hover:bg-gray-100'>
+                            <td class='py-3 px-6 text-left whitespace-nowrap'>example@example.com</td>
+                            <td class='py-3 px-6 text-left'>Forgot password due to multiple attempts</td>
+                            <td class='py-3 px-6 text-center'>
+                                <button class='bg-[#00446b] text-white px-4 py-2 rounded hover:bg-gray-700' onclick="openModal('example@example.com')">Approve</button>
+                                <button class='bg-[#00446b] text-white px-4 py-2 rounded hover:bg-gray-700 ml-2'>Reject</button>
+                            </td>
+                        </tr>
+                        <tr class='border-b border-gray-200 hover:bg-gray-100'>
+                            <td class='py-3 px-6 text-left whitespace-nowrap'>user@example.com</td>
+                            <td class='py-3 px-6 text-left'>Unable to access email for reset</td>
+                            <td class='py-3 px-6 text-center'>
+                                <button class='bg-[#00446b] text-white px-4 py-2 rounded hover:bg-gray-700' onclick="openModal('user@example.com')">Approve</button>
+                                <button class='bg-[#00446b] text-white px-4 py-2 rounded hover:bg-gray-700 ml-2'>Reject</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div id="modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
+            <div class="bg-white rounded-lg shadow-lg p-6 w-1/3">
+                <h2 class="text-xl font-semibold mb-4">Change Password</h2>
+                <div class="mb-4">
+                    <label for="newPassword" class="block text-gray-700">New Password</label>
+                    <input type="password" id="newPassword" class="w-full border rounded px-3 py-2">
+                </div>
+                <div class="flex justify-end space-x-4">
+                    <button onclick="closeModal()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700">Cancel</button>
+                    <button onclick="savePassword()" class="bg-[#00446b] text-white px-4 py-2 rounded hover:bg-gray-700">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function openModal(email) {
+                document.getElementById('modal').classList.remove('hidden');
+                document.getElementById('topNavBar').classList.add('hidden');
+                document.body.classList.add('overflow-hidden');
+            }
+
+            function closeModal() {
+                document.getElementById('modal').classList.add('hidden');
+                document.getElementById('topNavBar').classList.remove('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+
+            function savePassword() {
+                // Implement password save logic here
+                closeModal();
+            }
+
+            window.onclick = function(event) {
+                const modal = document.getElementById('modal');
+                if (event.target == modal) {
+                    closeModal();
+                }
+            }
+        </script>
+    </div>
 </body>
 
 </html>

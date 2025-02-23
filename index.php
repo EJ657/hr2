@@ -119,11 +119,11 @@ $conn->close();
             <form method="POST" action="forgot_password_request.php">
                 <div class="mt-4">
                     <label for="resetEmail" class="block text-gray-700">Enter your email address:</label>
-                    <input type="email" name="email" id="resetEmail" class="w-full p-2 mt-2 border rounded-md" required>
+                    <input type="email" name="email" id="resetEmail" placeholder="Enter your Email" class="w-full p-2 mt-2 border rounded-md" required>
                 </div>
                 <div class="mt-4">
                     <label for="resetReason" class="block text-gray-700">Reason for password reset:</label>
-                    <textarea name="reason" id="resetReason" class="w-full p-2 mt-2 border rounded-md h-24" required></textarea>
+                    <textarea name="reason" id="resetReason" placeholder="State your reason and include the new password that you want." class="w-full p-2 mt-2 border rounded-md h-24" required></textarea>
                 </div>
                 <div class="mt-4 text-center">
                     <button type="submit" class="px-6 py-2 bg-[#00446b] text-white rounded-md">Submit</button>
