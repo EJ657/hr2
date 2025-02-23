@@ -17,7 +17,7 @@ checkAuth();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./icons/nexfleet.svg">
-    <title>Human Resources 2</title>
+    <title>Employee Concerns</title>
     <style>
         /* Ensure the message container takes up the remaining space */
         .message-container {
@@ -84,12 +84,12 @@ checkAuth();
 <body class="custom-bg">
     <div class="main-container">
         <!-- Sidebar -->
-        <?php include("sidebar.php"); ?>
+        <?php include("5sidebar.php"); ?>
 
         <!-- Main Content -->
         <div class="flex-grow p-6 overflow-auto flex flex-col bg-[#fbfbfe] ml-64">
             <!-- Top Navigation Bar -->
-            <?php include("navbar.php"); ?>
+            <?php include("5navbar.php"); ?>
 
             <!-- Enhanced Realtime Messaging System -->
             <div class="flex h-full mt-24">
