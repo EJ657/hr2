@@ -40,7 +40,6 @@ checkAuth();
                 <table class="min-w-full bg-white border border-gray-200" id="moduleRequestTable">
                     <thead class="bg-gray-100 text-gray-700">
                         <tr>
-                            <th class="py-3 px-4 border-b">Employee Name</th>
                             <th class="py-3 px-4 border-b">Employee Email</th>
                             <th class="py-3 px-4 border-b">Module Name</th>
                             <th class="py-3 px-4 border-b">Request Date</th>

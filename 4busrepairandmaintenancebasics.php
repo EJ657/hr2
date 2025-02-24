@@ -28,21 +28,7 @@ checkAuth(); // Call the function to check if user is authenticated
         <?php include("5navbar.php"); ?>
 
         <!-- Content Section -->
-        <div class="card bg-white shadow-xl p-16 mt-14 left-2 rounded-lg w-full max-w-6xl border border-gray-300 mx-auto relative">
-            <a href="2employeedashboard.php" class="absolute bottom-4 right-4 bg-blue-950 text-white px-4 py-2 rounded hover:bg-blue-900">Go Back</a>
-            <h1 class="text-2xl font-bold text-center border-b pb-4 mb-2 ">About Us</h1>
-            <h2 class="text-xl font-semibold mt-6">Employee Management System</h2>
-            <p class="mt-4"><span class="font-semibold">HR2:</span> To manage and assign newly hired employees.</p>
-
-            <h3 class="mt-6 font-semibold">Group#47:</h3>
-            <ul class="list-decimal list-inside pl-6 mt-2">
-                <li>N/A</li>
-                <li>N/A</li>
-            </ul>
-
-            <div class="mt-6"></div>
-            <!-- if you want to add more content, you can add it here -->
-        </div>
+        
     </div>
 </body>
 
