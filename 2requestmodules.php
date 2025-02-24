@@ -28,7 +28,7 @@ checkAuth(); // Call the function to check if user is authenticated
         <?php include("5navbar.php"); ?>
 
         <!-- Content Section -->
-         
+
     </div>
 </body>
 

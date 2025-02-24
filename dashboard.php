@@ -64,7 +64,6 @@ checkAuth(); // Call the function to check if user is authenticated
                             <th class="p-3 border-b">Employee</th>
                             <th class="p-3 border-b">Department</th>
                             <th class="p-3 border-b">Training Program</th>
-                            <th class="p-3 border-b">Performance</th>
                             <th class="p-3 border-b">Status</th>
                         </tr>
                     </thead>
@@ -73,21 +72,18 @@ checkAuth(); // Call the function to check if user is authenticated
                             <td class="border p-2">EJ</td>
                             <td class="border p-2">Bus Department</td>
                             <td class="border p-2">Defense Driving Technique</td>
-                            <td class="border p-2 font-semibold text-blue-600">75%</td>
                             <td class="border p-2"><span class="text-orange-500 font-semibold">In Progress</span></td>
                         </tr>
                         <tr class="hover:bg-gray-100 transition-colors">
                             <td class="border p-2">Aaron</td>
                             <td class="border p-2">Bus Department</td>
                             <td class="border p-2">Bus Repair & Maintenance Basics</td>
-                            <td class="border p-2 font-semibold text-blue-600">100%</td>
                             <td class="border p-2"><span class="text-green-500 font-semibold">Completed</span></td>
                         </tr>
                         <tr class="hover:bg-gray-100 transition-colors">
                             <td class="border p-2">Christian</td>
                             <td class="border p-2">Customer Service</td>
                             <td class="border p-2">Customer Service Fundamentals</td>
-                            <td class="border p-2 font-semibold text-blue-600">50%</td>
                             <td class="border p-2"><span class="text-orange-500 font-semibold">In Progress</span></td>
                         </tr>
                     </tbody>

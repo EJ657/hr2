@@ -32,9 +32,9 @@ checkAuth();
 
                 <!-- Employee Name -->
                 <div class="mb-6">
-                    <label for="employeeName" class="block text-gray-700 font-medium mb-2 text-xl">Select Employee:</label>
+                    <label for="employeeName" class="block text-gray-700 font-medium mb-2 text-xl">Select Employee Email:</label>
                     <select id="employeeName" class="block w-full border border-gray-300 rounded-lg p-4 focus:ring focus:ring-[#00446b] text-lg">
-                        <option value="">-- Select Employee --</option>
+                        <option value="">-- Select Employee Email--</option>
                         <!-- Options will be dynamically populated here -->
                     </select>
                 </div>
@@ -63,7 +63,7 @@ checkAuth();
                 </div>
 
                 <!-- Enroll Button -->
-                <button type="button" id="enrollButton" class="w-full bg-[#00446b] text-white rounded-lg p-4 text-lg hover:bg-[#00446be8] transition duration-300">Enroll Employee</button>
+                <button type="button" id="enrollButton" class="w-full bg-[#00446b] text-white rounded-lg p-4 text-lg hover:bg-[#00446be8] transition duration-300">Assign Employee</button>
             </form>
         </div>
 

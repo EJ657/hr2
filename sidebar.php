@@ -1,7 +1,7 @@
 <div class="fixed top-0 left-0 w-64 bg-white text-black border m-4 mr-0 rounded-lg overflow-hidden h-screen flex flex-col shadow-lg">
     <!-- Sidebar Content -->
     <div class="flex flex-col h-full bg-gray-100 p-4 space-y-4 overflow-y-auto scrollbar-hide">
-        
+
         <!-- Logo Section -->
         <div class="flex items-center justify-center mt-2 mb-4">
             <a href="dashboard.php" class="flex items-center">
@@ -40,21 +40,21 @@
                     </summary>
                     <ul class="p-2 space-y-2 pl-6">
                         <li>
+                            <a href="viewlearningmodule.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
+                                <i class="fas fa-graduation-cap w-6 text-lg mr-3"></i>
+                                <span>View & Assign Modules</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="trainingmodule.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
-                                <i class="fas fa-book w-6 text-lg mr-3"></i>
-                                <span>Assign Module</span>
+                                <i class="fas fa-graduation-cap w-6 text-lg mr-3"></i>
+                                <span>Assign Employees</span>
                             </a>
                         </li>
                         <li>
                             <a href="employees.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
                                 <i class="fas fa-users w-6 text-lg mr-3"></i>
                                 <span>View Employees</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="viewlearningmodule.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
-                                <i class="fas fa-graduation-cap w-6 text-lg mr-3"></i>
-                                <span>View Modules</span>
                             </a>
                         </li>
                         <li>
@@ -101,10 +101,12 @@
     .scrollbar-hide::-webkit-scrollbar {
         display: none;
     }
+
     .scrollbar-hide {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
+
     details[open] summary i {
         transform: rotate(180deg);
     }
@@ -114,6 +116,7 @@
     .scrollbar-hide::-webkit-scrollbar {
         display: none;
     }
+
     .scrollbar-hide {
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -133,7 +136,8 @@
     }
 
     details[open] .dropdown-content {
-        max-height: 500px; /* Adjust based on your content */
+        max-height: 500px;
+        /* Adjust based on your content */
         opacity: 1;
     }
 </style>
@@ -142,7 +146,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         const submenus = ["learningTraining", "others"];
 
         submenus.forEach(menu => {
@@ -154,7 +158,7 @@
             dropdownContent.classList.add("dropdown-content");
 
             // Handle click on the summary element
-            summary.addEventListener("click", function (e) {
+            summary.addEventListener("click", function(e) {
                 e.preventDefault(); // Prevent default behavior
                 if (details.hasAttribute("open")) {
                     // Close the dropdown
@@ -175,7 +179,7 @@
             // Save the open state in localStorage
             let subLinks = details.querySelectorAll(".sub-link");
             subLinks.forEach(link => {
-                link.addEventListener("click", function () {
+                link.addEventListener("click", function() {
                     localStorage.setItem("openMenu", menu);
                 });
             });
@@ -189,7 +193,7 @@
         });
 
         // Reset localStorage when clicking outside
-        document.body.addEventListener("click", function (event) {
+        document.body.addEventListener("click", function(event) {
             if (!event.target.closest("details")) {
                 localStorage.removeItem("openMenu");
             }
@@ -198,7 +202,7 @@
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         const submenus = ["learningTraining", "others"];
 
         submenus.forEach(menu => {
@@ -206,7 +210,7 @@
             let subLinks = details.querySelectorAll(".sub-link");
 
             subLinks.forEach(link => {
-                link.addEventListener("click", function () {
+                link.addEventListener("click", function() {
                     localStorage.setItem("openMenu", menu);
                 });
             });
@@ -217,7 +221,7 @@
         });
 
         // Reset localStorage when clicking outside
-        document.body.addEventListener("click", function (event) {
+        document.body.addEventListener("click", function(event) {
             if (!event.target.closest("details")) {
                 localStorage.removeItem("openMenu");
             }

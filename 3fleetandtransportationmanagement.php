@@ -30,16 +30,16 @@ checkAuth(); // Call the function to check if user is authenticated
         <!-- Content Section -->
         <div class="card bg-white shadow-xl p-16 mt-14 left-2 rounded-lg w-full max-w-6xl border border-gray-300 mx-auto relative">
             <a href="2employeedashboard.php" class="absolute bottom-4 right-4 bg-blue-950 text-white px-4 py-2 rounded hover:bg-blue-900">Go Back</a>
-            <h1 class="text-2xl font-bold text-center border-b pb-4 mb-2 ">Defensive Driving Techniques</h1>
-            <h2 class="text-xl font-semibold mt-6">Topic 1: Driving Distractions</h2>
+            <h1 class="text-2xl font-bold text-center border-b pb-4 mb-2 ">Fleet & Transportation Management</h1>
+            <h2 class="text-xl font-semibold mt-6">Topic 1: Customer Service Fundamentals</h2>
             <p class="mt-4"><span class="font-semibold">Training Objective:</span> To understand the different types of driving distractions, their risks, and how to minimize them for safer driving.</p>
 
             <h3 class="mt-6 font-semibold">Key Topics:</h3>
             <ul class="list-decimal list-inside pl-6 mt-2">
-                <li>What are the Driving Distractions?</li>
-                <li>Types of Driving Distractions</li>
-                <li>Consequences of Driving Distractions</li>
-                <li>How to prevent Distractions</li>
+                <li>What is Customer Service Fundamentals?</li>
+                <li>qweweqweqweqweqweqweqweqweq</li>
+                <li>qweweqweqweqweqweqweqweqweq</li>
+                <li>qweqweqweqweqweqweqweqweqwe</li>
             </ul>
 
             <div class="mt-6">

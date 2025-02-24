@@ -107,11 +107,10 @@ checkAuth();
                     <div class="contact-item">
                         <div class="flex items-center">
                             <div class="avatar-container">
-                                <img src="https://api.dicebear.com/7.x/initials/svg?seed=JohnDoe" alt="John Doe">
+                                <img src="https://api.dicebear.com/7.x/initials/svg?seed=Admin" alt="Admin">
                             </div>
                             <div class="ml-3">
-                                <p class="font-semibold">John Doe</p>
-                                <p class="text-sm text-gray-500">Online</p>
+                                <p class="font-semibold">ADMIN</p>
                             </div>
                         </div>
                     </div>
@@ -122,7 +121,6 @@ checkAuth();
                             </div>
                             <div class="ml-3">
                                 <p class="font-semibold">Jane Smith</p>
-                                <p class="text-sm text-gray-500">Offline</p>
                             </div>
                         </div>
                     </div>
@@ -133,7 +131,6 @@ checkAuth();
                             </div>
                             <div class="ml-3">
                                 <p class="font-semibold">Alice Johnson</p>
-                                <p class="text-sm text-gray-500">Online</p>
                             </div>
                         </div>
                     </div>
@@ -144,7 +141,6 @@ checkAuth();
                             </div>
                             <div class="ml-3">
                                 <p class="font-semibold">Bob Brown</p>
-                                <p class="text-sm text-gray-500">Away</p>
                             </div>
                         </div>
                     </div>

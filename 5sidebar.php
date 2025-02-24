@@ -28,6 +28,14 @@
                 </a>
             </li>
 
+            <!-- Module Requests -->
+            <li>
+                <a href="2requestmodules.php" class="flex items-center py-3 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
+                    <i class="fas fa-lightbulb w-6 text-lg mr-3"></i>
+                    <span>Request Modules</span>
+                </a>
+            </li>
+
             <!-- Others -->
             <li>
                 <details class="group" id="learningTraining">
