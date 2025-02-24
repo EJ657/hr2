@@ -38,12 +38,12 @@ $modules = [
 
 <body class="custom-bg">
     <!-- Sidebar -->
-    <?php include("5Sidebar.php"); ?>
+    <?php include("5sidebar.php"); ?>
 
     <!-- Main Content -->
     <div class="flex-grow p-6 overflow-auto flex flex-col bg-[#fbfbfe] ml-64">
         <!-- Top Navigation Bar -->
-        <?php include("5Navbar.php"); ?>
+        <?php include("5navbar.php"); ?>
 
         <!-- Content Section -->
         <div class="mt-14 grid grid-cols-3 gap-4">
