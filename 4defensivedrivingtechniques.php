@@ -4,6 +4,22 @@ include("auth.php"); // Include the authentication file
 checkAuth(); // Call the function to check if user is authenticated
 
 $activeTab = isset($_GET['tab']) ? $_GET['tab'] : 'assigned';
+
+// Ensure user_id is set before using it
+$userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
+$canAccessForm = false; // Default: No access
+
+if ($userId) {
+    $query = "SELECT usertype FROM users WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    $canAccessForm = ($row && $row['usertype'] === 'admin'); // Check if user is admin
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +54,11 @@ $activeTab = isset($_GET['tab']) ? $_GET['tab'] : 'assigned';
         <div class="mt-8 p-5 border rounded-lg">
             <?php if ($activeTab == 'assigned'): ?>
                 <p class="text-lg font-semibold">Google Form Link:</p>
-                <a href="https://docs.google.com/forms/d/e/your-google-form-link" target="_blank" class="text-blue-500 underline">Click here to fill out the form</a>
+                <?php if ($canAccessForm): ?>
+                    <a href="https://docs.google.com/forms/d/e/your-google-form-link" target="_blank" class="text-blue-500 underline">Click here to fill out the form</a>
+                <?php else: ?>
+                    <p class="text-red-500">Access to this form is restricted. Please contact the administrator.</p>
+                <?php endif; ?>
             <?php elseif ($activeTab == 'missing'): ?>
                 <div class="flex flex-col items-center">
                     <span class="text-xl font-bold">No Data Shown Here</span>
