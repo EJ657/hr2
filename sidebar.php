@@ -46,6 +46,12 @@
                             </a>
                         </li>
                         <li>
+                            <a href="messages.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
+                                <i class="fas fa-envelope w-6 text-lg mr-3"></i>
+                                <span>Messages</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="ai.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
                                 <i class="fas fa-robot w-6 text-lg mr-3"></i>
                                 <span>AI Feedback Analysis</span>
@@ -66,12 +72,6 @@
                         <i class="fas fa-chevron-down transition-transform"></i>
                     </summary>
                     <ul class="p-2 space-y-2 pl-6">
-                        <li>
-                            <a href="messages.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
-                                <i class="fas fa-envelope w-6 text-lg mr-3"></i>
-                                <span>Messages</span>
-                            </a>
-                        </li>
                         <li>
                             <a href="feedbacks.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
                                 <i class="fas fa-comments w-6 text-lg mr-3"></i>
