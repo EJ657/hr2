@@ -28,14 +28,6 @@
                 </a>
             </li>
 
-            <!-- Module Requests -->
-            <li>
-                <a href="2requestmodules.php" class="flex items-center py-3 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
-                    <i class="fas fa-lightbulb w-6 text-lg mr-3"></i>
-                    <span>Request Modules</span>
-                </a>
-            </li>
-
             <!-- Others -->
             <li>
                 <details class="group" id="learningTraining">
@@ -51,6 +43,12 @@
                             <a href="2concerns.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
                                 <i class="fas fa-book w-6 text-lg mr-3"></i>
                                 <span>Concerns</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="2ai.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
+                                <i class="fas fa-book w-6 text-lg mr-3"></i>
+                                <span>Feedback</span>
                             </a>
                         </li>
                         <li>

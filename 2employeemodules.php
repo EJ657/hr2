@@ -4,21 +4,21 @@ include("auth.php"); // Include the authentication file
 checkAuth(); // Call the function to check if user is authenticated
 
 $modules = [
-    ["name" => "Defensive Driving Techniques", "description" => "Click to view details.", "link" => "4defensivedrivingtechniques.php"],
-    ["name" => "Customer Service Fundamentals", "description" => "Click to view details.", "link" => "4customerservicefundamentals.php"],
-    ["name" => "Bus Repair and Maintenance Basics", "description" => "Click to view details.", "link" => "4busrepairandmaintenancebasics.php"],
-    ["name" => "Effective Communication Skills", "description" => "Click to view details.", "link" => "4effectivecommunicationskills.php"],
-    ["name" => "Emergency Response Procedures", "description" => "Click to view details.", "link" => "4emergencyresponseprocedures.php"],
-    ["name" => "Conflict Resolution in the Workplace", "description" => "Click to view details.", "link" => "4conflictresolutionintheworkplace.php"],
-    ["name" => "Digital Marketing Essentials", "description" => "Click to view details.", "link" => "4digitalmarketingessentials.php"],
-    ["name" => "Financial Reporting and Analysis", "description" => "Click to view details.", "link" => "4financialreportingandanalysis.php"],
-    ["name" => "Leadership and Management Skills", "description" => "Click to view details.", "link" => "4leadershipandmanagementskills.php"],
-    ["name" => "Supply Chain Management Basics", "description" => "Click to view details.", "link" => "4supplychainmanagementbasics.php"],
-    ["name" => "Fleet and Transportation Management", "description" => "Click to view details.", "link" => "4fleetandtransportationmanagement.php"],
-    ["name" => "Route Planning and Optimization", "description" => "Click to view details.", "link" => "4routeplanningandoptimization.php"],
-    ["name" => "Health and Safety Training", "description" => "Click to view details.", "link" => "4healthandsafetytraining.php"],
-    ["name" => "Complaint Handling and Resolution", "description" => "Click to view details.", "link" => "4complainthandlingandresolution.php"],
-    ["name" => "Vehicle Operations and Safety", "description" => "Click to view details.", "link" => "4vehicleoperationsandsafety.php"],
+    ["name" => "Defensive Driving Techniques", "description" => "Click to view details.", "link" => "moduleLayout.php?module=defensive_driving"],
+    ["name" => "Customer Service Fundamentals", "description" => "Click to view details.", "link" => "moduleLayout.php?module=customer_service"],
+    ["name" => "Bus Repair and Maintenance Basics", "description" => "Click to view details.", "link" => "moduleLayout.php?module=bus_repair"],
+    ["name" => "Effective Communication Skills", "description" => "Click to view details.", "link" => "moduleLayout.php?module=communication_skills"],
+    ["name" => "Emergency Response Procedures", "description" => "Click to view details.", "link" => "moduleLayout.php?module=emergency_response"],
+    ["name" => "Conflict Resolution in the Workplace", "description" => "Click to view details.", "link" => "moduleLayout.php?module=conflict_resolution"],
+    ["name" => "Digital Marketing Essentials", "description" => "Click to view details.", "link" => "moduleLayout.php?module=digital_marketing"],
+    ["name" => "Financial Reporting and Analysis", "description" => "Click to view details.", "link" => "moduleLayout.php?module=financial_reporting"],
+    ["name" => "Leadership and Management Skills", "description" => "Click to view details.", "link" => "moduleLayout.php?module=leadership_management"],
+    ["name" => "Supply Chain Management Basics", "description" => "Click to view details.", "link" => "moduleLayout.php?module=supply_chain"],
+    ["name" => "Fleet and Transportation Management", "description" => "Click to view details.", "link" => "moduleLayout.php?module=fleet_management"],
+    ["name" => "Route Planning and Optimization", "description" => "Click to view details.", "link" => "moduleLayout.php?module=route_planning"],
+    ["name" => "Health and Safety Training", "description" => "Click to view details.", "link" => "moduleLayout.php?module=health_safety"],
+    ["name" => "Complaint Handling and Resolution", "description" => "Click to view details.", "link" => "moduleLayout.php?module=complaint_handling"],
+    ["name" => "Vehicle Operations and Safety", "description" => "Click to view details.", "link" => "moduleLayout.php?module=vehicle_operations"],
 ];
 ?>
 

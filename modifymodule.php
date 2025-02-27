@@ -20,15 +20,17 @@ checkAuth(); // Call the function to check if user is authenticated
 
 <body class="custom-bg">
     <!-- Sidebar -->
-    <?php include("5sidebar.php"); ?>
+    <?php include("sidebar.php"); ?>
 
     <!-- Main Content -->
     <div class="flex-grow p-6 overflow-auto flex flex-col bg-[#fbfbfe] ml-64">
         <!-- Top Navigation Bar -->
-        <?php include("5navbar.php"); ?>
+        <?php include("navbar.php"); ?>
 
         <!-- Content Section -->
-
+        <div class="card bg-white shadow-xl p-8 mt-14 left-2 rounded-lg w-full max-w-6xl border border-gray-300 mx-auto relative">
+            <!-- if you want to add more content, you can add it here -->
+        </div>
     </div>
 </body>
 

@@ -40,21 +40,9 @@
                     </summary>
                     <ul class="p-2 space-y-2 pl-6">
                         <li>
-                            <a href="viewlearningmodule.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
+                            <a href="modifymodule.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
                                 <i class="fas fa-graduation-cap w-6 text-lg mr-3"></i>
-                                <span>View & Assign Modules</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="trainingmodule.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
-                                <i class="fas fa-graduation-cap w-6 text-lg mr-3"></i>
-                                <span>Assign Employees</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="employees.php" class="sub-link flex items-center py-2 px-4 font-semibold rounded-lg transition-all duration-300 text-blue-950 hover:bg-[#00446b] hover:text-white">
-                                <i class="fas fa-users w-6 text-lg mr-3"></i>
-                                <span>View Employees</span>
+                                <span>Modify Employee Module</span>
                             </a>
                         </li>
                         <li>
