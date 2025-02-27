@@ -10,6 +10,10 @@ $lessonKey = [
             <li>Scan Your Surroundings: Regularly check mirrors and stay aware of potential dangers.</li>
             <li>Minimize In-Car Distractions: Adjust GPS, music, and climate controls before driving.</li>
             <li>Manage Passengers: Ensure passengers do not cause unnecessary distractions.</li>
+            <h2 class="text-xl font-semibold mt-6">Additional Strategies for Enhanced Safety</h2>
+            <li>Take Breaks: On long trips, schedule regular breaks to rest and recharge, reducing fatigue, which can be a significant distraction.</li>
+        <li>Educate Others: Share knowledge about defensive driving techniques with friends and family to promote culture of safety on the road.</li>
+        <li>Participate in Defensive Driving Courses: Consider enrolling in a defensive driving course to further enhance your skills and knowledge.</li>
         </ul>
         <p class="mt-4">By practicing these defensive driving strategies, drivers can significantly reduce their chances of accidents and ensure a safer driving environment for everyone.</p>
 
@@ -41,6 +45,18 @@ $lessonKey = [
         </ul>
         <p class="mt-4">By practicing these defensive driving techniques, drivers can better anticipate hazards, reduce risks, and ensure a safer driving experience for themselves and others.</p>
 
+        <hr class="my-6">
+
+        <h2 class="text-xl font-semibold mt-6">Discussion 4: Defensive Driving Techniques in Avoiding Collisions</h2>
+        <p class="mt-4">Avoiding collisions is the ultimate goal of defensive driving, requiring quick reflexes, situational awareness, and proactive decision-making. Defensive drivers take steps to prevent accidents and minimize the impact of collisions.</p>
+        <ul class="list-disc list-inside pl-6 mt-2">
+            <li>Staying Calm Under Pressure – Keep a cool head in stressful situations to make rational decisions and avoid panic.</li>
+            <li>Braking Safely – Apply brakes gradually and avoid sudden stops to prevent skidding or rear-end collisions.</li>
+            <li>Steering Clear of Danger – Swerve carefully to avoid obstacles or collisions, ensuring the safety of yourself and others.</li>
+            <li>Using Defensive Parking – Park in well-lit areas, lock your car, and be aware of your surroundings to prevent theft or vandalism.</li>
+            <li>Reacting to Emergency Vehicles – Yield the right of way to emergency vehicles, pull over safely, and allow them to pass without obstruction.</li>
+        </ul>
+        <p class="mt-4">By practicing these defensive driving techniques, drivers can reduce the likelihood of collisions, minimize injuries, and ensure a safer driving environment for everyone.</p>
     ',
 
     "customer_service" => '
@@ -84,7 +100,7 @@ $lessonKey = [
 
         <hr class="my-6">
 
-        <h2 class="text-xl font-semibold mt-6">Discussion: Customer Service Fundamentals in Process Control</h2>
+        <h2 class="text-xl font-semibold mt-6">Discussion 4: Customer Service Fundamentals in Process Control</h2>
         <p class="mt-4">Process control in customer service ensures that interactions with customers are handled efficiently, consistently, and effectively. It involves establishing clear procedures, monitoring service quality, and continuously improving processes to enhance customer satisfaction.</p>
         <ul class="list-disc list-inside pl-6 mt-2">
             <li>Standardized Procedures – Having clear guidelines for handling customer inquiries, complaints, and requests ensures consistency and professionalism.</li>
